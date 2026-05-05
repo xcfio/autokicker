@@ -1,0 +1,41 @@
+{
+    "name": "backend",
+    "version": "0.0.1",
+    "type": "commonjs",
+    "author": "xcfio",
+    "license": "UNLICENSED",
+    "scripts": {
+        "build": "rolldown -c",
+        "db": "drizzle-kit studio --port=4000",
+        "dev": "tsx watch --include src/**/* --no-warnings --env-file-if-exists=.env src/index.ts",
+        "docker:build": "docker build --tag api .",
+        "docker:start": "docker run --detach --rm --publish 7200:7200 api",
+        "fmt": "prettier --config=.prettierrc --write src",
+        "fmt:test": "prettier --config=.prettierrc --check src",
+        "gen": "drizzle-kit generate",
+        "start": "tsx --env-file-if-exists=.env src/index.ts",
+        "test": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@fastify/cookie": "^11.0.2",
+        "@fastify/cors": "^11.2.0",
+        "@fastify/error": "^4.2.0",
+        "@fastify/jwt": "^10.0.0",
+        "@fastify/rate-limit": "^10.3.0",
+        "@fastify/swagger": "^9.7.0",
+        "@fastify/type-provider-typebox": "^6.1.0",
+        "@repo/schema": "workspace:*",
+        "@scalar/fastify-api-reference": "^1.55.1",
+        "drizzle-orm": "1.0.0-rc.1",
+        "fastify": "^5.8.5",
+        "fastify-socket.io": "^5.1.0",
+        "postgres": "^3.4.9",
+        "typebox": "^1.1.35",
+        "typescript": "^6.0.3",
+        "uuid": "^14.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^25.6.0",
+        "rolldown": "1.0.0-rc.18"
+    }
+}

@@ -1,0 +1,4 @@
+tsconfig.json
+pnpm*.yaml
+log.*
+!log.ts

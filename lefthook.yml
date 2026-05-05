@@ -1,0 +1,6 @@
+pre-commit:
+    commands:
+        test:
+            run: node --run test
+        format:
+            run: (node --run fmt) && (git add .)

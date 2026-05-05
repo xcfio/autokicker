@@ -1,0 +1,36 @@
+{
+    "name": "bot",
+    "version": "0.0.1",
+    "type": "commonjs",
+    "author": "xcfio",
+    "license": "UNLICENSED",
+    "scripts": {
+        "fmt": "prettier --config=.prettierrc --write .",
+        "lint": "prettier --config=.prettierrc --check .",
+        "dev": "tsx watch --include src/**/* --no-warnings src/index.ts",
+        "build": "pnpm install --frozen-lockfile",
+        "start": "pm2 start \"tsx --no-warnings src/index.ts index.js --color\" --name automod",
+        "test": "tsc --noEmit"
+    },
+    "dependencies": {
+        "canvacord": "^6.0.4",
+        "colorette": "^2.0.20",
+        "coolcake": "^0.0.5",
+        "coolice": "^0.0.2",
+        "discord.js": "^14.26.3",
+        "drizzle-kit": "^0.31.8",
+        "drizzle-orm": "^0.45.1",
+        "fastify": "^5.8.5",
+        "google-auth-library": "^10.5.0",
+        "google-spreadsheet": "^5.0.2",
+        "lodash": "^4.17.23",
+        "lru-cache": "^11.3.5",
+        "postgres": "^3.4.8",
+        "ttt-ts": "^0.0.4",
+        "uuid": "^14.0.0"
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.17.23",
+        "@types/node": "^25.6.0"
+    }
+}
