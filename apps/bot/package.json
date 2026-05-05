@@ -24,7 +24,7 @@
         "google-auth-library": "^10.5.0",
         "google-spreadsheet": "^5.0.2",
         "lodash": "^4.17.23",
-        "lru-cache": "^11.3.5",
+        "lru-cache": "^11.3.6",
         "postgres": "^3.4.8",
         "ttt-ts": "^0.0.4",
         "uuid": "^14.0.0"
