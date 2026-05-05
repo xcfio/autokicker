@@ -1,5 +1,4 @@
 import { Client, GatewayIntentBits, Partials } from "discord.js"
-import { Errors } from "./function"
 import Fastify from "fastify"
 import events from "./events"
 import config from "./config"
@@ -42,7 +41,7 @@ events.forEach((func, name) => (typeof func === "function" ? client.on(name, (..
 function error(type: string, error: Error, origin: any) {
     if (error.message === "getaddrinfo ENOTFOUND discord.com") return console.log(error.stack)
     if (error.message === "getaddrinfo EAI_AGAIN discord.com") return console.log(error.stack)
-    Errors(error, type, origin)
+    console.log(error, type, origin)
 }
 
 try {

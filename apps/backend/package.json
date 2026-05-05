@@ -28,7 +28,6 @@
         "@scalar/fastify-api-reference": "^1.55.1",
         "drizzle-orm": "1.0.0-rc.1",
         "fastify": "^5.8.5",
-        "fastify-socket.io": "^5.1.0",
         "postgres": "^3.4.9",
         "typebox": "^1.1.35",
         "typescript": "^6.0.3",

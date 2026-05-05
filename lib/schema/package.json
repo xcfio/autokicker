@@ -23,7 +23,6 @@
     "dependencies": {
         "drizzle-orm": "1.0.0-rc.1",
         "postgres": "^3.4.9",
-        "socket.io": "^4.8.3",
         "typebox": "^1.1.35",
         "typescript": "^6.0.3",
         "uuid": "^14.0.0"

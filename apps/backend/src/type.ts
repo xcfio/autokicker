@@ -1,4 +1,4 @@
-import { AuthenticatedSocket, Payload } from "@repo/schema"
+import { Payload } from "@repo/schema"
 
 declare global {
     namespace NodeJS {
@@ -19,7 +19,6 @@ declare global {
 declare module "fastify" {
     interface FastifyInstance {
         auth: (request: FastifyRequest, reply: FastifyReply) => void
-        io: AuthenticatedSocket
     }
     interface FastifyRequest {
         payload: Payload
