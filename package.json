@@ -6,7 +6,7 @@
     "scripts": {
         "build": "turbo run build",
         "clean": "powershell -Command \"Get-ChildItem -Path . -Filter node_modules -Recurse -Directory | Remove-Item -Recurse -Force\"",
-        "dev": "turbo run dev",
+        "dev": "turbo watch dev",
         "fmt": "prettier --config=.prettierrc --write .",
         "lint": "node --experimental-strip-types --no-warnings ./node_modules/eslint/bin/eslint.js --flag unstable_native_nodejs_ts_config --config eslint.config.ts",
         "preinstall": "npx only-allow pnpm",

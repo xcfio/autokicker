@@ -5,6 +5,5 @@ function env(parm: string): string | never {
 }
 
 export default {
-    token: env("token"),
-    uri: env("uri")
+    token: env("token")
 }
