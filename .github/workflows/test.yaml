@@ -26,16 +26,14 @@ jobs:
             - name: Setup PNPM
               uses: pnpm/action-setup@v4
 
-            # Create blank config
-            - name: Create blank config
-              run: node --eval "require('node:fs').writeFileSync('apps/bot/src/config.ts', 'export default {} as any')"
-
             # Install dependencies
             - name: Install dependencies
               run: pnpm install --no-frozen-lockfile
 
+              # Disable Turbo Telemetry to prevent potential issues in CI environment
+            - name: Disable Turbo Telemetry
+              run: turbo telemetry disable
+
             # Run test
             - name: Run test
               run: node --run test
-              env:
-                  DO_NOT_TRACK: ${{vars.DO_NOT_TRACK}}
