@@ -174,9 +174,6 @@ importers:
 
   lib/schema:
     dependencies:
-      drizzle-orm:
-        specifier: 1.0.0-rc.2
-        version: 1.0.0-rc.2(postgres@3.4.9)(typebox@1.1.38)(zod@4.4.3)
       postgres:
         specifier: ^3.4.9
         version: 3.4.9
@@ -193,9 +190,6 @@ importers:
       '@types/node':
         specifier: ^25.6.0
         version: 25.6.0
-      drizzle-kit:
-        specifier: 1.0.0-rc.2
-        version: 1.0.0-rc.2
 
 packages:
 

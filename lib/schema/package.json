@@ -21,14 +21,12 @@
         "fmt:test": "prettier --config=.prettierrc --check src"
     },
     "dependencies": {
-        "drizzle-orm": "1.0.0-rc.2",
         "postgres": "^3.4.9",
         "typebox": "^1.1.38",
         "typescript": "^6.0.3",
         "uuid": "^14.0.0"
     },
     "devDependencies": {
-        "@types/node": "^25.6.0",
-        "drizzle-kit": "1.0.0-rc.2"
+        "@types/node": "^25.6.0"
     }
 }
