@@ -22,7 +22,7 @@
         "coolcake": "^0.0.5",
         "coolice": "^0.0.2",
         "discord.js": "^14.26.3",
-        "drizzle-kit": "^0.31.8",
+        "drizzle-kit": "^1.0.0-rc.2",
         "drizzle-orm": "^1.0.0-rc.2",
         "fastify": "^5.8.5",
         "google-auth-library": "^10.5.0",
