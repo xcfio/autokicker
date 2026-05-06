@@ -26,7 +26,7 @@
         "@fastify/type-provider-typebox": "^6.1.0",
         "@repo/schema": "workspace:*",
         "@scalar/fastify-api-reference": "^1.55.1",
-        "drizzle-orm": "1.0.0-rc.1",
+        "drizzle-orm": "1.0.0-rc.2",
         "fastify": "^5.8.5",
         "postgres": "^3.4.9",
         "typebox": "^1.1.35",
