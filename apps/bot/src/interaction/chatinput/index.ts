@@ -1,7 +1,9 @@
 import { ChatInputCommandObject } from "../../type"
-import * as test from "./test.ts"
+import * as ping from "./ping.ts"
+import * as status from "./status.ts"
 
 const commands = new Map<string, ChatInputCommandObject>()
-commands.set(test.data.name, test as any)
+commands.set(ping.data.name, ping as any)
+commands.set(status.data.name, status as any)
 
 export default commands
