@@ -37,3 +37,5 @@ jobs:
             # Run test
             - name: Run test
               run: node --run test
+              env:
+                  DO_NOT_TRACK: ${{vars.DO_NOT_TRACK}}
