@@ -29,12 +29,12 @@
         "drizzle-orm": "1.0.0-rc.2",
         "fastify": "^5.8.5",
         "postgres": "^3.4.9",
-        "typebox": "^1.1.35",
+        "typebox": "^1.1.38",
         "typescript": "^6.0.3",
         "uuid": "^14.0.0"
     },
     "devDependencies": {
         "@types/node": "^25.6.0",
-        "rolldown": "1.0.0-rc.18"
+        "rolldown": "1.0.0"
     }
 }

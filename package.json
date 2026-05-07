@@ -10,6 +10,7 @@
         "fmt": "prettier --config=.prettierrc --write .",
         "lint": "node --experimental-strip-types --no-warnings ./node_modules/eslint/bin/eslint.js --flag unstable_native_nodejs_ts_config --config eslint.config.ts",
         "preinstall": "npx only-allow pnpm",
+        "start": "turbo run start",
         "test": "turbo run test"
     },
     "repository": {
@@ -26,7 +27,7 @@
         "turbo": "^2.9.9",
         "typescript": "6.0.3"
     },
-    "packageManager": "pnpm@10.33.4",
+    "packageManager": "pnpm@11.0.8",
     "engines": {
         "node": ">=24"
     }
