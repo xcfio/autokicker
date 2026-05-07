@@ -6,14 +6,13 @@
     "license": "UNLICENSED",
     "scripts": {
         "build": "rolldown -c",
-        "db": "drizzle-kit studio --port=4000",
         "dev": "tsx watch --include src/**/* --no-warnings --env-file-if-exists=.env src/index.ts",
         "docker:build": "docker build --tag api .",
         "docker:start": "docker run --detach --rm --publish 7200:7200 api",
         "fmt": "prettier --config=.prettierrc --write src",
         "fmt:test": "prettier --config=.prettierrc --check src",
         "gen": "drizzle-kit generate",
-        "start": "tsx --env-file-if-exists=.env src/index.ts",
+        "start": "node --env-file-if-exists=.env out/index.js",
         "test": "tsc --noEmit"
     },
     "dependencies": {
