@@ -21,6 +21,7 @@
         "fmt:test": "prettier --config=.prettierrc --check src"
     },
     "dependencies": {
+        "@repo/schema": "workspace:*",
         "drizzle-orm": "1.0.0-rc.2",
         "postgres": "^3.4.9",
         "typebox": "^1.1.38",

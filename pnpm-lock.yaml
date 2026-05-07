@@ -44,6 +44,9 @@ importers:
       '@fastify/type-provider-typebox':
         specifier: ^6.1.0
         version: 6.1.0(typebox@1.1.37)
+      '@repo/database':
+        specifier: workspace:*
+        version: link:../../lib/database
       '@repo/schema':
         specifier: workspace:*
         version: link:../../lib/schema
@@ -78,6 +81,12 @@ importers:
 
   apps/bot:
     dependencies:
+      '@repo/database':
+        specifier: workspace:*
+        version: link:../../lib/database
+      '@repo/schema':
+        specifier: workspace:*
+        version: link:../../lib/schema
       canvacord:
         specifier: ^6.0.4
         version: 6.0.4(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
@@ -128,6 +137,9 @@ importers:
         specifier: 19.2.5
         version: 19.2.5(react@19.2.5)
     devDependencies:
+      '@repo/schema':
+        specifier: workspace:*
+        version: link:../../lib/schema
       '@tailwindcss/postcss':
         specifier: ^4.2.4
         version: 4.2.4
@@ -147,8 +159,11 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3
 
-  lib/databasse:
+  lib/database:
     dependencies:
+      '@repo/schema':
+        specifier: workspace:*
+        version: link:../schema
       drizzle-orm:
         specifier: 1.0.0-rc.2
         version: 1.0.0-rc.2(postgres@3.4.9)(typebox@1.1.38)(zod@4.4.3)

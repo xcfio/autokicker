@@ -17,6 +17,8 @@
         "test": "tsc --noEmit"
     },
     "dependencies": {
+        "@repo/schema": "workspace:*",
+        "@repo/database": "workspace:*",
         "canvacord": "^6.0.4",
         "colorette": "^2.0.20",
         "coolcake": "^0.0.5",
