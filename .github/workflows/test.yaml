@@ -33,7 +33,7 @@ jobs:
 
               # Disable Turbo Telemetry to prevent potential issues in CI environment
             - name: Disable Turbo Telemetry
-              run: (pnpm exec turbo telemetry disable) && echo "Turbo Telemetry disabled"
+              run: pnpm exec turbo telemetry disable > /dev/null 2>&1 && echo "Turbo Telemetry disabled"
 
             # Run test
             - name: Run test
