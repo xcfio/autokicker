@@ -24,11 +24,12 @@ export async function cx(interaction: RepliableInteraction, error?: Error) {
                 components: [
                     {
                         type: ComponentType.TextDisplay,
-                        content: "# An unknown error occurred."
+                        content: "# ❌ Something went wrong"
                     },
                     {
                         type: ComponentType.TextDisplay,
-                        content: "An unknown error happened. Run `/bug` to report this issue"
+                        content:
+                            "An unexpected error occurred while processing your request. Please use the `/bug` command to report this issue to our developers."
                     }
                 ]
             }

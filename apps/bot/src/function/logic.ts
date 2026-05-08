@@ -1,11 +1,4 @@
-import {
-    BaseChannel,
-    Channel,
-    ChannelType,
-    PermissionFlagsBits,
-    SendableChannels,
-    StringSelectMenuInteraction
-} from "discord.js"
+import { BaseChannel, Channel, ChannelType, PermissionFlagsBits, SendableChannels } from "discord.js"
 
 export function isSendable(channel: Channel | null, text = false): channel is SendableChannels {
     if (!channel) return false
