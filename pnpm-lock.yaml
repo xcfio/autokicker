@@ -68,9 +68,6 @@ importers:
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
-      uuid:
-        specifier: ^14.0.0
-        version: 14.0.0
     devDependencies:
       '@types/node':
         specifier: ^25.6.2
@@ -102,9 +99,6 @@ importers:
       node-cron:
         specifier: ^4.2.1
         version: 4.2.1
-      uuid:
-        specifier: ^14.0.0
-        version: 14.0.0
     devDependencies:
       '@types/node':
         specifier: ^25.6.2
@@ -161,9 +155,6 @@ importers:
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
-      uuid:
-        specifier: ^14.0.0
-        version: 14.0.0
     devDependencies:
       '@types/node':
         specifier: ^25.6.2
@@ -183,9 +174,6 @@ importers:
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
-      uuid:
-        specifier: ^14.0.0
-        version: 14.0.0
     devDependencies:
       '@types/node':
         specifier: ^25.6.2
@@ -1661,10 +1649,6 @@ packages:
     resolution: {integrity: sha512-sC+b0tB1whOCzbtlx20fx3WgCXwkW627p4EA9uM+/tNNPkSS+eSEld6pAs9nDv7WbY1UUljBMYPtu9BCOrCWKA==}
     engines: {node: '>=18.17'}
 
-  uuid@14.0.0:
-    resolution: {integrity: sha512-Qo+uWgilfSmAhXCMav1uYFynlQO7fMFiMVZsQqZRMIXp0O7rR7qjkj+cPvBHLgBqi960QCoo/PH2/6ZtVqKvrg==}
-    hasBin: true
-
   ws@8.20.0:
     resolution: {integrity: sha512-sAt8BhgNbzCtgGbt2OxmpuryO63ZoDk/sqaB/znQm94T4fCEsy/yV+7CdC1kJhOU9lboAEU7R3kquuycDoibVA==}
     engines: {node: '>=10.0.0'}
@@ -2868,8 +2852,6 @@ snapshots:
   undici-types@7.19.2: {}
 
   undici@6.24.1: {}
-
-  uuid@14.0.0: {}
 
   ws@8.20.0: {}
 
