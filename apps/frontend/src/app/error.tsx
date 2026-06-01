@@ -13,6 +13,7 @@ export default function ErrorFallback({ error, reset }: ErrorPageProps) {
     const router = useRouter()
     const [mounted, setMounted] = useState(false)
     const [copied, setCopied] = useState(false)
+    const [timestamp] = useState(new Date())
     const [particles, setParticles] = useState<
         Array<{
             left: string
@@ -22,7 +23,6 @@ export default function ErrorFallback({ error, reset }: ErrorPageProps) {
         }>
     >([])
 
-    const timestamp = new Date()
     const errorMessage = error?.message ?? "An unexpected error occurred."
     const stackTrace = error?.stack ?? "No stack trace available."
 
@@ -95,12 +95,12 @@ export default function ErrorFallback({ error, reset }: ErrorPageProps) {
                     <div className="subtitle-container text-center flex flex-col gap-2">
                         <div className="flex items-center justify-center gap-3">
                             <TriangleAlert className="w-7 h-7 text-teal-400" aria-hidden="true" />
-                            <h1 className="text-[clamp(1.25rem,3vw,1.75rem)] font-bold text-white m-0">
+                            <h1 className="text-[clamp(1.25rem,3vw,1.75rem)] font-bold font-comfortaa text-white m-0">
                                 Something went wrong
                             </h1>
                         </div>
                         <p className="text-teal-100 text-sm m-0">
-                            Copy the error report below and send it to us on Discord so we can fix it.
+                            Copy the error report below and send it to us so we can fix it.
                         </p>
                     </div>
 
@@ -113,8 +113,8 @@ export default function ErrorFallback({ error, reset }: ErrorPageProps) {
                         {/* Info rows */}
                         <div className="divide-y divide-teal-500/10">
                             {infoRows.map((row) => (
-                                <div key={row.label} className="flex items-end gap-4 px-5 py-3">
-                                    <span className="text-teal-300 font-mono text-xs w-24 shrink-0 pt-0.5 uppercase tracking-wider">
+                                <div key={row.label} className="flex items-center-safe gap-4 px-5 py-3">
+                                    <span className="text-teal-300 text-xs w-24 shrink-0 pt-0.5 uppercase tracking-wider">
                                         {row.label}
                                     </span>
                                     <span className="text-white font-mono text-xs break-all">{row.value}</span>
@@ -127,10 +127,7 @@ export default function ErrorFallback({ error, reset }: ErrorPageProps) {
 
                         {/* Error message */}
                         <div className="px-5 py-4 flex flex-col gap-2">
-                            <span
-                                id="message-heading"
-                                className="text-teal-300 font-mono text-xs uppercase tracking-wider"
-                            >
+                            <span id="message-heading" className="text-teal-300 text-xs uppercase tracking-wider">
                                 Message
                             </span>
                             <p
@@ -143,10 +140,7 @@ export default function ErrorFallback({ error, reset }: ErrorPageProps) {
 
                         {/* Stack trace */}
                         <div className="border-t border-teal-500/20 px-5 py-4 flex flex-col gap-2">
-                            <span
-                                id="stack-heading"
-                                className="text-teal-300 font-mono text-xs uppercase tracking-wider"
-                            >
+                            <span id="stack-heading" className="text-teal-300 text-xs uppercase tracking-wider">
                                 Stack Trace
                             </span>
                             <pre
@@ -202,10 +196,6 @@ export default function ErrorFallback({ error, reset }: ErrorPageProps) {
             </main>
 
             <style>{`
-                @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
-
-                * { font-family: "Comfortaa", cursive; }
-
                 @keyframes pulse-particle {
                     0%, 100% { opacity: 0.3; transform: scale(1); }
                     50% { opacity: 0.8; transform: scale(1.1); }

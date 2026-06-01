@@ -1,9 +1,10 @@
-import { Figtree, Cascadia_Code } from "next/font/google"
+import { Figtree, Cascadia_Code, Comfortaa } from "next/font/google"
 import { Metadata } from "next"
 import { cn } from "@/lib/utils"
 import "./globals.css"
 
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" })
+const comfortaa = Comfortaa({ subsets: ["latin"], variable: "--font-comfortaa" })
 const cascadiaCode = Cascadia_Code({ subsets: ["latin"], variable: "--font-mono" })
 
 export const metadata: Metadata = {
@@ -70,7 +71,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="en" suppressHydrationWarning className={cn("font-sans", figtree.variable, cascadiaCode.variable)}>
+        <html
+            lang="en"
+            suppressHydrationWarning
+            className={cn("font-sans", figtree.variable, cascadiaCode.variable, comfortaa.variable)}
+        >
             <body className={`antialiased`}>{children}</body>
         </html>
     )

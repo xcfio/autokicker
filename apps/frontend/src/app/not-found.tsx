@@ -34,7 +34,7 @@ export default function NotFound() {
 
     return (
         <>
-            <div className="min-h-screen bg-linear-to-br from-blue-900 via-teal-900 to-blue-900 flex items-center justify-center p-4 overflow-hidden relative">
+            <div className="font-comfortaa min-h-screen bg-linear-to-br from-blue-900 via-teal-900 to-blue-900 flex items-center justify-center p-4 overflow-hidden relative">
                 {/* Background particles */}
                 <div className="absolute inset-0 overflow-hidden">
                     {particles.map((particle, i) => (
@@ -72,7 +72,7 @@ export default function NotFound() {
                     {/* Main 404 Text */}
                     <div className="relative">
                         <h1
-                            className={`text-404 text-[clamp(4rem,15vw,9rem)] font-black text-white tracking-widest m-0 relative transition-all duration-200 ${
+                            className={`text-404 font-sans text-[clamp(4rem,15vw,9rem)] font-black text-white tracking-widest m-0 relative transition-all duration-200 ${
                                 glitchActive ? "glitch-active" : ""
                             }`}
                         >
@@ -128,10 +128,6 @@ export default function NotFound() {
             </div>
 
             <style>{`
-                @import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
-
-                * { font-family: "Comfortaa", cursive; }
-
                 @keyframes pulse-particle {
                     0%, 100% { opacity: 0.3; transform: scale(1); }
                     50% { opacity: 0.8; transform: scale(1.1); }
