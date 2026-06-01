@@ -1,0 +1,31 @@
+{
+    "name": "@repo/utils",
+    "version": "0.0.1",
+    "author": "xcfio",
+    "license": "MIT",
+    "exports": {
+        ".": {
+            "import": "./src/index.ts",
+            "require": "./src/index.ts"
+        }
+    },
+    "bugs": {
+        "email": "xcfio@proton.me",
+        "url": "https://github.com/xcfio/template"
+    },
+    "scripts": {
+        "db": "drizzle-kit studio --port=4000 --config=drizzle.config.ts",
+        "gen": "drizzle-kit generate",
+        "test": "tsc --noEmit",
+        "fmt": "prettier --config=.prettierrc --write src",
+        "fmt:test": "prettier --config=.prettierrc --check src"
+    },
+    "dependencies": {
+        "postgres": "^3.4.9",
+        "typebox": "^1.1.38",
+        "typescript": "^6.0.3"
+    },
+    "devDependencies": {
+        "@types/node": "^25.9.1"
+    }
+}
