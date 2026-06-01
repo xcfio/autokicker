@@ -1,5 +1,5 @@
 import { TriangleAlert, ArrowLeft, Copy, Check } from "lucide-solid"
-import { createEffect, createSignal, For, Show } from "solid-js"
+import { createSignal, For, onMount, Show } from "solid-js"
 import { useNavigate } from "@solidjs/router"
 
 interface ErrorPageProps {
@@ -14,29 +14,34 @@ export function ErrorFallback(props: ErrorPageProps) {
     const [particles, setParticles] = createSignal<
         Array<{ left: string; top: string; delay: string; duration: string }>
     >([])
+    const [timestamp, setTimestamp] = createSignal<Temporal.Instant | null>(null)
+    const [infoRows, setInfoRows] = createSignal<Array<{ label: string; value: any }>>([])
 
-    const timestamp = Temporal.Now.instant()
     const errorMessage = props.error?.message ?? "An unexpected error occurred."
     const stackTrace = props.error?.stack ?? "No stack trace available."
 
-    const infoRows = [
-        { label: "Request ID", value: timestamp.epochMilliseconds.toString(36).toUpperCase() },
-        { label: "Timestamp", value: timestamp },
-        { label: "User Agent", value: navigator.userAgent },
-        { label: "URL", value: globalThis?.location?.href }
-    ]
-
     const handleCopy = async () => {
         await navigator.clipboard.writeText(
-            `Error Report - ${new Date().toLocaleString()}\n${infoRows.map((row) => `${row.label}: ${row.value}`).join("\n")}\n\nMessage:\n${errorMessage}\n\nStack Trace:\n${stackTrace}`
+            `Error Report - ${timestamp()?.toString()}\n${infoRows()
+                .map((row) => `${row.label}: ${row.value}`)
+                .join("\n")}\n\nMessage:\n${errorMessage}\n\nStack Trace:\n${stackTrace}`
         )
         setCopied(true)
         setTimeout(() => setCopied(false), 2000)
     }
 
-    createEffect(() => {
+    onMount(() => {
         setMounted(true)
 
+        const now = Temporal.Now.instant()
+        setTimestamp(now)
+
+        setInfoRows([
+            { label: "Request ID", value: now.epochMilliseconds.toString(36).toUpperCase() },
+            { label: "Timestamp", value: now },
+            { label: "User Agent", value: navigator.userAgent },
+            { label: "URL", value: globalThis?.location?.href }
+        ])
         const generatedParticles = [...Array(50)].map(() => ({
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -105,7 +110,7 @@ export function ErrorFallback(props: ErrorPageProps) {
                     >
                         {/* Info rows */}
                         <div class="divide-y divide-rose-500/10">
-                            <For each={infoRows}>
+                            <For each={infoRows()}>
                                 {(row) => (
                                     <div class="flex items-end gap-4 px-5 py-3">
                                         <span class="text-rose-300 font-mono text-xs w-24 shrink-0 pt-0.5 uppercase tracking-wider">
