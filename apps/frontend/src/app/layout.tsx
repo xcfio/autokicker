@@ -27,15 +27,15 @@ export const metadata: Metadata = {
     },
     icons: {
         icon: [
-            { url: "/logo.png" },
-            { url: "/logo.png", sizes: "16x16", type: "image/png" },
-            { url: "/logo.png", sizes: "32x32", type: "image/png" }
+            { url: "/icon.svg" },
+            { url: "/icon.png", sizes: "16x16", type: "image/png" },
+            { url: "/icon.png", sizes: "32x32", type: "image/png" }
         ],
         apple: [
-            { url: "/logo.png" },
-            { url: "/logo.png", sizes: "152x152" },
-            { url: "/logo.png", sizes: "167x167" },
-            { url: "/logo.png", sizes: "180x180" }
+            { url: "/icon.png" },
+            { url: "/icon.png", sizes: "152x152" },
+            { url: "/icon.png", sizes: "167x167" },
+            { url: "/icon.png", sizes: "180x180" }
         ]
     },
     manifest: "/manifest.json",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
         type: "website",
         images: [
             {
-                url: "https://autokicker.netlify.app/logo.png",
+                url: "https://autokicker.netlify.app/icon.png",
                 width: 512,
                 height: 512,
                 alt: "Autokicker Logo"
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Autokicker - Automatically Kick Inactive Discord Members",
         description: "Autokicker - A tool to automatically kick inactive members from your Discord server.",
-        images: ["https://autokicker.netlify.app/logo.png"]
+        images: ["https://autokicker.netlify.app/icon.png"]
     },
     appleWebApp: {
         capable: true,
