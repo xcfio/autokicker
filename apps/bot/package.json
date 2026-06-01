@@ -1,9 +1,8 @@
 {
     "name": "bot",
-    "version": "0.0.1",
     "type": "commonjs",
     "author": "xcfio",
-    "license": "UNLICENSED",
+    "license": "Proprietary",
     "scripts": {
         "build": "rolldown -c",
         "dev": "tsx watch --include src/**/* --no-warnings --env-file-if-exists=.env src/index.ts",
@@ -18,6 +17,7 @@
     "dependencies": {
         "@repo/database": "workspace:*",
         "@repo/schema": "workspace:*",
+        "@repo/utils": "workspace:*",
         "colorette": "^2.0.20",
         "coolcake": "^0.0.5",
         "discord.js": "^14.26.4",

@@ -1,8 +1,7 @@
 {
     "name": "@repo/database",
-    "version": "0.0.1",
     "author": "xcfio",
-    "license": "MIT",
+    "license": "Proprietary",
     "exports": {
         ".": {
             "import": "./src/index.ts",
