@@ -1,8 +1,6 @@
-"use client"
-
-import { AlertTriangle, ArrowLeft, Copy, Check, ExternalLink } from "lucide-solid"
-import { useNavigate } from "@solidjs/router"
+import { TriangleAlert, ArrowLeft, Copy, Check } from "lucide-solid"
 import { createEffect, createSignal, For, Show } from "solid-js"
+import { useNavigate } from "@solidjs/router"
 
 interface ErrorPageProps {
     error?: Error
@@ -12,23 +10,29 @@ interface ErrorPageProps {
 export function ErrorFallback(props: ErrorPageProps) {
     const navigate = useNavigate()
     const [mounted, setMounted] = createSignal(false)
-    const [glitchActive, setGlitchActive] = createSignal(false)
     const [copied, setCopied] = createSignal(false)
     const [particles, setParticles] = createSignal<
         Array<{ left: string; top: string; delay: string; duration: string }>
     >([])
 
     const timestamp = Temporal.Now.instant()
-
     const errorMessage = props.error?.message ?? "An unexpected error occurred."
     const stackTrace = props.error?.stack ?? "No stack trace available."
 
     const infoRows = [
-        { label: "Request ID", value: timestamp.epochMilliseconds.toString(36) },
+        { label: "Request ID", value: timestamp.epochMilliseconds.toString(36).toUpperCase() },
         { label: "Timestamp", value: timestamp },
         { label: "User Agent", value: navigator.userAgent },
         { label: "URL", value: globalThis?.location?.href }
     ]
+
+    const handleCopy = async () => {
+        await navigator.clipboard.writeText(
+            `Error Report - ${new Date().toLocaleString()}\n${infoRows.map((row) => `${row.label}: ${row.value}`).join("\n")}\n\nMessage:\n${errorMessage}\n\nStack Trace:\n${stackTrace}`
+        )
+        setCopied(true)
+        setTimeout(() => setCopied(false), 2000)
+    }
 
     createEffect(() => {
         setMounted(true)
@@ -40,22 +44,7 @@ export function ErrorFallback(props: ErrorPageProps) {
             duration: `${2 + Math.random() * 3}s`
         }))
         setParticles(generatedParticles)
-
-        const glitchInterval = setInterval(() => {
-            setGlitchActive(true)
-            setTimeout(() => setGlitchActive(false), 200)
-        }, 3000)
-
-        return () => clearInterval(glitchInterval)
     })
-
-    const handleCopy = async () => {
-        await navigator.clipboard.writeText(
-            `Error Report - ${new Date().toLocaleString()}\n${infoRows.map((row) => `${row.label}: ${row.value}`).join("\n")}\n\nMessage:\n${errorMessage}\n\nStack Trace:\n${stackTrace}`
-        )
-        setCopied(true)
-        setTimeout(() => setCopied(false), 2000)
-    }
 
     return (
         <>
@@ -98,7 +87,7 @@ export function ErrorFallback(props: ErrorPageProps) {
                     {/* Subtitle */}
                     <div class="subtitle-container text-center flex flex-col gap-2">
                         <div class="flex items-center justify-center gap-3">
-                            <AlertTriangle class="w-7 h-7 text-rose-400" aria-hidden="true" />
+                            <TriangleAlert class="w-7 h-7 text-rose-400" aria-hidden="true" />
                             <h1 class="text-[clamp(1.25rem,3vw,1.75rem)] font-bold text-white m-0">
                                 Something went wrong
                             </h1>
@@ -118,12 +107,14 @@ export function ErrorFallback(props: ErrorPageProps) {
                         <div class="divide-y divide-rose-500/10">
                             <For each={infoRows}>
                                 {(row) => (
-                                    <div class="flex items-start gap-4 px-5 py-3">
+                                    <div class="flex items-end gap-4 px-5 py-3">
                                         <span class="text-rose-300 font-mono text-xs w-24 shrink-0 pt-0.5 uppercase tracking-wider">
                                             {row.label}
                                         </span>
                                         <span class="text-white font-mono text-xs break-all">
-                                            {row.value.toLocaleString()}
+                                            {row.value instanceof Temporal.Instant
+                                                ? row.value.toLocaleString()
+                                                : row.value}
                                         </span>
                                     </div>
                                 )}
@@ -185,7 +176,7 @@ export function ErrorFallback(props: ErrorPageProps) {
                     <div class="button-container flex flex-col sm:flex-row gap-3 justify-center">
                         <button
                             onClick={() => navigate(-1)}
-                            class="px-5 py-2.5 rounded-lg font-semibold text-sm transition-all hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 border-2 border-rose-500/50 text-rose-300 bg-transparent hover:bg-rose-500/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-400"
+                            class="px-5 py-2.5 rounded-lg font-semibold text-sm transition-all hover:scale-105 active:scale-95 inline-flex items-center justify-center gap-2 border-2 border-rose-500 text-white bg-rose-500/20 hover:bg-rose-500/30 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-400"
                         >
                             <ArrowLeft class="w-4 h-4" aria-hidden="true" />
                             Go Back
@@ -222,12 +213,6 @@ export function ErrorFallback(props: ErrorPageProps) {
                     70% { transform: translateY(-0.375rem); }
                     90% { transform: translateY(-0.125rem); }
                 }
-                @keyframes glitch-shake {
-                    0%, 100% { transform: skewX(0deg); }
-                    25% { transform: skewX(2deg) translateX(2px); }
-                    50% { transform: skewX(-1deg) translateX(-1px); }
-                    75% { transform: skewX(1deg) translateX(1px); }
-                }
                 @keyframes fade-in {
                     from { opacity: 0; transform: translateY(1.25rem); }
                     to { opacity: 1; transform: translateY(0); }
@@ -238,28 +223,9 @@ export function ErrorFallback(props: ErrorPageProps) {
                 .shape-circle { animation: bounce-shape 2s infinite; }
                 .shape-ring { animation: pulse-particle 3s infinite; }
 
-                .text-500 {
-                    text-shadow:
-                        4px 4px 0px #e11d48,
-                        8px 8px 0px #be123c,
-                        12px 12px 0px #9f1239,
-                        16px 16px 0px #881337,
-                        0 0 20px rgba(225, 29, 72, 0.5),
-                        0 0 40px rgba(225, 29, 72, 0.3),
-                        0 0 60px rgba(225, 29, 72, 0.2);
-                }
-                .text-500.glitch-active { animation: glitch-shake 0.2s ease-in-out; }
-                .text-500-glitch {
-                    text-shadow:
-                        2px 2px 0px currentColor,
-                        4px 4px 0px currentColor,
-                        6px 6px 0px currentColor;
-                }
-
                 .subtitle-container { animation: fade-in 0.8s ease-out 0.3s forwards; opacity: 0; }
                 .error-card { animation: fade-in 0.8s ease-out 0.6s forwards; opacity: 0; }
                 .button-container { animation: fade-in 0.8s ease-out 1s forwards; opacity: 0; }
-                .error-code { animation: fade-in 0.8s ease-out 1.3s forwards; opacity: 0; }
 
                 .scrollbar-thin::-webkit-scrollbar { width: 4px; height: 4px; }
                 .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
