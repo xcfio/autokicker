@@ -1,3 +1,6 @@
+"use client"
+
 export default function Home() {
-    return <h1>Hello world</h1>
+    let a: any = 1
+    return <h1>Hello world {a.toFixed(239)}</h1>
 }
