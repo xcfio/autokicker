@@ -1,5 +1,3 @@
-"use client"
-
 import { ArrowLeft, Wifi } from "lucide-solid"
 import { useNavigate } from "@solidjs/router"
 import { createEffect, createSignal } from "solid-js"

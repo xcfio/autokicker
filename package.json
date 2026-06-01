@@ -2,7 +2,7 @@
     "name": "autokicker",
     "author": "Omar Faruk (Aka. xcfio)",
     "homepage": "https://github.com/xcfio/diploma-bazar#readme",
-    "license": "MIT",
+    "license": "Proprietary",
     "scripts": {
         "build": "turbo run build",
         "clean": "powershell -Command \"Get-ChildItem -Path . -Filter node_modules -Recurse -Directory | Remove-Item -Recurse -Force\"",
