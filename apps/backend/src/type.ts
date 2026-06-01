@@ -9,6 +9,7 @@ declare global {
             TOKEN: string
             ERROR_LOG_CHANNEL: string
 
+            API_SECRET: string
             COOKIE_SECRET: string
             JWT_SECRET: string
             HMAC_SECRET: string
