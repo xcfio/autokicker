@@ -1,11 +1,11 @@
 {
-    "name": "@repo/database",
+    "name": "@repo/test",
     "author": "xcfio",
     "license": "Proprietary",
     "exports": {
         ".": {
-            "import": "./src/index.ts",
-            "require": "./src/index.ts"
+            "import": "./src/index.test.ts",
+            "require": "./src/index.test.ts"
         }
     },
     "bugs": {
@@ -13,20 +13,18 @@
         "url": "https://github.com/xcfio/template"
     },
     "scripts": {
-        "studio": "drizzle-kit studio --port=4000 --config=drizzle.config.ts",
-        "gen": "drizzle-kit generate",
-        "test": "tsc --noEmit",
+        "test": "(tsc --noEmit) && (tsx --test-reporter=dot src/index.test.ts)",
         "fmt": "prettier --config=.prettierrc --write src",
         "fmt:test": "prettier --config=.prettierrc --check src"
     },
     "dependencies": {
+        "@repo/database": "workspace:*",
+        "@repo/schema": "workspace:*",
         "drizzle-orm": "1.0.0-rc.4-273829f",
-        "postgres": "^3.4.9",
-        "typebox": "^1.1.39",
-        "typescript": "^6.0.3"
+        "typebox": "^1.1.39"
     },
     "devDependencies": {
         "@types/node": "^25.9.1",
-        "drizzle-kit": "1.0.0-rc.4-273829f"
+        "tsx": "^4.22.3"
     }
 }
