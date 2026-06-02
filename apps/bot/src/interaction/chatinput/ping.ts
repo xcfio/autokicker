@@ -4,7 +4,6 @@ import {
     MessageFlags,
     RESTPostAPIChatInputApplicationCommandsJSONBody
 } from "discord.js"
-import { uptime } from "coolcake"
 import { ex, cx } from "../../function"
 
 export const data: RESTPostAPIChatInputApplicationCommandsJSONBody = {

@@ -5,8 +5,6 @@ import { guildWarningStages } from "./guild_warning_stages"
 import { memberActivity } from "./member_activity"
 import { memberWarningsSent } from "./member_warnings_sent"
 
-export { actionEnum, activityTypeEnum } from "./enums"
-
 export const table = {
     user,
     guild,

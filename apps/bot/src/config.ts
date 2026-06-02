@@ -6,5 +6,5 @@ function env(parm: string): string | never {
 
 export default {
     token: env("token"),
-    databaseUri: env("database_uri")
+    databaseUrl: env("database_url")
 }
