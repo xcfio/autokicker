@@ -99,12 +99,18 @@ importers:
       discord.js:
         specifier: ^14.26.4
         version: 14.26.4
+      drizzle-orm:
+        specifier: 1.0.0-rc.4-273829f
+        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.1.39)(zod@4.4.3)
       fastify:
         specifier: ^5.8.5
         version: 5.8.5
       node-cron:
         specifier: ^4.2.1
         version: 4.2.1
+      postgres:
+        specifier: ^3.4.9
+        version: 3.4.9
     devDependencies:
       '@types/node':
         specifier: ^25.9.1

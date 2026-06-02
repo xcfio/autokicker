@@ -1,11 +1,13 @@
-import { boolean, check, pgTable, text, timestamp } from "drizzle-orm/pg-core"
-import { DateAndTime, Snowflake } from "../utility"
+import { boolean, check, pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core"
+import { DateAndTime } from "../utility"
 import { sql } from "drizzle-orm/sql"
+import { randomUUIDv7 } from "node:crypto"
 
 export const user = pgTable(
     "users",
     {
-        id: Snowflake("id"),
+        id: uuid("id").primaryKey().notNull().unique().$defaultFn(randomUUIDv7),
+        userId: varchar("user_id", { length: 20 }).notNull().unique(),
         email: text("email").notNull().unique(),
         consent: boolean("consent"),
         access_token: text("access_token"),

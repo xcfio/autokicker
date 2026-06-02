@@ -18,11 +18,13 @@
         "@repo/database": "workspace:*",
         "@repo/schema": "workspace:*",
         "@repo/utils": "workspace:*",
+        "drizzle-orm": "1.0.0-rc.4-273829f",
         "colorette": "^2.0.20",
         "coolcake": "^0.0.5",
         "discord.js": "^14.26.4",
         "fastify": "^5.8.5",
-        "node-cron": "^4.2.1"
+        "node-cron": "^4.2.1",
+        "postgres": "^3.4.9"
     },
     "devDependencies": {
         "@types/node": "^25.9.1",
