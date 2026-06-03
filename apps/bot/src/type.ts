@@ -6,9 +6,6 @@ import {
     RESTPostAPIContextMenuApplicationCommandsJSONBody
 } from "discord.js"
 
-export const path = ["api-error", "error", "debug", "command", "msg-create", "msg-edit", "msg-delete"] as const
-export const pathdir = "log"
-
 export type ChatInputCommandObject = {
     autocomplete?: (interaction: AutocompleteInteraction) => any
     data: RESTPostAPIChatInputApplicationCommandsJSONBody

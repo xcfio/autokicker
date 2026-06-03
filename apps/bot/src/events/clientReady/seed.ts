@@ -1,12 +1,12 @@
 import { Client, Guild, GuildMember, User } from "discord.js"
 import { table } from "@repo/database"
-import { db } from "../../database"
+import { db } from "../../utils"
 
 export async function seed(client: Client<true>) {
     for (const user of client.users.cache.values()) await SeedUser(user)
     for (const guild of client.guilds.cache.values()) {
         await SeedGuild(guild)
-        for (const member of guild.members.cache.values()) SeedMember(member)
+        for (const member of guild.members.cache.values()) await SeedMember(member)
     }
 }
 

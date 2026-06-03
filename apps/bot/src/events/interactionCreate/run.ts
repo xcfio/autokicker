@@ -1,6 +1,6 @@
 import { Button, ChatInput, Context, Modal, SelectMenu } from "../../interaction"
 import { Interaction } from "discord.js"
-import { ex, cx } from "../../function"
+import { erx, xcf } from "../../utils"
 
 export async function run(interaction: Interaction) {
     if (interaction.isRepliable()) {
@@ -14,8 +14,8 @@ export async function run(interaction: Interaction) {
                     return await deferReply.call(interaction, opt)
                 }
             } catch (error) {
-                ex(error as Error)
-                return await cx.call(interaction, interaction, error as Error)
+                erx(error as Error)
+                return await xcf.call(interaction, interaction, error as Error)
             }
         }.bind(interaction)
 
@@ -27,8 +27,8 @@ export async function run(interaction: Interaction) {
                     return await reply.call(interaction, opt)
                 }
             } catch (error) {
-                ex(error as Error)
-                return await cx.call(interaction, interaction, error as Error)
+                erx(error as Error)
+                return await xcf.call(interaction, interaction, error as Error)
             }
         }.bind(interaction)
 
@@ -40,8 +40,8 @@ export async function run(interaction: Interaction) {
                     return await reply.call(interaction, opt)
                 }
             } catch (error) {
-                ex(error as Error)
-                return await cx.call(interaction, interaction, error as Error)
+                erx(error as Error)
+                return await xcf.call(interaction, interaction, error as Error)
             }
         }.bind(interaction)
 
@@ -53,8 +53,8 @@ export async function run(interaction: Interaction) {
                     return await reply.call(interaction, opt)
                 }
             } catch (error) {
-                ex(error as Error)
-                return await cx.call(interaction, interaction, error as Error)
+                erx(error as Error)
+                return await xcf.call(interaction, interaction, error as Error)
             }
         }.bind(interaction)
     }
@@ -70,8 +70,8 @@ export async function run(interaction: Interaction) {
                     return await update.call(interaction, opt)
                 }
             } catch (error) {
-                ex(error as Error)
-                return await cx.call(interaction, interaction, error as Error)
+                erx(error as Error)
+                return await xcf.call(interaction, interaction, error as Error)
             }
         }.bind(interaction)
     }

@@ -4,7 +4,7 @@ import {
     RESTPostAPIChatInputApplicationCommandsJSONBody
 } from "discord.js"
 import { ChatInput, Context } from "../../interaction"
-import { ex } from "../../function"
+import { erx } from "../../utils"
 
 export async function command(client: Client<true>) {
     const commands: Array<RESTPostAPIApplicationCommandsJSONBody> = []
@@ -18,7 +18,7 @@ export async function command(client: Client<true>) {
         await client.application.commands.set(commands)
         console.log(`Successfully reloaded ${commands.length} application (/) commands.`)
     } catch (error: any) {
-        ex(error)
+        erx(error)
     }
 }
 

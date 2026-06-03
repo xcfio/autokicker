@@ -1,5 +1,5 @@
 import { MessageReaction, User } from "discord.js"
-import { trackActivity } from "../../function/tracker"
+import { trackActivity } from "../../utils"
 
 export default async function messageReactionAdd(reaction: MessageReaction, user: User) {
     if (user.bot || !reaction.message.guild) return

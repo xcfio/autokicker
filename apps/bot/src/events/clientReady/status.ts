@@ -4,7 +4,7 @@ export async function status(client: Client<true>) {
     return client.user.setPresence({
         activities: [
             {
-                name: "things",
+                name: "Something Cool",
                 type: ActivityType.Competing
             }
         ]

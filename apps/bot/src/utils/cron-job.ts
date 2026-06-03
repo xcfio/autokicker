@@ -2,11 +2,10 @@ import { ComponentType, MessageFlags } from "discord.js"
 import { eq, and, lt } from "drizzle-orm"
 import { table } from "@repo/database"
 import { isSendable } from "./logic"
-import { schedule } from "node-cron"
 import { client } from "../index"
-import { db } from "../database"
+import { db } from "./database"
 
-schedule("0 * * * *", async () => {
+export async function CronJob() {
     try {
         const guilds = await db.select().from(table.guild).where(eq(table.guild.enabled, true))
 
@@ -172,4 +171,4 @@ schedule("0 * * * *", async () => {
     } catch (error) {
         console.log("AutoKick cron error:", error)
     }
-})
+}

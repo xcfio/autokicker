@@ -4,7 +4,7 @@ import {
     MessageFlags,
     RESTPostAPIChatInputApplicationCommandsJSONBody
 } from "discord.js"
-import { ex, cx } from "../../function"
+import { erx, xcf } from "../../utils"
 
 export const data: RESTPostAPIChatInputApplicationCommandsJSONBody = {
     name: "ping",
@@ -31,7 +31,7 @@ export async function run(interaction: ChatInputCommandInteraction) {
             ]
         })
     } catch (error: any) {
-        ex(error)
-        cx(interaction)
+        erx(error)
+        xcf(interaction)
     }
 }

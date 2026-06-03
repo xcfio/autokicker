@@ -1,5 +1,5 @@
+import { trackActivity } from "../../utils"
 import { Message } from "discord.js"
-import { trackActivity } from "../../function/tracker"
 
 export default async function messageCreate(message: Message) {
     if (message.author.bot || !message.guild) return

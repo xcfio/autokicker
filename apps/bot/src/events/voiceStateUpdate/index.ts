@@ -1,8 +1,7 @@
+import { trackActivity } from "../../utils"
 import { VoiceState } from "discord.js"
-import { trackActivity } from "../../function/tracker"
 
 export default async function voiceStateUpdate(_oldState: VoiceState, newState: VoiceState) {
-    if (!newState.channel || newState.member?.user.bot) return
-    if (!newState.guild) return
-    await trackActivity(newState.guild.id, newState.member!.id, "voice")
+    if (!newState.guild || !newState.channel || !newState.member || newState.member.user.bot) return
+    await trackActivity(newState.guild.id, newState.member.id, "voice")
 }

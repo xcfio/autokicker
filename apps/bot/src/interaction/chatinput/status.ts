@@ -9,7 +9,7 @@ import {
     version
 } from "discord.js"
 import { arch, cpus, freemem, loadavg, release, totalmem, type } from "node:os"
-import { ex, cx } from "../../function"
+import { erx, xcf } from "../../utils"
 import { blue } from "colorette"
 import { uptime } from "coolcake"
 
@@ -22,7 +22,7 @@ export const data: RESTPostAPIChatInputApplicationCommandsJSONBody = {
 export async function run(interaction: ChatInputCommandInteraction) {
     try {
         await interaction.deferReply()
-        if (!interaction.inCachedGuild()) return cx(interaction)
+        if (!interaction.inCachedGuild()) return xcf(interaction)
 
         const { client, guild } = interaction
         const uptimeString = uptime()
@@ -212,7 +212,7 @@ export async function run(interaction: ChatInputCommandInteraction) {
             ]
         })
     } catch (error) {
-        ex(error as any)
-        cx(interaction)
+        erx(error as any)
+        xcf(interaction)
     }
 }

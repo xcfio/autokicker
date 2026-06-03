@@ -10,11 +10,11 @@ import { isSendable } from "./logic"
 
 const ignore = new Set([10008, 10062, 50027])
 
-export function ex(error: any) {
+export function erx(error: Error) {
     console.log(error)
 }
 
-export async function cx(interaction: RepliableInteraction, error?: Error) {
+export async function xcf(interaction: RepliableInteraction, error?: Error) {
     if (interaction.replied) return
     const msg: InteractionReplyOptions & MessageCreateOptions = {
         flags: [MessageFlags.IsComponentsV2],
@@ -44,7 +44,7 @@ export async function cx(interaction: RepliableInteraction, error?: Error) {
             return await (interaction.deferred ? interaction.followUp(msg) : interaction.reply(msg))
         }
     } catch (error) {
-        ex(error)
+        erx(error as Error)
         if (isSendable(interaction.channel)) return await interaction.channel.send(msg)
     }
 }

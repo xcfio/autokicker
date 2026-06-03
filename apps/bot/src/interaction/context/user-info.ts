@@ -5,7 +5,7 @@ import {
     RESTPostAPIContextMenuApplicationCommandsJSONBody,
     UserContextMenuCommandInteraction
 } from "discord.js"
-import { cx } from "../../function"
+import { xcf } from "../../utils"
 
 export const data: RESTPostAPIContextMenuApplicationCommandsJSONBody = {
     name: "User Information",
@@ -14,7 +14,7 @@ export const data: RESTPostAPIContextMenuApplicationCommandsJSONBody = {
 }
 
 export async function run(interaction: UserContextMenuCommandInteraction) {
-    if (!interaction.inGuild() || !interaction.inCachedGuild()) return cx(interaction)
+    if (!interaction.inGuild() || !interaction.inCachedGuild()) return xcf(interaction)
 
     // prettier-ignore
     const roles = interaction.targetMember?.roles.cache.filter((role) => role.id !== interaction.guildId).map((role) => `<@&${role.id}>`).sort().join(", ") ?? "This user does not have any roles."
