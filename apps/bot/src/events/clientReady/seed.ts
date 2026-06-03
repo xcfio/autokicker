@@ -16,13 +16,9 @@ async function SeedUser(user: User) {
 }
 
 async function SeedGuild(guild: Guild) {
-    await db
-        .insert(table.guild)
-        .values({
-            guildId: guild.id
-        })
-        .onConflictDoNothing()
+    await db.insert(table.guild).values({ guildId: guild.id }).onConflictDoNothing()
 }
+
 async function SeedMember(member: GuildMember) {
     if (member.user.bot) return
     return await db

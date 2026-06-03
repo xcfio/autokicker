@@ -1,12 +1,18 @@
 import { integer, pgTable, timestamp, uuid, varchar, uniqueIndex } from "drizzle-orm/pg-core"
 import { randomUUIDv7 } from "node:crypto"
+import { guild } from "./guild"
+import { user } from "./user"
 
 export const warnings = pgTable(
     "warnings",
     {
         id: uuid("id").primaryKey().notNull().unique().$defaultFn(randomUUIDv7),
-        guildId: varchar("guild_id", { length: 20 }).notNull(),
-        userId: varchar("user_id", { length: 20 }).notNull(),
+        guildId: varchar("guild_id", { length: 20 })
+            .notNull()
+            .references(() => guild.guildId, { onUpdate: "cascade" }),
+        userId: varchar("user_id", { length: 20 })
+            .notNull()
+            .references(() => user.userId, { onUpdate: "cascade" }),
         hoursBefore: integer("hours_before").notNull(),
         sentAt: timestamp("sent_at", { mode: "string", withTimezone: false }).notNull(),
         createdAt: timestamp("created_at", { mode: "string", withTimezone: false })
