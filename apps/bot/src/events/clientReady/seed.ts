@@ -1,25 +1,37 @@
-import { Client } from "discord.js"
-import { db } from "../../database"
+import { Client, Guild, GuildMember, User } from "discord.js"
 import { table } from "@repo/database"
+import { db } from "../../database"
 
-export async function seedGuildMembers(client: Client<true>) {
-    for (const [, guild] of client.guilds.cache) {
-        const members = await guild.members.fetch().catch(() => null)
-        if (!members) continue
-
-        for (const member of members.values()) {
-            if (member.user.bot) continue
-
-            await db
-                .insert(table.activity)
-                .values({
-                    guildId: guild.id,
-                    userId: member.id,
-                    lastActiveAt: Temporal.Now.instant().toString(),
-                    lastAction: "seed"
-                })
-                .onConflictDoNothing()
-        }
+export async function seed(client: Client<true>) {
+    for (const user of client.users.cache.values()) await SeedUser(user)
+    for (const guild of client.guilds.cache.values()) {
+        await SeedGuild(guild)
+        for (const member of guild.members.cache.values()) SeedMember(member)
     }
-    console.log("Seeded member activity for all guilds")
+}
+
+async function SeedUser(user: User) {
+    if (user.bot) return
+    return await db.insert(table.user).values({ userId: user.id }).onConflictDoNothing()
+}
+
+async function SeedGuild(guild: Guild) {
+    await db
+        .insert(table.guild)
+        .values({
+            guildId: guild.id
+        })
+        .onConflictDoNothing()
+}
+async function SeedMember(member: GuildMember) {
+    if (member.user.bot) return
+    return await db
+        .insert(table.activity)
+        .values({
+            guildId: member.guild.id,
+            userId: member.id,
+            lastActiveAt: Temporal.Now.instant().toString(),
+            lastAction: "seed"
+        })
+        .onConflictDoNothing()
 }

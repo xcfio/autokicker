@@ -1,5 +1,4 @@
-import { boolean, integer, pgEnum, pgTable, text, uuid, varchar } from "drizzle-orm/pg-core"
-import { DateAndTime } from "../utility"
+import { boolean, integer, pgEnum, pgTable, text, timestamp, uuid, varchar } from "drizzle-orm/pg-core"
 import { randomUUIDv7 } from "node:crypto"
 
 export const action = pgEnum("action_type", ["kick", "ban"])
@@ -13,5 +12,10 @@ export const guild = pgTable("guilds", {
     logChannel: varchar("log_channel", { length: 20 }).array().notNull().default([]),
     kickMessage: text("kick_message"),
     warningStages: integer("warning_stages").array().notNull().default([]),
-    ...DateAndTime()
+    createdAt: timestamp("created_at", { mode: "string", withTimezone: false })
+        .notNull()
+        .$defaultFn(() => Temporal.Now.instant().toString()),
+    updatedAt: timestamp("updated_at", { mode: "string", withTimezone: false })
+        .notNull()
+        .$onUpdateFn(() => Temporal.Now.instant().toString())
 })

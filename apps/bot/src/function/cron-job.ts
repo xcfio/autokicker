@@ -1,12 +1,12 @@
-import cron from "node-cron"
-import { db } from "../database"
-import { table } from "@repo/database"
-import { eq, and, lt } from "drizzle-orm"
-import { client } from "../index"
 import { ComponentType, MessageFlags } from "discord.js"
+import { eq, and, lt } from "drizzle-orm"
+import { table } from "@repo/database"
 import { isSendable } from "./logic"
+import { schedule } from "node-cron"
+import { client } from "../index"
+import { db } from "../database"
 
-cron.schedule("0 * * * *", async () => {
+schedule("0 * * * *", async () => {
     try {
         const guilds = await db.select().from(table.guild).where(eq(table.guild.enabled, true))
 
@@ -15,7 +15,7 @@ cron.schedule("0 * * * *", async () => {
             const guild = client.guilds.cache.get(guildId)
             if (!guild) continue
 
-            const thresholdMs = config.thresholdHours * 3_600_000
+            const threshold = Temporal.Duration.from({ hours: config.thresholdHours })
             const now = Temporal.Now.instant()
 
             // Whitelisted roles
@@ -28,8 +28,7 @@ cron.schedule("0 * * * *", async () => {
 
             // Earliest cutoff: we care about members whose inactivity has entered the largest warning window
             const largestWarning = sortedStages.length > 0 ? sortedStages[0] : 0
-            const cutoffMs = thresholdMs - largestWarning * 3_600_000
-            const cutoff = Temporal.Instant.fromEpochMilliseconds(now.epochMilliseconds - cutoffMs).toString()
+            const cutoff = now.subtract(threshold).add({ hours: largestWarning }).toString()
 
             const records = await db
                 .select()
@@ -52,13 +51,13 @@ cron.schedule("0 * * * *", async () => {
                 }
 
                 const lastActive = Temporal.Instant.from(record.lastActiveAt)
-                const inactiveMs = now.epochMilliseconds - lastActive.epochMilliseconds
-                const timeLeftMs = thresholdMs - inactiveMs
+                const inactiveDuration = now.since(lastActive)
+                const timeLeft = threshold.subtract(inactiveDuration)
 
                 // === KICK / BAN: past the threshold ===
-                if (timeLeftMs <= 0) {
+                if (timeLeft.sign <= 0) {
                     try {
-                        const inactiveHours = Math.floor(inactiveMs / 3_600_000)
+                        const inactiveHours = Math.floor(inactiveDuration.total("hours"))
                         const actionVerb = config.action === "ban" ? "banned" : "kicked"
                         const dmText =
                             config.kickMessage ??
@@ -115,7 +114,7 @@ cron.schedule("0 * * * *", async () => {
                 }
 
                 // === WARNINGS: check each custom stage ===
-                const timeLeftHours = timeLeftMs / 3_600_000
+                const timeLeftHours = timeLeft.total("hours")
 
                 // Get already-sent warnings for this member
                 const sentWarnings = await db
@@ -142,7 +141,9 @@ cron.schedule("0 * * * *", async () => {
                                                 type: ComponentType.TextDisplay,
                                                 content: "# ⚠️ Inactivity Warning"
                                             },
-                                            { type: ComponentType.Separator },
+                                            {
+                                                type: ComponentType.Separator
+                                            },
                                             {
                                                 type: ComponentType.TextDisplay,
                                                 content: `You will be **${actionVerb}** from **${guild.name}** in approximately **${hoursLeft} hours** due to inactivity.\n\nSend a message, join a voice channel, or react to stay!`
