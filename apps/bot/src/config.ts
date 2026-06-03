@@ -4,7 +4,9 @@ function env(parm: string): string | never {
     return param
 }
 
-export default {
+const config = {
     token: env("token"),
-    databaseUrl: env("database_url")
+    database_url: env("database_url")
 }
+
+export default config

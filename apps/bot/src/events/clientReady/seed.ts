@@ -7,16 +7,16 @@ export async function seedGuildMembers(client: Client<true>) {
         const members = await guild.members.fetch().catch(() => null)
         if (!members) continue
 
-        for (const [, member] of members) {
+        for (const member of members.values()) {
             if (member.user.bot) continue
 
             await db
-                .insert(table.memberActivity)
+                .insert(table.activity)
                 .values({
-                    guild_id: guild.id,
-                    user_id: member.id,
-                    last_active_at: Temporal.Now.instant().toString(),
-                    last_action: "seed"
+                    guildId: guild.id,
+                    userId: member.id,
+                    lastActiveAt: Temporal.Now.instant().toString(),
+                    lastAction: "seed"
                 })
                 .onConflictDoNothing()
         }

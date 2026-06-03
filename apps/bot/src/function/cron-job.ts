@@ -15,52 +15,43 @@ cron.schedule("0 * * * *", async () => {
             const guild = client.guilds.cache.get(guildId)
             if (!guild) continue
 
-            const thresholdMs = config.threshold_hours * 3_600_000
+            const thresholdMs = config.thresholdHours * 3_600_000
             const now = Temporal.Now.instant()
 
             // Whitelisted roles
-            const whitelisted = await db
-                .select()
-                .from(table.guildWhitelist)
-                .where(eq(table.guildWhitelist.guild_id, guildId))
-            const whitelistedIds = new Set(whitelisted.map((r) => r.role_id))
+            const whitelisted = await db.select().from(table.whitelist).where(eq(table.whitelist.guildId, guildId))
+            const whitelistedIds = whitelisted.map((row) => ({ id: row.whitelistId, type: row.whitelistType }))
 
             // Guild's custom warning stages (sorted descending — largest hours first)
-            const stages = await db
-                .select()
-                .from(table.guildWarningStages)
-                .where(eq(table.guildWarningStages.guild_id, guildId))
-            const sortedStages = stages.map((s) => s.hours_before).sort((a, b) => b - a)
+            const [stages] = await db.select().from(table.guild).where(eq(table.guild.guildId, guildId))
+            const sortedStages = stages.warningStages.sort((a, b) => b - a)
 
             // Earliest cutoff: we care about members whose inactivity has entered the largest warning window
             const largestWarning = sortedStages.length > 0 ? sortedStages[0] : 0
             const cutoffMs = thresholdMs - largestWarning * 3_600_000
-            const cutoff = Temporal.Instant.fromEpochMilliseconds(
-                now.epochMilliseconds - cutoffMs
-            ).toString()
+            const cutoff = Temporal.Instant.fromEpochMilliseconds(now.epochMilliseconds - cutoffMs).toString()
 
             const records = await db
                 .select()
-                .from(table.memberActivity)
-                .where(
-                    and(
-                        eq(table.memberActivity.guild_id, guildId),
-                        lt(table.memberActivity.last_active_at, cutoff)
-                    )
-                )
+                .from(table.activity)
+                .where(and(eq(table.activity.guildId, guildId), lt(table.activity.lastActiveAt, cutoff)))
 
-            for (const record of records) {
+            record_loop: for (const record of records) {
                 const member =
-                    guild.members.cache.get(record.user_id) ??
-                    (await guild.members.fetch(record.user_id).catch(() => null))
+                    guild.members.cache.get(record.userId) ??
+                    (await guild.members.fetch(record.userId).catch(() => null))
 
                 if (!member) continue
                 if (member.user.bot) continue
                 if (member.id === guild.ownerId) continue
                 if (!member.kickable) continue
-                if (member.roles.cache.some((role) => whitelistedIds.has(role.id))) continue
 
-                const lastActive = Temporal.Instant.from(record.last_active_at)
+                for (const { id, type } of whitelistedIds) {
+                    if (type === "role" && member.roles.cache.get(id)) continue record_loop
+                    if (type === "user" && member.id === id) continue record_loop
+                }
+
+                const lastActive = Temporal.Instant.from(record.lastActiveAt)
                 const inactiveMs = now.epochMilliseconds - lastActive.epochMilliseconds
                 const timeLeftMs = thresholdMs - inactiveMs
 
@@ -70,7 +61,7 @@ cron.schedule("0 * * * *", async () => {
                         const inactiveHours = Math.floor(inactiveMs / 3_600_000)
                         const actionVerb = config.action === "ban" ? "banned" : "kicked"
                         const dmText =
-                            config.kick_message ??
+                            config.kickMessage ??
                             `You have been **${actionVerb}** from **${guild.name}** for being inactive for ${inactiveHours}+ hours.`
 
                         await member
@@ -96,45 +87,29 @@ cron.schedule("0 * * * *", async () => {
                         }
 
                         // Log
-                        if (config.log_channel_id) {
-                            const logCh = guild.channels.cache.get(config.log_channel_id)
-                            if (logCh && isSendable(logCh)) {
-                                await logCh.send({
-                                    flags: [MessageFlags.IsComponentsV2],
-                                    components: [
-                                        {
-                                            type: ComponentType.Container,
-                                            components: [
-                                                {
-                                                    type: ComponentType.TextDisplay,
-                                                    content: `🦶 **AutoKick** — ${member.user.tag} was **${actionVerb}** for being inactive for ${inactiveHours} hours.`
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                })
+                        if (config.logChannel.length) {
+                            for (const channel of config.logChannel) {
+                                const logCh = guild.channels.cache.get(channel)
+                                if (logCh && isSendable(logCh)) {
+                                    await logCh.send({
+                                        flags: [MessageFlags.IsComponentsV2],
+                                        components: [
+                                            {
+                                                type: ComponentType.Container,
+                                                components: [
+                                                    {
+                                                        type: ComponentType.TextDisplay,
+                                                        content: `🦶 **AutoKick** — ${member.user.tag} was **${actionVerb}** for being inactive for ${inactiveHours} hours.`
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    })
+                                }
                             }
                         }
-
-                        // Cleanup
-                        await db
-                            .delete(table.memberActivity)
-                            .where(
-                                and(
-                                    eq(table.memberActivity.guild_id, guildId),
-                                    eq(table.memberActivity.user_id, record.user_id)
-                                )
-                            )
-                        await db
-                            .delete(table.memberWarningsSent)
-                            .where(
-                                and(
-                                    eq(table.memberWarningsSent.guild_id, guildId),
-                                    eq(table.memberWarningsSent.user_id, record.user_id)
-                                )
-                            )
                     } catch (err) {
-                        console.log(`Failed to ${config.action} ${record.user_id}:`, err)
+                        console.log(`Failed to ${config.action} ${record.userId}:`, err)
                     }
                     continue
                 }
@@ -145,14 +120,9 @@ cron.schedule("0 * * * *", async () => {
                 // Get already-sent warnings for this member
                 const sentWarnings = await db
                     .select()
-                    .from(table.memberWarningsSent)
-                    .where(
-                        and(
-                            eq(table.memberWarningsSent.guild_id, guildId),
-                            eq(table.memberWarningsSent.user_id, record.user_id)
-                        )
-                    )
-                const sentSet = new Set(sentWarnings.map((w) => w.hours_before))
+                    .from(table.warnings)
+                    .where(and(eq(table.warnings.guildId, guildId), eq(table.warnings.userId, record.userId)))
+                const sentSet = new Set(sentWarnings.map((w) => w.hoursBefore))
 
                 for (const stageHours of sortedStages) {
                     if (sentSet.has(stageHours)) continue
@@ -184,16 +154,16 @@ cron.schedule("0 * * * *", async () => {
                             .catch(() => {})
 
                         await db
-                            .insert(table.memberWarningsSent)
+                            .insert(table.warnings)
                             .values({
-                                guild_id: guildId,
-                                user_id: record.user_id,
-                                hours_before: stageHours,
-                                sent_at: Temporal.Now.instant().toString()
+                                guildId: guildId,
+                                userId: record.userId,
+                                hoursBefore: stageHours,
+                                sentAt: Temporal.Now.instant().toString()
                             })
                             .onConflictDoNothing()
                     } catch (err) {
-                        console.log(`Failed to warn ${record.user_id} (${stageHours}h stage):`, err)
+                        console.log(`Failed to warn ${record.userId} (${stageHours}h stage):`, err)
                     }
                 }
             }

@@ -1,16 +1,13 @@
-import { user } from "./user"
+import { whitelist } from "./whitelist"
+import { warnings } from "./warnings"
+import { activity } from "./activity"
 import { guild } from "./guild"
-import { guildWhitelist } from "./guild_whitelist"
-import { guildWarningStages } from "./guild_warning_stages"
-import { memberActivity } from "./member_activity"
-import { memberWarningsSent } from "./member_warnings_sent"
+import { user } from "./user"
 
 export const table = {
-    user,
+    whitelist,
+    activity,
+    warnings,
     guild,
-    guildWhitelist,
-    guildWarningStages,
-    memberActivity,
-    memberWarningsSent
+    user
 } as const
-
