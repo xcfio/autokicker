@@ -1,12 +1,16 @@
+import { Activity, Guild, User, Warning, Whitelist } from "@repo/schema"
 import { createSelectSchema } from "drizzle-orm/typebox"
 import { TObject, TSchema } from "typebox"
 import { describe, it } from "node:test"
 import { table } from "@repo/database"
 import assert from "node:assert"
-import {} from "@repo/schema"
 
-describe("Typebox Schema Should Extend Drizzle Table", () => {
-    it("Should null equal null", () => assert.deepEqual(null, null))
+describe("Schema Match Drizzle", () => {
+    it("User", ({ name }) => AssertExtend(name, createSelectSchema(table.user), User))
+    it("Guild", ({ name }) => AssertExtend(name, createSelectSchema(table.guild), Guild))
+    it("Activity", ({ name }) => AssertExtend(name, createSelectSchema(table.activity), Activity))
+    it("Warning", ({ name }) => AssertExtend(name, createSelectSchema(table.warnings), Warning))
+    it("Whitelist", ({ name }) => AssertExtend(name, createSelectSchema(table.whitelist), Whitelist))
 })
 
 function AssertExtend(name: string, base: TObject, extended: TObject): void {

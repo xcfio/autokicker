@@ -27,19 +27,19 @@
         "@repo/database": "workspace:*",
         "@repo/schema": "workspace:*",
         "@repo/utils": "workspace:*",
-        "@scalar/fastify-api-reference": "^1.57.1",
-        "discord-api-types": "^0.38.47",
+        "@scalar/fastify-api-reference": "^1.58.0",
+        "discord-api-types": "^0.38.48",
         "drizzle-orm": "1.0.0-rc.4-273829f",
         "fastify": "^5.8.5",
         "fastify-socket": "^5.1.4",
         "fastify-utils": "^0.0.2",
         "postgres": "^3.4.9",
         "snowtransfer": "^0.17.7",
-        "typebox": "^1.1.38",
+        "typebox": "^1.1.39",
         "typescript": "^6.0.3"
     },
     "devDependencies": {
         "@types/node": "^25.9.1",
-        "rolldown": "1.0.1"
+        "rolldown": "1.1.0"
     }
 }
