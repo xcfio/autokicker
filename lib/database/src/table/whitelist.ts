@@ -10,7 +10,7 @@ export const whitelist = pgTable(
         id: uuid("id").primaryKey().notNull().unique().$defaultFn(randomUUIDv7),
         guildId: varchar("guild_id", { length: 20 })
             .notNull()
-            .references(() => guild.guildId, { onDelete: "cascade" }),
+            .references(() => guild.id, { onDelete: "cascade" }),
         whitelistType: WhitelistType("whitelist_type").notNull(),
         whitelistId: varchar("whitelist_id", { length: 20 }).notNull(),
         createdAt: timestamp("created_at", { mode: "string", withTimezone: false })

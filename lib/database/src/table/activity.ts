@@ -11,10 +11,10 @@ export const activity = pgTable(
         id: uuid("id").primaryKey().notNull().unique().$defaultFn(randomUUIDv7),
         guildId: varchar("guild_id", { length: 20 })
             .notNull()
-            .references(() => guild.guildId, { onUpdate: "cascade" }),
+            .references(() => guild.id, { onDelete: "cascade" }),
         userId: varchar("user_id", { length: 20 })
             .notNull()
-            .references(() => user.userId, { onUpdate: "cascade" }),
+            .references(() => user.id, { onDelete: "cascade" }),
         lastActiveAt: timestamp("last_active_at", { mode: "string", withTimezone: false }).notNull(),
         lastAction: ActivityType("last_action").notNull().default("seed"),
         createdAt: timestamp("created_at", { mode: "string", withTimezone: false })

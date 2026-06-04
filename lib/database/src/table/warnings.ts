@@ -9,10 +9,10 @@ export const warnings = pgTable(
         id: uuid("id").primaryKey().notNull().unique().$defaultFn(randomUUIDv7),
         guildId: varchar("guild_id", { length: 20 })
             .notNull()
-            .references(() => guild.guildId, { onUpdate: "cascade" }),
+            .references(() => guild.id, { onDelete: "cascade" }),
         userId: varchar("user_id", { length: 20 })
             .notNull()
-            .references(() => user.userId, { onUpdate: "cascade" }),
+            .references(() => user.id, { onDelete: "cascade" }),
         hoursBefore: integer("hours_before").notNull(),
         sentAt: timestamp("sent_at", { mode: "string", withTimezone: false }).notNull(),
         createdAt: timestamp("created_at", { mode: "string", withTimezone: false })

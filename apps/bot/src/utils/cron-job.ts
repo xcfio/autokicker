@@ -10,7 +10,7 @@ export async function CronJob() {
         const guilds = await db.select().from(table.guild).where(eq(table.guild.enabled, true))
 
         for (const config of guilds) {
-            const guildId = config.guildId
+            const guildId = config.id
             const guild = client.guilds.cache.get(guildId)
             if (!guild) continue
 
@@ -22,7 +22,7 @@ export async function CronJob() {
             const whitelistedIds = whitelisted.map((row) => ({ id: row.whitelistId, type: row.whitelistType }))
 
             // Guild's custom warning stages (sorted descending — largest hours first)
-            const [stages] = await db.select().from(table.guild).where(eq(table.guild.guildId, guildId))
+            const [stages] = await db.select().from(table.guild).where(eq(table.guild.id, guildId))
             const sortedStages = stages.warningStages.sort((a, b) => b - a)
 
             // Earliest cutoff: we care about members whose inactivity has entered the largest warning window
