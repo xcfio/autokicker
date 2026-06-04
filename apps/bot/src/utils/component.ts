@@ -67,7 +67,7 @@ export function autokick_component(): ContainerComponentData<APIStringSelectComp
                         label: "Set threshold",
                         value: "threshold",
                         emoji: { id: EmojiID.clock },
-                        description: "Hours of inactivity before action"
+                        description: "Time of inactivity before action"
                     },
                     {
                         label: "Set action type",
@@ -151,7 +151,7 @@ export function warnings_component(): ContainerComponentData<APIStringSelectComp
                         label: "Add warning stage",
                         value: "add",
                         emoji: { id: EmojiID.check },
-                        description: "Add a warning stage (hours before kick)"
+                        description: "Add a warning stage (minutes before kick)"
                     },
                     {
                         label: "Remove warning stage",

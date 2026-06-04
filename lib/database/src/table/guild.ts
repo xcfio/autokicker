@@ -5,7 +5,7 @@ export const action = pgEnum("action_type", ["kick", "ban"])
 export const guild = pgTable("guilds", {
     id: varchar("id", { length: 20 }).primaryKey().notNull().unique(),
     enabled: boolean("enabled").notNull().default(false),
-    thresholdHours: integer("threshold_hours").notNull().default(720),
+    threshold: integer("threshold").notNull().default(43200),
     action: action("action").notNull().default("kick"),
     logChannel: varchar("log_channel", { length: 20 }).array().notNull().default([]),
     kickMessage: text("kick_message"),

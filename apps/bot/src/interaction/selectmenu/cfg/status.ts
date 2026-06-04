@@ -3,6 +3,7 @@ import { cfg_component, db, Emoji, erx, xcf } from "../../../utils"
 import { table } from "@repo/database"
 import { eq } from "drizzle-orm"
 import { blue } from "colorette"
+import { duration } from "@repo/utils"
 
 export async function status(interaction: StringSelectMenuInteraction) {
     try {
@@ -15,7 +16,7 @@ export async function status(interaction: StringSelectMenuInteraction) {
         ).length
 
         const enabled = guild?.enabled ?? false
-        const threshold = guild?.thresholdHours ?? 720
+        const threshold = Temporal.Duration.from({ minutes: guild?.threshold ?? 43200 })
         const action = guild?.action ?? "kick"
         const logChannels = guild?.logChannel ?? []
         const kickMessage = guild?.kickMessage ?? "Default"
@@ -42,7 +43,7 @@ export async function status(interaction: StringSelectMenuInteraction) {
                             content:
                                 "```ansi\n" +
                                 `${blue("Status")}: ${enabled ? "Enabled" : "Disabled"}\n` +
-                                `${blue("Threshold")}: ${threshold} hours\n` +
+                                `${blue("Threshold")}: ${duration(threshold)}\n` +
                                 `${blue("Action")}: ${action}\n` +
                                 `${blue("Log Channels")}: ${logChannels.length ? logChannels.map((c: string) => `#${c}`).join(", ") : "None"}\n` +
                                 `${blue("Kick Message")}: ${kickMessage === "Default" ? "Default" : kickMessage.length > 50 ? kickMessage.slice(0, 50) + "..." : kickMessage}\n` +
@@ -70,7 +71,7 @@ export async function status(interaction: StringSelectMenuInteraction) {
                                     warningStages.length
                                         ? warningStages
                                               .sort((a: number, b: number) => b - a)
-                                              .map((h: number) => `${h}h`)
+                                              .map((h: number) => `${h}m`)
                                               .join(", ")
                                         : "None"
                                 }\n` +

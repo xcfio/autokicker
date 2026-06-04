@@ -4,6 +4,8 @@ import { table } from "@repo/database"
 import { isSendable } from "./logic"
 import { client } from "../index"
 import { db } from "./database"
+import { Emoji } from "./emoji"
+import { duration } from "@repo/utils"
 
 export async function CronJob() {
     try {
@@ -14,20 +16,20 @@ export async function CronJob() {
             const guild = client.guilds.cache.get(guildId)
             if (!guild) continue
 
-            const threshold = Temporal.Duration.from({ hours: config.thresholdHours })
+            const threshold = Temporal.Duration.from({ minutes: config.threshold })
             const now = Temporal.Now.instant()
 
             // Whitelisted roles
             const whitelisted = await db.select().from(table.whitelist).where(eq(table.whitelist.guildId, guildId))
             const whitelistedIds = whitelisted.map((row) => ({ id: row.whitelistId, type: row.whitelistType }))
 
-            // Guild's custom warning stages (sorted descending — largest hours first)
+            // Guild's custom warning stages (sorted descending — largest minutes first)
             const [stages] = await db.select().from(table.guild).where(eq(table.guild.id, guildId))
             const sortedStages = stages.warningStages.sort((a, b) => b - a)
 
             // Earliest cutoff: we care about members whose inactivity has entered the largest warning window
             const largestWarning = sortedStages.length > 0 ? sortedStages[0] : 0
-            const cutoff = now.subtract(threshold).add({ hours: largestWarning }).toString()
+            const cutoff = now.subtract(threshold).add({ minutes: largestWarning }).toString()
 
             const records = await db
                 .select()
@@ -56,11 +58,10 @@ export async function CronJob() {
                 // === KICK / BAN: past the threshold ===
                 if (timeLeft.sign <= 0) {
                     try {
-                        const inactiveHours = Math.floor(inactiveDuration.total("hours"))
                         const actionVerb = config.action === "ban" ? "banned" : "kicked"
                         const dmText =
                             config.kickMessage ??
-                            `You have been **${actionVerb}** from **${guild.name}** for being inactive for ${inactiveHours}+ hours.`
+                            `You have been **${actionVerb}** from **${guild.name}** for being inactive for ${duration(inactiveDuration)}.`
 
                         await member
                             .send({
@@ -69,7 +70,7 @@ export async function CronJob() {
                                     {
                                         type: ComponentType.Container,
                                         components: [
-                                            { type: ComponentType.TextDisplay, content: "# 🦶 AutoKick" },
+                                            { type: ComponentType.TextDisplay, content: "# AutoKick" },
                                             { type: ComponentType.Separator },
                                             { type: ComponentType.TextDisplay, content: dmText }
                                         ]
@@ -79,9 +80,9 @@ export async function CronJob() {
                             .catch(() => {})
 
                         if (config.action === "ban") {
-                            await member.ban({ reason: `AutoKick: Inactive for ${inactiveHours}h` })
+                            await member.ban({ reason: `AutoKick: Inactive for ${duration(inactiveDuration)}` })
                         } else {
-                            await member.kick(`AutoKick: Inactive for ${inactiveHours}h`)
+                            await member.kick(`AutoKick: Inactive for ${duration(inactiveDuration)}`)
                         }
 
                         // Log
@@ -97,7 +98,7 @@ export async function CronJob() {
                                                 components: [
                                                     {
                                                         type: ComponentType.TextDisplay,
-                                                        content: `🦶 **AutoKick** — ${member.user.tag} was **${actionVerb}** for being inactive for ${inactiveHours} hours.`
+                                                        content: `**AutoKick** — ${member.user.tag} was **${actionVerb}** for being inactive for ${duration(inactiveDuration)}.`
                                                     }
                                                 ]
                                             }
@@ -113,21 +114,21 @@ export async function CronJob() {
                 }
 
                 // === WARNINGS: check each custom stage ===
-                const timeLeftHours = timeLeft.total("hours")
+                const timeLeftMinutes = timeLeft.total("minutes")
 
                 // Get already-sent warnings for this member
                 const sentWarnings = await db
                     .select()
                     .from(table.warnings)
                     .where(and(eq(table.warnings.guildId, guildId), eq(table.warnings.userId, record.userId)))
-                const sentSet = new Set(sentWarnings.map((w) => w.hoursBefore))
+                const sentSet = new Set(sentWarnings.map((w) => w.before))
 
-                for (const stageHours of sortedStages) {
-                    if (sentSet.has(stageHours)) continue
-                    if (timeLeftHours > stageHours) continue
+                for (const stageMinutes of sortedStages) {
+                    if (sentSet.has(stageMinutes)) continue
+                    if (timeLeftMinutes > stageMinutes) continue
 
                     const actionVerb = config.action === "ban" ? "banned" : "kicked"
-                    const hoursLeft = Math.floor(timeLeftHours)
+
                     try {
                         await member
                             .send({
@@ -138,14 +139,14 @@ export async function CronJob() {
                                         components: [
                                             {
                                                 type: ComponentType.TextDisplay,
-                                                content: "# ⚠️ Inactivity Warning"
+                                                content: `# ${Emoji("exclamation")} Inactivity Warning`
                                             },
                                             {
                                                 type: ComponentType.Separator
                                             },
                                             {
                                                 type: ComponentType.TextDisplay,
-                                                content: `You will be **${actionVerb}** from **${guild.name}** in approximately **${hoursLeft} hours** due to inactivity.\n\nSend a message, join a voice channel, or react to stay!`
+                                                content: `You will be **${actionVerb}** from **${guild.name}** in approximately **${duration(timeLeft)}** due to inactivity.\n\nSend a message, join a voice channel, or react to stay!`
                                             }
                                         ]
                                     }
@@ -158,12 +159,12 @@ export async function CronJob() {
                             .values({
                                 guildId: guildId,
                                 userId: record.userId,
-                                hoursBefore: stageHours,
+                                before: stageMinutes,
                                 sentAt: Temporal.Now.instant().toString()
                             })
                             .onConflictDoNothing()
                     } catch (err) {
-                        console.log(`Failed to warn ${record.userId} (${stageHours}h stage):`, err)
+                        console.log(`Failed to warn ${record.userId} (${stageMinutes}m stage):`, err)
                     }
                 }
             }

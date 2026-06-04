@@ -13,7 +13,7 @@ export const warnings = pgTable(
         userId: varchar("user_id", { length: 20 })
             .notNull()
             .references(() => user.id, { onDelete: "cascade" }),
-        hoursBefore: integer("hours_before").notNull(),
+        before: integer("before").notNull(),
         sentAt: timestamp("sent_at", { mode: "string", withTimezone: false }).notNull(),
         createdAt: timestamp("created_at", { mode: "string", withTimezone: false })
             .notNull()
@@ -23,6 +23,6 @@ export const warnings = pgTable(
             .$onUpdateFn(() => Temporal.Now.instant().toString())
     },
     (table) => [
-        uniqueIndex("member_warnings_sent_guild_user_hours_index").on(table.guildId, table.userId, table.hoursBefore)
+        uniqueIndex("member_warnings_sent_guild_user_hours_index").on(table.guildId, table.userId, table.before)
     ]
 )
