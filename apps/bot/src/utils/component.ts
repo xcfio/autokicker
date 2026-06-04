@@ -33,7 +33,7 @@ export function cfg_component(): ContainerComponentData<APIStringSelectComponent
                     {
                         label: "Configure autokick",
                         value: "autokick",
-                        emoji: { id: EmojiID.autokicker },
+                        emoji: { id: EmojiID.hammer },
                         description: "Customize autokick settings"
                     },
                     {
@@ -84,7 +84,7 @@ export function autokick_component(): ContainerComponentData<APIStringSelectComp
                     {
                         label: "Set kick message",
                         value: "kick-message",
-                        emoji: { id: EmojiID.autokicker },
+                        emoji: { id: EmojiID.hammer },
                         description: "Custom message sent to kicked users"
                     },
                     {
