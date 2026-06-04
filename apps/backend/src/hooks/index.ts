@@ -1,6 +1,6 @@
-import { main } from "../"
+import { FastifyInstance } from "fastify"
 import error from "./error"
 
-export default async function Hooks(fastify: Awaited<ReturnType<typeof main>>) {
+export default async function Hooks(fastify: FastifyInstance) {
     await error(fastify)
 }

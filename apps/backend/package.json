@@ -15,10 +15,13 @@
         "test": "tsc --noEmit"
     },
     "dependencies": {
+        "@fastify/auth": "^5.0.4",
         "@fastify/cookie": "^11.0.2",
         "@fastify/cors": "^11.2.0",
         "@fastify/error": "^4.2.0",
         "@fastify/jwt": "^10.1.0",
+        "@fastify/oauth2": "^8.2.0",
+        "@fastify/one-line-logger": "^2.1.0",
         "@fastify/rate-limit": "^10.3.0",
         "@fastify/swagger": "^9.7.0",
         "@fastify/type-provider-typebox": "^6.1.0",
@@ -28,6 +31,8 @@
         "@scalar/fastify-api-reference": "^1.57.1",
         "drizzle-orm": "1.0.0-rc.4-273829f",
         "fastify": "^5.8.5",
+        "fastify-socket": "^5.1.4",
+        "fastify-utils": "^0.0.2",
         "postgres": "^3.4.9",
         "typebox": "^1.1.38",
         "typescript": "^6.0.3"

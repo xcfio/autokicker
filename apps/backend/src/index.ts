@@ -1,17 +1,23 @@
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox"
-import { ValidationErrorHandler, xcf } from "./function"
+import { ValidationErrorHandler } from "fastify-utils"
+import { AuthenticatedSocket } from "@repo/schema"
+import { xcf } from "./utils"
 import Decorate from "./decorate"
-import Routes from "./routes"
 import Plugin from "./plugin"
+import Routes from "./routes"
+import Socket from "./socket"
 import Fastify from "fastify"
 import Hooks from "./hooks"
 import * as _ from "./type"
 
+export let io: AuthenticatedSocket
 export async function main() {
     const isDevelopment = process.env.NODE_ENV === "development"
+
     const fastify = Fastify({
         trustProxy: true,
-        logger: { file: isDevelopment ? "./log.json" : undefined },
+        ajv: { customOptions: { multipleOfPrecision: 2 } },
+        logger: isDevelopment ? { file: "./log.json" } : { transport: { target: "@fastify/one-line-logger" } },
         schemaErrorFormatter: ValidationErrorHandler
     }).withTypeProvider<TypeBoxTypeProvider>()
 
@@ -20,8 +26,14 @@ export async function main() {
     Routes(fastify)
     Hooks(fastify)
 
-    await fastify.listen({ host: "0.0.0.0", port: 7200 })
-    console.log(`Server listening at http://localhost:7200`)
+    const port = Number(process.env.PORT ?? 7200)
+    await fastify.listen({ host: "0.0.0.0", port })
+    console.log(`Server listening at http://localhost:${port}`)
+
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    fastify.io.on("connection", Socket(fastify))
+    io = fastify.io
 
     return fastify
 }

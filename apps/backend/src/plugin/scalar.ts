@@ -1,7 +1,7 @@
+import { FastifyInstance } from "fastify"
 import Scalar from "@scalar/fastify-api-reference"
-import { main } from ".."
 
-export default async function scalar(fastify: Awaited<ReturnType<typeof main>>) {
+export default async function scalar(fastify: FastifyInstance) {
     await fastify.register(Scalar, {
         routePrefix: "/",
         configuration: {

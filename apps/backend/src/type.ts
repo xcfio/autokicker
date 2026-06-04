@@ -1,25 +1,35 @@
-import { Payload } from "@repo/schema"
+/* eslint-disable @typescript-eslint/naming-convention */
+import { AuthenticatedSocket, Payload } from "@repo/schema"
+import { OAuth2Namespace } from "@fastify/oauth2"
 
 declare global {
     namespace NodeJS {
         interface ProcessEnv {
             NODE_ENV: "development" | "production" | "test"
-            DATABASE_URI: string
+            PORT: string
 
             TOKEN: string
             ERROR_LOG_CHANNEL: string
 
-            API_SECRET: string
             COOKIE_SECRET: string
             JWT_SECRET: string
             HMAC_SECRET: string
+
+            GOOGLE_CLIENT_ID: string
+            GOOGLE_CLIENT_SECRET: string
+
+            FACEBOOK_CLIENT_ID: string
+            FACEBOOK_CLIENT_SECRET: string
         }
     }
 }
 
 declare module "fastify" {
     interface FastifyInstance {
-        auth: (request: FastifyRequest, reply: FastifyReply) => void
+        googleOAuth2: OAuth2Namespace
+        facebookOAuth2: OAuth2Namespace
+        authentication: (request: FastifyRequest, reply: FastifyReply) => void
+        io: AuthenticatedSocket
     }
     interface FastifyRequest {
         payload: Payload

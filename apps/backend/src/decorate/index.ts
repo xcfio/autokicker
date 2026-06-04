@@ -1,6 +1,6 @@
-import { main } from "../"
-import auth from "./auth"
+import { FastifyInstance } from "fastify"
+import authentication from "./auth"
 
-export default async function Decorate(fastify: Awaited<ReturnType<typeof main>>) {
-    await auth(fastify)
+export default async function Decorate(fastify: FastifyInstance) {
+    await authentication(fastify)
 }

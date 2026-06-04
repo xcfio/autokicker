@@ -1,6 +1,6 @@
+import { FastifyInstance } from "fastify"
 import Cookie from "@fastify/cookie"
-import { main } from "../"
 
-export default async function cookie(fastify: Awaited<ReturnType<typeof main>>) {
+export default async function cookie(fastify: FastifyInstance) {
     await fastify.register(Cookie, { secret: process.env.COOKIE_SECRET })
 }
