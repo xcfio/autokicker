@@ -3,7 +3,7 @@ import { Env } from "./type"
 
 const config = {
     environment: env<Env, "NODE_ENV">("NODE_ENV"),
-    database_url: env<Env>("DATABASE_URL"),
+    url: env<Env>("DATABASE_URL"),
     origin: env<Env>("FRONTEND_URL", false) ?? "http://localhost:7700",
     port: env<Env>("PORT"),
     discord: {

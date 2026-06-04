@@ -32,9 +32,6 @@ importers:
       '@fastify/cors':
         specifier: ^11.2.0
         version: 11.2.0
-      '@fastify/error':
-        specifier: ^4.2.0
-        version: 4.2.0
       '@fastify/jwt':
         specifier: ^10.1.0
         version: 10.1.0
@@ -65,6 +62,9 @@ importers:
       '@scalar/fastify-api-reference':
         specifier: ^1.57.1
         version: 1.57.1
+      discord-api-types:
+        specifier: ^0.38.47
+        version: 0.38.47
       drizzle-orm:
         specifier: 1.0.0-rc.4-273829f
         version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.1.38)(zod@4.4.3)
@@ -80,6 +80,9 @@ importers:
       postgres:
         specifier: ^3.4.9
         version: 3.4.9
+      snowtransfer:
+        specifier: ^0.17.7
+        version: 0.17.7
       typebox:
         specifier: ^1.1.38
         version: 1.1.38
@@ -3820,6 +3823,10 @@ packages:
 
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
+
+  snowtransfer@0.17.7:
+    resolution: {integrity: sha512-scbOjYezo1Ycfk21atCEkeXIISTT7R7JTHCdiZ/7m7k4XbSb6o5q8Mu2fev5IqFpNyqIVjA0d/MZQ+eP/gtwfg==}
+    engines: {node: '>=22.0.0'}
 
   socket.io-adapter@2.5.7:
     resolution: {integrity: sha512-e0LyK91f3cUxTmv95/KzoLg47+zF+s/sbxRGDNsyG4dmIP8ZSX8ax6byOxfJXeNNtS/8AZlfD+uP7gBeR7DLlg==}
@@ -7594,6 +7601,10 @@ snapshots:
       - supports-color
 
   sisteransi@1.0.5: {}
+
+  snowtransfer@0.17.7:
+    dependencies:
+      discord-api-types: 0.38.47
 
   socket.io-adapter@2.5.7:
     dependencies:

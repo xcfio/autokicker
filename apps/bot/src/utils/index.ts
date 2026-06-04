@@ -1,5 +1,7 @@
+export * from "./component"
 export * from "./cron-job"
 export * from "./database"
+export * from "./emoji"
 export * from "./error"
 export * from "./logic"
 export * from "./map"
