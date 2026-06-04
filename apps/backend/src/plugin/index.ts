@@ -1,4 +1,5 @@
 import { FastifyInstance } from "fastify"
+import config from "../config"
 import socket from "./socket-io"
 import swagger from "./swagger"
 import cookie from "./cookie"
@@ -10,7 +11,7 @@ import auth from "./auth"
 import jwt from "./jwt"
 
 export default async function Plugin(fastify: FastifyInstance) {
-    if (process.env.NODE_ENV === "development") {
+    if (config.environment === "development") {
         await swagger(fastify)
         await scalar(fastify)
     }

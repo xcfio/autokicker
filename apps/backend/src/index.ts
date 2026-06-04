@@ -9,10 +9,11 @@ import Socket from "./socket"
 import Fastify from "fastify"
 import Hooks from "./hooks"
 import * as _ from "./type"
+import config from "./config"
 
 export let io: AuthenticatedSocket
 export async function main() {
-    const isDevelopment = process.env.NODE_ENV === "development"
+    const isDevelopment = config.environment === "development"
 
     const fastify = Fastify({
         trustProxy: true,
@@ -26,11 +27,10 @@ export async function main() {
     Routes(fastify)
     Hooks(fastify)
 
-    const port = Number(process.env.PORT ?? 7200)
+    const port = Number(config.port ?? 7200)
     await fastify.listen({ host: "0.0.0.0", port })
     console.log(`Server listening at http://localhost:${port}`)
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     fastify.io.on("connection", Socket(fastify))
     io = fastify.io
