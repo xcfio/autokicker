@@ -7,10 +7,10 @@ export async function warning_add(interaction: StringSelectMenuInteraction) {
         components: [
             {
                 type: ComponentType.Label,
-                label: "Minutes before kick to send warning",
+                label: "Days before kick to send warning",
                 component: {
-                    custom_id: "hours",
-                    placeholder: "43200",
+                    custom_id: "days",
+                    placeholder: "30",
                     style: TextInputStyle.Short,
                     type: ComponentType.TextInput,
                     min_length: 1,

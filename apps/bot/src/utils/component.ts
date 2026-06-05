@@ -1,7 +1,7 @@
 import {
+    APIActionRowComponent,
     APIStringSelectComponent,
     ComponentType,
-    ContainerComponentData,
     Interaction,
     InteractionReplyOptions,
     MessageFlags,
@@ -9,7 +9,7 @@ import {
 } from "discord.js"
 import { Emoji, EmojiID } from "./emoji"
 
-export function cfg_component(): ContainerComponentData<APIStringSelectComponent> {
+export function cfg_component(): APIActionRowComponent<APIStringSelectComponent> {
     return {
         type: ComponentType.ActionRow,
         components: [
@@ -54,7 +54,7 @@ export function cfg_component(): ContainerComponentData<APIStringSelectComponent
     }
 }
 
-export function autokick_component(): ContainerComponentData<APIStringSelectComponent> {
+export function autokick_component(): APIActionRowComponent<APIStringSelectComponent> {
     return {
         type: ComponentType.ActionRow,
         components: [
@@ -99,7 +99,7 @@ export function autokick_component(): ContainerComponentData<APIStringSelectComp
     }
 }
 
-export function whitelist_component(): ContainerComponentData<APIStringSelectComponent> {
+export function whitelist_component(): APIActionRowComponent<APIStringSelectComponent> {
     return {
         type: ComponentType.ActionRow,
         components: [
@@ -138,7 +138,7 @@ export function whitelist_component(): ContainerComponentData<APIStringSelectCom
     }
 }
 
-export function warnings_component(): ContainerComponentData<APIStringSelectComponent> {
+export function warnings_component(): APIActionRowComponent<APIStringSelectComponent> {
     return {
         type: ComponentType.ActionRow,
         components: [
