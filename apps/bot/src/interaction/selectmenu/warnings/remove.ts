@@ -24,7 +24,7 @@ export async function warning_remove(interaction: StringSelectMenuInteraction) {
                     },
                     {
                         type: ComponentType.TextDisplay,
-                        content: `${stages.length ? `${Emoji("hourglass")} Select a warning stage to remove.` : `${Emoji("exclamation")} No warning stages configured.`}`
+                        content: `${stages.length ? `Select a warning stage to remove.` : `No warning stages configured.`}`
                     },
                     {
                         type: ComponentType.ActionRow,

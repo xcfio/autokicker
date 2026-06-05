@@ -1,5 +1,6 @@
-import { cfg_message, message, isInvalid } from "../../../utils"
 import { StringSelectMenuInteraction } from "discord.js"
+import { message, isInvalid } from "../../../utils"
+import { return_handler } from "../return"
 import { warning_remove } from "./remove"
 import { warning_list } from "./list"
 import { warning_add } from "./add"
@@ -19,7 +20,7 @@ export async function cfg_warnings(interaction: StringSelectMenuInteraction) {
             return await warning_list(interaction)
         }
         case "return": {
-            return await interaction.followUp(cfg_message())
+            return await return_handler(interaction)
         }
         default: {
             return await interaction.reply(message.error("Invalid option"))

@@ -67,12 +67,12 @@ export async function status(interaction: StringSelectMenuInteraction) {
                             type: ComponentType.TextDisplay,
                             content:
                                 "```ansi\n" +
-                                `${blue("Stages")}: ${
+                                `${blue("Stages")}:\n${
                                     warningStages.length
                                         ? warningStages
                                               .sort((a: number, b: number) => b - a)
-                                              .map((h: number) => `${h}m`)
-                                              .join(", ")
+                                              .map((minutes) => `- ${duration(Temporal.Duration.from({ minutes }))}`)
+                                              .join("\n")
                                         : "None"
                                 }\n` +
                                 "```"

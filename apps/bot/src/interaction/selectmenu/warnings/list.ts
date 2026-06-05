@@ -1,5 +1,6 @@
 import { ComponentType, MessageFlags, StringSelectMenuInteraction } from "discord.js"
 import { db, Emoji, erx, component, xcf } from "../../../utils"
+import { duration } from "@repo/utils"
 import { table } from "@repo/database"
 import { eq } from "drizzle-orm"
 
@@ -14,7 +15,7 @@ export async function warning_list(interaction: StringSelectMenuInteraction) {
         const list = stages.length
             ? stages
                   .sort((a: number, b: number) => b - a)
-                  .map((h: number) => `${h} minutes before kick`)
+                  .map((minutes) => `${duration(Temporal.Duration.from({ minutes }))}`)
                   .join("\n")
             : "No warning stages configured."
 
@@ -26,7 +27,7 @@ export async function warning_list(interaction: StringSelectMenuInteraction) {
                     components: [
                         {
                             type: ComponentType.TextDisplay,
-                            content: `## ${Emoji("exclamation")} Warning Stages`
+                            content: `## ${Emoji("exclamation")} Warning Stages - List`
                         },
                         { type: ComponentType.Separator },
                         {

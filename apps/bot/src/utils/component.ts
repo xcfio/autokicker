@@ -4,6 +4,7 @@ import {
     ComponentType,
     Interaction,
     InteractionReplyOptions,
+    InteractionUpdateOptions,
     MessageFlags,
     PermissionFlagsBits
 } from "discord.js"
@@ -54,7 +55,6 @@ export const component = {
             ]
         }
     },
-
     autokick(): APIActionRowComponent<APIStringSelectComponent> {
         return {
             type: ComponentType.ActionRow,
@@ -99,7 +99,6 @@ export const component = {
             ]
         }
     },
-
     whitelist(): APIActionRowComponent<APIStringSelectComponent> {
         return {
             type: ComponentType.ActionRow,
@@ -175,10 +174,30 @@ export const component = {
                 }
             ]
         }
+    },
+    return(): APIActionRowComponent<APIStringSelectComponent> {
+        return {
+            type: ComponentType.ActionRow,
+            components: [
+                {
+                    custom_id: "return",
+                    placeholder: "Select an option to continue",
+                    type: ComponentType.StringSelect,
+                    options: [
+                        {
+                            label: "Return to main menu",
+                            value: "return",
+                            emoji: { id: EmojiID.arrow_left },
+                            description: "Go back to configuration menu"
+                        }
+                    ]
+                }
+            ]
+        }
     }
 }
 
-export function cfg_message(text?: string): InteractionReplyOptions {
+export function cfg_message(text?: string): InteractionReplyOptions & InteractionUpdateOptions {
     return {
         flags: [MessageFlags.IsComponentsV2],
         components: [
@@ -203,14 +222,14 @@ export function cfg_message(text?: string): InteractionReplyOptions {
 
 export const message = {
     base: (isSuccess: boolean, content: string) => ({
-        flags: [MessageFlags.IsComponentsV2] as InteractionReplyOptions["flags"],
+        flags: [MessageFlags.IsComponentsV2] as InteractionReplyOptions["flags"] & InteractionUpdateOptions["flags"],
         components: [
             {
                 type: ComponentType.Container,
                 components: [
                     {
                         type: ComponentType.TextDisplay,
-                        content: isSuccess ? `${Emoji("check")} **Success**` : `${Emoji("x")} **Error**`
+                        content: isSuccess ? `## ${Emoji("check")} Success` : `## ${Emoji("x")} Error`
                     },
                     { type: ComponentType.Separator },
                     { type: ComponentType.TextDisplay, content }
@@ -220,8 +239,8 @@ export const message = {
     }),
     success: function (
         text: string,
-        components?: APIActionRowComponent<APIStringSelectComponent>
-    ): InteractionReplyOptions {
+        components: APIActionRowComponent<APIStringSelectComponent> = component.return()
+    ): InteractionReplyOptions & InteractionUpdateOptions {
         const base = this.base(true, text)
         if (components) base.components[0].components.push(components)
         return base
@@ -229,7 +248,7 @@ export const message = {
     error: function (
         text: string,
         components?: APIActionRowComponent<APIStringSelectComponent>
-    ): InteractionReplyOptions {
+    ): InteractionReplyOptions & InteractionUpdateOptions {
         const base = this.base(false, text)
         if (components) base.components[0].components.push(components)
         return base
