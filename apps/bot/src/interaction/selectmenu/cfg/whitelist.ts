@@ -21,5 +21,5 @@ export async function whitelist(interaction: StringSelectMenuInteraction) {
                 ]
             }
         ]
-    } as any)
+    })
 }

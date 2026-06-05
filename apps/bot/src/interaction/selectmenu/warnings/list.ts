@@ -37,7 +37,7 @@ export async function warning_list(interaction: StringSelectMenuInteraction) {
                     ]
                 }
             ]
-        } as any)
+        })
     } catch (error) {
         erx(error as Error)
         xcf(interaction)

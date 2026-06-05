@@ -21,5 +21,5 @@ export async function warnings(interaction: StringSelectMenuInteraction) {
                 ]
             }
         ]
-    } as any)
+    })
 }

@@ -35,7 +35,7 @@ export async function toggle(interaction: StringSelectMenuInteraction) {
                     ]
                 }
             ]
-        } as any)
+        })
     } catch (error) {
         erx(error as Error)
         xcf(interaction)

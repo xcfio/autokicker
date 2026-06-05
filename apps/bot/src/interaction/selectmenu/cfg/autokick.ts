@@ -21,5 +21,5 @@ export async function autokick(interaction: StringSelectMenuInteraction) {
                 ]
             }
         ]
-    } as any)
+    })
 }
