@@ -1,5 +1,5 @@
 import { ComponentType, MessageFlags, StringSelectMenuInteraction } from "discord.js"
-import { Emoji, whitelist_component } from "../../../utils"
+import { Emoji, component } from "../../../utils"
 
 export async function whitelist(interaction: StringSelectMenuInteraction) {
     await interaction.update({
@@ -17,7 +17,7 @@ export async function whitelist(interaction: StringSelectMenuInteraction) {
                         type: ComponentType.TextDisplay,
                         content: "Manage whitelisted users, roles, and channels that are exempt from autokick."
                     },
-                    whitelist_component()
+                    component.whitelist()
                 ]
             }
         ]

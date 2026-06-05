@@ -1,5 +1,5 @@
 import { ComponentType, MessageFlags, StringSelectMenuInteraction } from "discord.js"
-import { cfg_component, db, Emoji, erx, xcf } from "../../../utils"
+import { component, db, Emoji, erx, xcf } from "../../../utils"
 import { table } from "@repo/database"
 import { eq } from "drizzle-orm"
 
@@ -31,7 +31,7 @@ export async function toggle(interaction: StringSelectMenuInteraction) {
                             type: ComponentType.TextDisplay,
                             content: `${statusEmoji} AutoKick has been ${statusText}.`
                         },
-                        cfg_component()
+                        component.cfg()
                     ]
                 }
             ]

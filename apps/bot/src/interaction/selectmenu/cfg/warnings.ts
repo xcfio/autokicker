@@ -1,5 +1,5 @@
 import { ComponentType, MessageFlags, StringSelectMenuInteraction } from "discord.js"
-import { Emoji, warnings_component } from "../../../utils"
+import { Emoji, component } from "../../../utils"
 
 export async function warnings(interaction: StringSelectMenuInteraction) {
     await interaction.update({
@@ -17,7 +17,7 @@ export async function warnings(interaction: StringSelectMenuInteraction) {
                         type: ComponentType.TextDisplay,
                         content: "Configure warning stages that notify members before they are kicked for inactivity."
                     },
-                    warnings_component()
+                    component.warnings()
                 ]
             }
         ]

@@ -1,5 +1,5 @@
 import { ComponentType, MessageFlags, StringSelectMenuInteraction } from "discord.js"
-import { autokick_component, Emoji } from "../../../utils"
+import { component, Emoji } from "../../../utils"
 
 export async function autokick(interaction: StringSelectMenuInteraction) {
     await interaction.update({
@@ -17,7 +17,7 @@ export async function autokick(interaction: StringSelectMenuInteraction) {
                         type: ComponentType.TextDisplay,
                         content: "Configure the autokick behavior for your server."
                     },
-                    autokick_component()
+                    component.autokick()
                 ]
             }
         ]

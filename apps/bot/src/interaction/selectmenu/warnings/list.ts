@@ -1,5 +1,5 @@
 import { ComponentType, MessageFlags, StringSelectMenuInteraction } from "discord.js"
-import { db, Emoji, erx, warnings_component, xcf } from "../../../utils"
+import { db, Emoji, erx, component, xcf } from "../../../utils"
 import { table } from "@repo/database"
 import { eq } from "drizzle-orm"
 
@@ -33,7 +33,7 @@ export async function warning_list(interaction: StringSelectMenuInteraction) {
                             type: ComponentType.TextDisplay,
                             content: "```\n" + list + "\n```"
                         },
-                        warnings_component()
+                        component.warnings()
                     ]
                 }
             ]

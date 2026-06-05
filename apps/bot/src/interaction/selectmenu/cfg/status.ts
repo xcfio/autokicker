@@ -1,5 +1,5 @@
 import { ComponentType, MessageFlags, StringSelectMenuInteraction } from "discord.js"
-import { cfg_component, db, Emoji, erx, xcf } from "../../../utils"
+import { component, db, Emoji, erx, xcf } from "../../../utils"
 import { table } from "@repo/database"
 import { eq } from "drizzle-orm"
 import { blue } from "colorette"
@@ -77,7 +77,7 @@ export async function status(interaction: StringSelectMenuInteraction) {
                                 }\n` +
                                 "```"
                         },
-                        cfg_component()
+                        component.cfg()
                     ]
                 }
             ]
