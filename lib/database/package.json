@@ -22,7 +22,7 @@
     "dependencies": {
         "drizzle-orm": "1.0.0-rc.4-273829f",
         "postgres": "^3.4.9",
-        "typebox": "^1.1.39",
+        "typebox": "^1.2.0",
         "typescript": "^6.0.3"
     },
     "devDependencies": {
