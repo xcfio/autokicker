@@ -1,5 +1,5 @@
 import { StringSelectMenuInteraction } from "discord.js"
-import { error_message, isInvalid } from "../../../utils"
+import { message, isInvalid } from "../../../utils"
 import { whitelist } from "./whitelist"
 import { warnings } from "./warnings"
 import { autokick } from "./autokick"
@@ -8,7 +8,7 @@ import { status } from "./status"
 
 export async function cfg(interaction: StringSelectMenuInteraction) {
     const invalid = isInvalid(interaction)
-    if (invalid) return interaction.reply(error_message(invalid))
+    if (invalid) return interaction.reply(message.error(invalid))
 
     switch (interaction.values[0]) {
         case "status": {
@@ -27,7 +27,7 @@ export async function cfg(interaction: StringSelectMenuInteraction) {
             return await warnings(interaction)
         }
         default: {
-            return await interaction.reply(error_message("Invalid option"))
+            return await interaction.reply(message.error("Invalid option"))
         }
     }
 }

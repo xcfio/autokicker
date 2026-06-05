@@ -200,35 +200,38 @@ export function cfg_message(text?: string): InteractionReplyOptions {
     }
 }
 
-export function success_message(text: string): InteractionReplyOptions {
-    return {
-        flags: [MessageFlags.IsComponentsV2],
+export const message = {
+    base: (isSuccess: boolean, content: string) => ({
+        flags: [MessageFlags.IsComponentsV2] as InteractionReplyOptions["flags"],
         components: [
             {
                 type: ComponentType.Container,
                 components: [
-                    { type: ComponentType.TextDisplay, content: `${Emoji("check")} **Success**` },
+                    {
+                        type: ComponentType.TextDisplay,
+                        content: isSuccess ? `${Emoji("check")} **Success**` : `${Emoji("x")} **Error**`
+                    },
                     { type: ComponentType.Separator },
-                    { type: ComponentType.TextDisplay, content: text }
+                    { type: ComponentType.TextDisplay, content }
                 ]
             }
         ]
-    }
-}
-
-export function error_message(text: string): InteractionReplyOptions {
-    return {
-        flags: [MessageFlags.IsComponentsV2],
-        components: [
-            {
-                type: ComponentType.Container,
-                components: [
-                    { type: ComponentType.TextDisplay, content: `${Emoji("x")} **Error**` },
-                    { type: ComponentType.Separator },
-                    { type: ComponentType.TextDisplay, content: text }
-                ]
-            }
-        ]
+    }),
+    success: function (
+        text: string,
+        components?: APIActionRowComponent<APIStringSelectComponent>
+    ): InteractionReplyOptions {
+        const base = this.base(true, text)
+        if (components) base.components[0].components.push(components)
+        return base
+    },
+    error: function (
+        text: string,
+        components?: APIActionRowComponent<APIStringSelectComponent>
+    ): InteractionReplyOptions {
+        const base = this.base(false, text)
+        if (components) base.components[0].components.push(components)
+        return base
     }
 }
 
