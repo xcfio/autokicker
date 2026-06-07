@@ -1,7 +1,7 @@
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox"
 import { ValidationErrorHandler } from "fastify-utils"
 import { AuthenticatedSocket } from "@repo/schema"
-import { xcf } from "./utils"
+import { log, xcf } from "./utils"
 import Decorate from "./decorate"
 import Plugin from "./plugin"
 import Routes from "./routes"
@@ -13,12 +13,10 @@ import config from "./config"
 
 export let io: AuthenticatedSocket
 export async function main() {
-    const isDevelopment = config.environment === "development"
-
     const fastify = Fastify({
+        logger: log(),
         trustProxy: true,
         ajv: { customOptions: { multipleOfPrecision: 2 } },
-        logger: isDevelopment ? { file: "./log.json" } : { transport: { target: "@fastify/one-line-logger" } },
         schemaErrorFormatter: ValidationErrorHandler
     }).withTypeProvider<TypeBoxTypeProvider>()
 
