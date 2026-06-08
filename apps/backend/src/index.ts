@@ -1,7 +1,7 @@
+import { ValidationErrorHandler as schemaErrorFormatter } from "fastify-utils"
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox"
-import { ValidationErrorHandler } from "fastify-utils"
 import { AuthenticatedSocket } from "@repo/schema"
-import { log, xcf } from "./utils"
+import { logger, xcf } from "./utils"
 import Decorate from "./decorate"
 import Plugin from "./plugin"
 import Routes from "./routes"
@@ -13,12 +13,8 @@ import config from "./config"
 
 export let io: AuthenticatedSocket
 export async function main() {
-    const fastify = Fastify({
-        logger: log(),
-        trustProxy: true,
-        ajv: { customOptions: { multipleOfPrecision: 2 } },
-        schemaErrorFormatter: ValidationErrorHandler
-    }).withTypeProvider<TypeBoxTypeProvider>()
+    // prettier-ignore
+    const fastify = Fastify({ logger, trustProxy: true, schemaErrorFormatter, ajv: { customOptions: { multipleOfPrecision: 2 } } }).withTypeProvider<TypeBoxTypeProvider>()
 
     await Plugin(fastify)
     Decorate(fastify)
