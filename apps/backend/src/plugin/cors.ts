@@ -1,7 +1,6 @@
-import { FastifyInstance } from "fastify"
 import Cors from "@fastify/cors"
 
-export default async function cors(fastify: FastifyInstance) {
+export default async function cors(fastify: Fastify) {
     await fastify.register(Cors, {
         credentials: true,
         methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],

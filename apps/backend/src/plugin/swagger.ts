@@ -1,7 +1,6 @@
-import { FastifyInstance } from "fastify"
 import Swagger from "@fastify/swagger"
 
-export default async function swagger(fastify: FastifyInstance) {
+export default async function swagger(fastify: Fastify) {
     await fastify.register(Swagger, {
         hideUntagged: true,
         openapi: {

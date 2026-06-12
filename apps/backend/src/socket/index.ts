@@ -1,7 +1,6 @@
 import { AuthenticatedSocket } from "@repo/schema"
-import { FastifyInstance } from "fastify"
 
-export default (_fastify: FastifyInstance) => async (socket: Required<AuthenticatedSocket>) => {
+export default (_fastify: Fastify) => async (socket: Required<AuthenticatedSocket>) => {
     try {
         // TODO: add socket
     } catch (error) {

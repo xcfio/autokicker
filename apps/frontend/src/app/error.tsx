@@ -13,7 +13,7 @@ export default function ErrorFallback({ error, reset }: ErrorPageProps) {
     const router = useRouter()
     const [mounted, setMounted] = useState(false)
     const [copied, setCopied] = useState(false)
-    const [timestamp] = useState(new Date())
+    const [timestamp] = useState(Temporal.Now.instant())
     const [particles, setParticles] = useState<
         Array<{
             left: string
@@ -27,7 +27,7 @@ export default function ErrorFallback({ error, reset }: ErrorPageProps) {
     const stackTrace = error?.stack ?? "No stack trace available."
 
     const infoRows = [
-        { label: "Request ID", value: timestamp.getTime().toString(36).toUpperCase() },
+        { label: "Request ID", value: timestamp.epochMilliseconds.toString(36).toUpperCase() },
         { label: "Timestamp", value: timestamp.toLocaleString() },
         { label: "User Agent", value: typeof navigator !== "undefined" ? navigator.userAgent : "N/A" },
         { label: "URL", value: typeof window !== "undefined" ? window.location.href : "N/A" },
@@ -36,7 +36,7 @@ export default function ErrorFallback({ error, reset }: ErrorPageProps) {
 
     const handleCopy = async () => {
         await navigator.clipboard.writeText(
-            `Error Report - ${new Date().toLocaleString()}\n${infoRows.map((row) => `${row.label}: ${row.value}`).join("\n")}\n\nMessage:\n${errorMessage}\n\nStack Trace:\n${stackTrace}`
+            `Error Report - ${Temporal.Now.instant().toLocaleString()}\n${infoRows.map((row) => `${row.label}: ${row.value}`).join("\n")}\n\nMessage:\n${errorMessage}\n\nStack Trace:\n${stackTrace}`
         )
         setCopied(true)
         setTimeout(() => setCopied(false), 2000)

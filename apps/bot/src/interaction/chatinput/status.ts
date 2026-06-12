@@ -67,7 +67,7 @@ export async function run(interaction: ChatInputCommandInteraction) {
         }[boostLevel]
 
         const ping = client.ws.ping
-        const apiLatency = Date.now() - interaction.createdTimestamp
+        const apiLatency = Temporal.Now.instant().epochMilliseconds - interaction.createdTimestamp
 
         const memoryUsage = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)
         const totalMemory = (totalmem() / 1024 / 1024 / 1024).toFixed(2)
@@ -127,7 +127,7 @@ export async function run(interaction: ChatInputCommandInteraction) {
                                 "```ansi\n" +
                                 `${blue("Guild")}: ${guild.name} (${guild.id})\n` +
                                 `${blue("Owner")}: ${owner?.user.username} (${owner?.id})\n` +
-                                `${blue("Created")}: ${guild.createdAt.toLocaleDateString()}\n` +
+                                `${blue("Created")}: ${Temporal.Instant.fromEpochMilliseconds(guild.createdTimestamp).toLocaleString()}\n` +
                                 `${blue("Region")}: ${guild.preferredLocale}\n` +
                                 `${blue("Verification")}: ${guild.verificationLevel}\n` +
                                 `${blue("Boost")}: ${boostTierText} (${boostCount} boosts)\n` +

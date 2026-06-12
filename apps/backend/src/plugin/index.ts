@@ -1,4 +1,3 @@
-import { FastifyInstance } from "fastify"
 import config from "../config"
 import socket from "./socket-io"
 import swagger from "./swagger"
@@ -10,7 +9,7 @@ import cors from "./cors"
 import auth from "./auth"
 import jwt from "./jwt"
 
-export default async function Plugin(fastify: FastifyInstance) {
+export default async function Plugin(fastify: Fastify) {
     if (config.environment === "development") {
         await swagger(fastify)
         await scalar(fastify)

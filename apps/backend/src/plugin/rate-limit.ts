@@ -1,8 +1,7 @@
-import { FastifyInstance } from "fastify"
 import { CreateError } from "fastify-utils"
 import RateLimit from "@fastify/rate-limit"
 
-export default async function rl(fastify: FastifyInstance) {
+export default async function rl(fastify: Fastify) {
     await fastify.register(RateLimit, {
         max: 10,
         timeWindow: 20000,

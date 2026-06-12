@@ -1,3 +1,11 @@
+import {
+    FastifyInstance,
+    RawServerDefault,
+    RawRequestDefaultExpression,
+    RawReplyDefaultExpression,
+    FastifyBaseLogger
+} from "fastify"
+import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox"
 import { AuthenticatedSocket, Payload } from "@repo/schema"
 import { OAuth2Namespace } from "@fastify/oauth2"
 
@@ -13,6 +21,14 @@ declare module "fastify" {
 }
 
 declare global {
+    type Fastify = FastifyInstance<
+        RawServerDefault,
+        RawRequestDefaultExpression,
+        RawReplyDefaultExpression,
+        FastifyBaseLogger,
+        TypeBoxTypeProvider
+    >
+
     namespace NodeJS {
         interface ProcessEnv extends Env {}
     }
