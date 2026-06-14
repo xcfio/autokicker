@@ -46,7 +46,7 @@ importers:
         version: 9.7.0
       '@fastify/type-provider-typebox':
         specifier: ^6.1.0
-        version: 6.1.0(typebox@1.2.0)
+        version: 6.1.0(typebox@1.2.8)
       '@repo/database':
         specifier: workspace:*
         version: link:../../lib/database
@@ -64,7 +64,7 @@ importers:
         version: 0.38.48
       drizzle-orm:
         specifier: 1.0.0-rc.4-273829f
-        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.0)(zod@4.4.3)
+        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.8)(zod@4.4.3)
       fastify:
         specifier: ^5.8.5
         version: 5.8.5
@@ -81,8 +81,8 @@ importers:
         specifier: ^0.17.7
         version: 0.17.7
       typebox:
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.8
+        version: 1.2.8
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -116,7 +116,7 @@ importers:
         version: 14.26.4
       drizzle-orm:
         specifier: 1.0.0-rc.4-273829f
-        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.0)(zod@4.4.3)
+        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.8)(zod@4.4.3)
       fastify:
         specifier: ^5.8.5
         version: 5.8.5
@@ -196,13 +196,13 @@ importers:
     dependencies:
       drizzle-orm:
         specifier: 1.0.0-rc.4-273829f
-        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.0)(zod@4.4.3)
+        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.8)(zod@4.4.3)
       postgres:
         specifier: ^3.4.9
         version: 3.4.9
       typebox:
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.8
+        version: 1.2.8
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -223,8 +223,8 @@ importers:
         specifier: ^4.8.3
         version: 4.8.3
       typebox:
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.8
+        version: 1.2.8
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -243,10 +243,10 @@ importers:
         version: link:../schema
       drizzle-orm:
         specifier: 1.0.0-rc.4-273829f
-        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.0)(zod@4.4.3)
+        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.8)(zod@4.4.3)
       typebox:
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.8
+        version: 1.2.8
     devDependencies:
       '@types/node':
         specifier: ^25.9.1
@@ -3961,11 +3961,8 @@ packages:
     resolution: {integrity: sha512-faYHw0anBbc/kWF3zFTEnxSFOAGUX9GFbOBthvDdLsIlEoWOFOtS0zgCiQYwIskL9iGXZL3kAXD8OoZ4GmMATA==}
     engines: {node: '>= 18'}
 
-  typebox@1.1.39:
-    resolution: {integrity: sha512-vj0afVtOfLQvv0GR0VxVagYxsXN64btL7Z9XoaG0ZggH3mruMMkOO6hXdgMsjCY3shZgEvooAWVeznQVs5c43w==}
-
-  typebox@1.2.0:
-    resolution: {integrity: sha512-5zmwtMQArPorr1PVqo5Ye3GRmaiHQ7iicRnlmRXWWDLg5k5fky8OG40B12ckVq5YIxpGM8s1qzcfcA8SKNjPVw==}
+  typebox@1.2.8:
+    resolution: {integrity: sha512-rlsKhsd7L3082m9nxhFIB4Gl8jizLd/6YlFAWaz96hdV8+VJRjwYaYmDlT0jlTRwkb48SxCSSirqUtrg/HilNw==}
 
   typescript@6.0.3:
     resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
@@ -4634,9 +4631,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@fastify/type-provider-typebox@6.1.0(typebox@1.2.0)':
+  '@fastify/type-provider-typebox@6.1.0(typebox@1.2.8)':
     dependencies:
-      typebox: 1.2.0
+      typebox: 1.2.8
 
   '@floating-ui/core@1.7.5':
     dependencies:
@@ -6198,10 +6195,10 @@ snapshots:
       get-tsconfig: 4.14.0
       jiti: 2.7.0
 
-  drizzle-orm@1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.0)(zod@4.4.3):
+  drizzle-orm@1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.8)(zod@4.4.3):
     optionalDependencies:
       postgres: 3.4.9
-      typebox: 1.2.0
+      typebox: 1.2.8
       zod: 4.4.3
 
   dunder-proto@1.0.1:
@@ -6477,7 +6474,7 @@ snapshots:
     dependencies:
       '@fastify/error': 4.2.0
       fastify: 5.8.5
-      typebox: 1.1.39
+      typebox: 1.2.8
 
   fastify@5.8.5:
     dependencies:
@@ -7698,9 +7695,7 @@ snapshots:
       media-typer: 1.1.0
       mime-types: 3.0.2
 
-  typebox@1.1.39: {}
-
-  typebox@1.2.0: {}
+  typebox@1.2.8: {}
 
   typescript@6.0.3: {}
 
