@@ -168,8 +168,8 @@ const Pricing2 = ({
 
             {/* Blue glow blobs */}
             <div className="pointer-events-none absolute inset-0">
-                <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full bg-blue-600/8 blur-[120px]" />
-                <div className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] rounded-full bg-cyan-500/6 blur-[100px]" />
+                <div className="absolute top-1/4 left-1/3 w-125 h-125 rounded-full bg-blue-600/8 blur-[120px]" />
+                <div className="absolute bottom-1/4 right-1/3 w-100 h-100 rounded-full bg-cyan-500/6 blur-[100px]" />
             </div>
             <div className="pointer-events-none absolute inset-0 [background:radial-gradient(80%_60%_at_50%_15%,rgba(59,130,246,0.06),transparent_60%)]" />
 
@@ -197,7 +197,7 @@ const Pricing2 = ({
                     </div>
                     <h2 className="text-pretty text-4xl font-black lg:text-6xl tracking-tight">
                         {heading.split(",")[0]},{" "}
-                        <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+                        <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
                             {heading.split(",")[1]?.trim() ?? ""}
                         </span>
                     </h2>

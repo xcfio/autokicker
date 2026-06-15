@@ -1,19 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import {
-    Activity,
-    Bell,
-    BookOpen,
-    Bot,
-    Clock,
-    // Github,
-    Shield,
-    Sword,
-    // Twitter,
-    UserX,
-    Zap
-} from "lucide-react"
+import { Activity, Bell, BookOpen, Bot, Clock, Shield, Sword, UserX, Zap } from "lucide-react"
 
 import AnoAI from "@/components/animated-shader-background"
 import { Pricing2 } from "@/components/pricing-cards"
@@ -21,6 +9,7 @@ import { ShinyButton } from "@/components/shiny-button"
 import { Footer } from "@/components/ui/footer"
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline"
 import Image from "next/image"
+import { Github } from "@/components/icon/github"
 
 // ---------- orbital timeline data ----------
 const HOW_IT_WORKS_DATA = [
@@ -265,9 +254,9 @@ function HeroSection() {
         <section className="relative min-h-screen flex items-center overflow-hidden bg-[#030711]" id="hero">
             {/* background glow blobs */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-blue-600/10 blur-[120px]" />
-                <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-cyan-500/8 blur-[100px]" />
-                <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-indigo-600/10 blur-[80px]" />
+                <div className="absolute top-1/4 left-1/4 w-150 h-150 rounded-full bg-blue-600/10 blur-[120px]" />
+                <div className="absolute bottom-1/4 right-1/4 w-100 h-100 rounded-full bg-cyan-500/8 blur-[100px]" />
+                <div className="absolute top-0 right-0 w-75 h-75 rounded-full bg-indigo-600/10 blur-[80px]" />
             </div>
 
             {/* particle canvas */}
@@ -294,7 +283,7 @@ function HeroSection() {
                         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.9] tracking-tight text-white">
                             Dead Chat?
                             <br />
-                            <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
+                            <span className="bg-linear-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
                                 Not Anymore.
                             </span>
                         </h1>
@@ -334,9 +323,9 @@ function HeroSection() {
                 </div>
 
                 {/* RIGHT: radial orbital timeline */}
-                <div className="relative h-[520px] lg:h-[600px] flex items-center justify-center">
+                <div className="relative h-130 lg:h-150 flex items-center justify-center">
                     {/* glow behind */}
-                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-blue-600/5 to-cyan-500/5 border border-blue-500/10 backdrop-blur-sm" />
+                    <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-blue-600/5 to-cyan-500/5 border border-blue-500/10 backdrop-blur-sm" />
                     <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-80 h-80 rounded-full bg-blue-600/5 blur-3xl" />
                     </div>
@@ -364,7 +353,7 @@ function FeaturesSection() {
     return (
         <section id="features" className="relative bg-[#030711] py-32 overflow-hidden">
             {/* ambient glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-600/5 blur-[120px] pointer-events-none rounded-full" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-100 bg-blue-600/5 blur-[120px] pointer-events-none rounded-full" />
 
             <div className="relative max-w-7xl mx-auto px-6">
                 {/* section header */}
@@ -375,7 +364,7 @@ function FeaturesSection() {
                     </div>
                     <h2 className="text-4xl sm:text-5xl font-black text-white mb-4 tracking-tight">
                         Everything you need to run a{" "}
-                        <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+                        <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
                             thriving server
                         </span>
                     </h2>
@@ -396,12 +385,12 @@ function FeaturesSection() {
                             >
                                 {/* hover glow */}
                                 <div
-                                    className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${feature.gradient} opacity-[0.04]`}
+                                    className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-br ${feature.gradient} opacity-[0.04]`}
                                 />
                                 <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-blue-500/5 blur-2xl group-hover:bg-blue-500/10 transition-colors duration-500" />
 
                                 <div
-                                    className={`relative w-11 h-11 rounded-xl bg-gradient-to-br ${feature.gradient} p-0.5 mb-5`}
+                                    className={`relative w-11 h-11 rounded-xl bg-linear-to-br ${feature.gradient} p-0.5 mb-5`}
                                 >
                                     <div className="w-full h-full rounded-[10px] bg-[#030711] flex items-center justify-center">
                                         <Icon size={18} className="text-blue-300" />
@@ -451,8 +440,8 @@ function HowItWorksSection() {
 
     return (
         <section id="how-it-works" className="relative bg-[#030711] py-24 pb-16 overflow-hidden">
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue-500/20 to-transparent" />
+            <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue-500/20 to-transparent" />
 
             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-20">
@@ -461,7 +450,7 @@ function HowItWorksSection() {
                     </div>
                     <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
                         Simple as{" "}
-                        <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
+                        <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
                             1, 2, 3
                         </span>
                     </h2>
@@ -469,7 +458,7 @@ function HowItWorksSection() {
 
                 <div className="relative">
                     {/* connector line */}
-                    <div className="absolute top-16 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent hidden lg:block" />
+                    <div className="absolute top-16 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue-500/20 to-transparent hidden lg:block" />
 
                     <div className="grid lg:grid-cols-3 gap-8">
                         {steps.map((step) => {
@@ -507,22 +496,22 @@ function HowItWorksSection() {
 // ---------- CTA section ----------
 function CTASection() {
     return (
-        <section className="relative bg-[#030711] py-32 overflow-hidden min-h-[500px]">
+        <section className="relative bg-[#030711] py-32 overflow-hidden min-h-125">
             {/* Aurora as full section background */}
             <div className="absolute inset-0 pointer-events-none">
                 <AnoAI />
             </div>
 
             {/* Dark overlay so text stays readable over the aurora */}
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-[#030711]/60 via-[#030711]/40 to-[#030711]/80" />
+            <div className="absolute inset-0 pointer-events-none bg-linear-to-b from-[#030711]/60 via-[#030711]/40 to-[#030711]/80" />
 
             {/* Blue glow blob */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-100 bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
                 <h2 className="text-4xl sm:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
                     Ready to revive{" "}
-                    <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
+                    <span className="bg-linear-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
                         your server?
                     </span>
                 </h2>
@@ -567,22 +556,15 @@ export default function Home() {
 
             <div className="bg-[#030711] border-t border-blue-500/10 text-blue-200/60">
                 <Footer
-                    logo={<Image width={30} height={30} src="/icon.svg" alt="Icon" className="rounded-full" />}
+                    logo={<Image width={40} height={40} src="/icon.svg" alt="Icon" className="rounded-full" />}
                     brandName="Autokicker"
-                    socialLinks={
-                        [
-                            // {
-                            //     icon: <Github size={16} />,
-                            //     href: "https://github.com/xcfio/autokicker",
-                            //     label: "GitHub"
-                            // },
-                            // {
-                            //     icon: <Twitter size={16} />,
-                            //     href: "https://twitter.com/xcfio",
-                            //     label: "Twitter"
-                            // }
-                        ]
-                    }
+                    socialLinks={[
+                        {
+                            icon: <Github />,
+                            href: "https://github.com/xcfio",
+                            label: "GitHub"
+                        }
+                    ]}
                     mainLinks={[
                         { href: "#features", label: "Features" },
                         { href: "#how-it-works", label: "How It Works" },
