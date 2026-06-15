@@ -30,10 +30,10 @@
         "discord-api-types": "^0.38.48",
         "drizzle-orm": "1.0.0-rc.4-273829f",
         "fastify": "^5.8.5",
-        "fastify-socket": "^5.1.4",
         "fastify-utils": "^0.0.2",
         "postgres": "^3.4.9",
         "snowtransfer": "^0.17.7",
+        "socket.io": "^4.8.3",
         "typebox": "^1.2.8",
         "typescript": "^6.0.3"
     },

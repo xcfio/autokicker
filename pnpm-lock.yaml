@@ -68,9 +68,6 @@ importers:
       fastify:
         specifier: ^5.8.5
         version: 5.8.5
-      fastify-socket:
-        specifier: ^5.1.4
-        version: 5.1.4(fastify@5.8.5)(socket.io@4.8.3)
       fastify-utils:
         specifier: ^0.0.2
         version: 0.0.2
@@ -80,6 +77,9 @@ importers:
       snowtransfer:
         specifier: ^0.17.7
         version: 0.17.7
+      socket.io:
+        specifier: ^4.8.3
+        version: 4.8.3
       typebox:
         specifier: ^1.2.8
         version: 1.2.8
@@ -219,9 +219,6 @@ importers:
       postgres:
         specifier: ^3.4.9
         version: 3.4.9
-      socket.io:
-        specifier: ^4.8.3
-        version: 4.8.3
       typebox:
         specifier: ^1.2.8
         version: 1.2.8
@@ -2699,12 +2696,6 @@ packages:
 
   fastify-plugin@5.1.0:
     resolution: {integrity: sha512-FAIDA8eovSt5qcDgcBvDuX/v0Cjz0ohGhENZ/wpc3y+oZCY2afZ9Baqql3g/lC+OHRnciQol4ww7tuthOb9idw==}
-
-  fastify-socket@5.1.4:
-    resolution: {integrity: sha512-eUZVCXvROrQeaj/d4/Fjee5icV0uoa795xOiKX9k85mSStNFyF5ahTfb1sHkLjirgdgjLJTSRbLFwMARJxTA8w==}
-    peerDependencies:
-      fastify: '>=4'
-      socket.io: '>=4'
 
   fastify-utils@0.0.2:
     resolution: {integrity: sha512-zl9jezXcsvK0HcmMaH+hDfwmu/4qlm7MkInLW6MIfukiGgtzqJVxEazTds6P/rkOdSLGb45EPRc/dh4vXaPOpw==}
@@ -6222,13 +6213,6 @@ snapshots:
   fastify-plugin@4.5.1: {}
 
   fastify-plugin@5.1.0: {}
-
-  fastify-socket@5.1.4(fastify@5.8.5)(socket.io@4.8.3):
-    dependencies:
-      fastify: 5.8.5
-      fastify-plugin: 5.1.0
-      socket.io: 4.8.3
-      tslib: 2.8.1
 
   fastify-utils@0.0.2:
     dependencies:

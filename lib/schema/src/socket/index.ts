@@ -1,7 +1,5 @@
-import { Socket } from "socket.io"
+export type ClientToServerEvents = {}
 
-export interface ClientToServerEvents {}
+export type ServerToClientEvents = {}
 
-export interface ServerToClientEvents {}
-
-export interface AuthenticatedSocket extends Socket<ClientToServerEvents, ServerToClientEvents> {}
+export type InterServerEvents = {}

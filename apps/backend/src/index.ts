@@ -1,7 +1,8 @@
 import { ValidationErrorHandler as schemaErrorFormatter } from "fastify-utils"
+import { ClientToServerEvents, InterServerEvents, ServerToClientEvents } from "@repo/schema"
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox"
-import { AuthenticatedSocket } from "@repo/schema"
 import { logger, xcf } from "./utils"
+import { Server } from "socket.io"
 import Decorate from "./decorate"
 import Plugin from "./plugin"
 import Routes from "./routes"
@@ -11,25 +12,32 @@ import Hooks from "./hooks"
 import * as _ from "./type"
 import config from "./config"
 
-export let io: AuthenticatedSocket
-export async function main() {
-    // prettier-ignore
-    const fastify = Fastify({ logger, trustProxy: true, schemaErrorFormatter, ajv: { customOptions: { multipleOfPrecision: 2 } } }).withTypeProvider<TypeBoxTypeProvider>()
+export const fastify = Fastify({
+    logger,
+    trustProxy: true,
+    ajv: { customOptions: { multipleOfPrecision: 2 } },
+    schemaErrorFormatter
+}).withTypeProvider<TypeBoxTypeProvider>()
 
+export const io = new Server<
+    ClientToServerEvents,
+    ServerToClientEvents,
+    InterServerEvents,
+    { fastify: typeof fastify }
+>(fastify.server, { cookie: true, cors: { origin: config.origin, credentials: true } })
+
+fastify.io = io
+
+export async function main() {
     await Plugin(fastify)
     Decorate(fastify)
     Routes(fastify)
     Hooks(fastify)
+    Socket(io)
 
     const port = Number(config.port ?? 7200)
     await fastify.listen({ host: "0.0.0.0", port })
     console.log(`Server listening at http://localhost:${port}`)
-
-    // @ts-ignore
-    fastify.io.on("connection", Socket(fastify))
-    io = fastify.io
-
-    return fastify
 }
 
 process.on("uncaughtException", (err: Error, origin: string) => xcf(err, "Uncaught Exception", origin, false))

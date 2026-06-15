@@ -1,11 +1,7 @@
-import { AuthenticatedSocket } from "@repo/schema"
+import { fastify } from "../"
 
-export default (_fastify: Fastify) => async (socket: Required<AuthenticatedSocket>) => {
-    try {
-        // TODO: add socket
-    } catch (error) {
-        console.error(`Socket ${socket.id} authentication failed:`, error)
-        socket.disconnect(true)
-        return
-    }
+export default function Plugin(io: SocketIO) {
+    io.on("connection", (socket) => {
+        socket.data.fastify = fastify
+    })
 }
