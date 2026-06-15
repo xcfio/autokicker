@@ -48,7 +48,7 @@ export default function RadialOrbitalTimeline({ timelineData, className }: Radia
 
     const toggleItem = (id: number) => {
         const isCurrentlyExpanded = expandedItems[id]
-        
+
         const newState = { ...expandedItems }
         Object.keys(newState).forEach((key) => {
             if (parseInt(key) !== id) {
@@ -186,7 +186,9 @@ export default function RadialOrbitalTimeline({ timelineData, className }: Radia
                         return (
                             <div
                                 key={item.id}
-                                ref={(el) => { nodeRefs.current[item.id] = el }}
+                                ref={(el) => {
+                                    nodeRefs.current[item.id] = el
+                                }}
                                 className="absolute transition-all duration-700 cursor-pointer"
                                 style={nodeStyle}
                                 onClick={(e) => {

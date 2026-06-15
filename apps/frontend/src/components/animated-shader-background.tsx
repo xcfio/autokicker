@@ -1,36 +1,36 @@
 "use client"
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react"
 
-import * as THREE from 'three';
+import * as THREE from "three"
 const AnoAI = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    const w = container.offsetWidth || window.innerWidth;
-    const h = container.offsetHeight || window.innerHeight;
-    renderer.setSize(w, h);
-    renderer.domElement.style.position = 'absolute';
-    renderer.domElement.style.inset = '0';
-    renderer.domElement.style.width = '100%';
-    renderer.domElement.style.height = '100%';
-    container.appendChild(renderer.domElement);
+    useEffect(() => {
+        const container = containerRef.current
+        if (!container) return
+        const scene = new THREE.Scene()
+        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+        const w = container.offsetWidth || window.innerWidth
+        const h = container.offsetHeight || window.innerHeight
+        renderer.setSize(w, h)
+        renderer.domElement.style.position = "absolute"
+        renderer.domElement.style.inset = "0"
+        renderer.domElement.style.width = "100%"
+        renderer.domElement.style.height = "100%"
+        container.appendChild(renderer.domElement)
 
-    const material = new THREE.ShaderMaterial({
-      uniforms: {
-        iTime: { value: 0 },
-        iResolution: { value: new THREE.Vector2(w, h) }
-      },
-      vertexShader: `
+        const material = new THREE.ShaderMaterial({
+            uniforms: {
+                iTime: { value: 0 },
+                iResolution: { value: new THREE.Vector2(w, h) }
+            },
+            vertexShader: `
         void main() {
           gl_Position = vec4(position, 1.0);
         }
       `,
-      fragmentShader: `
+            fragmentShader: `
         uniform float iTime;
         uniform vec2 iResolution;
 
@@ -90,43 +90,43 @@ const AnoAI = () => {
           gl_FragColor = o * 1.5;
         }
       `
-    });
+        })
 
-    const geometry = new THREE.PlaneGeometry(2, 2);
-    const mesh = new THREE.Mesh(geometry, material);
-    scene.add(mesh);
+        const geometry = new THREE.PlaneGeometry(2, 2)
+        const mesh = new THREE.Mesh(geometry, material)
+        scene.add(mesh)
 
-    let frameId: number;
-    const animate = () => {
-      material.uniforms.iTime.value += 0.016;
-      renderer.render(scene, camera);
-      frameId = requestAnimationFrame(animate);
-    };
-    animate();
+        let frameId: number
+        const animate = () => {
+            material.uniforms.iTime.value += 0.016
+            renderer.render(scene, camera)
+            frameId = requestAnimationFrame(animate)
+        }
+        animate()
 
-    const handleResize = () => {
-      const nw = container.offsetWidth || window.innerWidth;
-      const nh = container.offsetHeight || window.innerHeight;
-      renderer.setSize(nw, nh);
-      material.uniforms.iResolution.value.set(nw, nh);
-    };
-    window.addEventListener('resize', handleResize);
+        const handleResize = () => {
+            const nw = container.offsetWidth || window.innerWidth
+            const nh = container.offsetHeight || window.innerHeight
+            renderer.setSize(nw, nh)
+            material.uniforms.iResolution.value.set(nw, nh)
+        }
+        window.addEventListener("resize", handleResize)
 
-    return () => {
-      cancelAnimationFrame(frameId);
-      window.removeEventListener('resize', handleResize);
-      container.removeChild(renderer.domElement);
-      geometry.dispose();
-      material.dispose();
-      renderer.dispose();
-    };
-  }, []);
+        return () => {
+            cancelAnimationFrame(frameId)
+            window.removeEventListener("resize", handleResize)
+            container.removeChild(renderer.domElement)
+            geometry.dispose()
+            material.dispose()
+            renderer.dispose()
+        }
+    }, [])
 
-  return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden">
-      <div className="absolute inset-0 z-10" />
-    </div>
-  );
-};
+    return (
+        <div ref={containerRef} className="absolute inset-0 overflow-hidden">
+            <div className="absolute inset-0 z-10" />
+        </div>
+    )
+}
 
-export default AnoAI;
+export default AnoAI

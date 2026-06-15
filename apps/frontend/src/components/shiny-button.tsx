@@ -3,15 +3,15 @@
 import type React from "react"
 
 interface ShinyButtonProps {
-  children: React.ReactNode
-  onClick?: () => void
-  className?: string
+    children: React.ReactNode
+    onClick?: () => void
+    className?: string
 }
 
 export function ShinyButton({ children, onClick, className = "" }: ShinyButtonProps) {
-  return (
-    <>
-      <style>{`
+    return (
+        <>
+            <style>{`
         @import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,500&display=swap");
 
         @property --gradient-angle {
@@ -193,9 +193,9 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
         }
       `}</style>
 
-      <button className={`shiny-cta ${className}`} onClick={onClick}>
-        <span>{children}</span>
-      </button>
-    </>
-  )
+            <button className={`shiny-cta ${className}`} onClick={onClick}>
+                <span>{children}</span>
+            </button>
+        </>
+    )
 }

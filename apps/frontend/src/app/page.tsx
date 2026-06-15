@@ -20,6 +20,7 @@ import { Pricing2 } from "@/components/pricing-cards"
 import { ShinyButton } from "@/components/shiny-button"
 import { Footer } from "@/components/ui/footer"
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline"
+import Image from "next/image"
 
 // ---------- orbital timeline data ----------
 const HOW_IT_WORKS_DATA = [
@@ -28,7 +29,7 @@ const HOW_IT_WORKS_DATA = [
         title: "Invite Bot",
         date: "Step 1",
         content:
-            "Add AutoKicker to your server in one click. Grant it the permissions it needs to read activity and manage members.",
+            "Add Autokicker to your server in one click. Grant it the permissions it needs to read activity and manage members.",
         category: "setup",
         icon: Bot,
         relatedIds: [2],
@@ -52,7 +53,7 @@ const HOW_IT_WORKS_DATA = [
         title: "Monitor 24/7",
         date: "Step 3",
         content:
-            "AutoKicker silently watches messages, voice joins, and reactions round-the-clock with zero impact on your chat.",
+            "Autokicker silently watches messages, voice joins, and reactions round-the-clock with zero impact on your chat.",
         category: "monitor",
         icon: Activity,
         relatedIds: [2, 4],
@@ -127,7 +128,7 @@ const FEATURES = [
         icon: Activity,
         title: "Smart Activity Tracking",
         description:
-            "We don't just look at messages. AutoKicker tracks voice channel joins, text messages, and reactions to get a true picture of who is actually participating.",
+            "We don't just look at messages. Autokicker tracks voice channel joins, text messages, and reactions to get a true picture of who is actually participating.",
         gradient: "from-blue-500 to-cyan-400"
     },
     {
@@ -173,13 +174,13 @@ function Navbar() {
         <nav className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl border-b border-blue-500/10 bg-[#030711]/70">
             <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                 <a href="/" className="flex items-center gap-2.5 group">
-                    <div className="relative w-8 h-8">
-                        <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 opacity-80 group-hover:opacity-100 transition-opacity" />
-                        <div className="absolute inset-0.5 rounded-md bg-[#030711] flex items-center justify-center">
-                            <UserX size={14} className="text-blue-400" />
+                    <div className="relative w-10 h-10">
+                        <div className="absolute inset-0.5 rounded-full bg-[#030711] flex items-center justify-center">
+                            <Image width={100} height={100} src="/icon.svg" alt="Icon" className="rounded-full" />
+                            {/* <UserX size={14} className="text-blue-400" /> */}
                         </div>
                     </div>
-                    <span className="font-bold text-lg tracking-tight text-white">AutoKicker</span>
+                    <span className="font-bold text-lg tracking-tight text-white">Autokicker</span>
                 </a>
 
                 <div className="hidden md:flex items-center gap-8 text-sm text-blue-200/60">
@@ -299,19 +300,19 @@ function HeroSection() {
                         </h1>
 
                         <p className="text-lg text-blue-100/60 leading-relaxed max-w-lg">
-                            AutoKicker silently tracks activity, warns lurkers, and automatically removes inactive
+                            Autokicker silently tracks activity, warns lurkers, and automatically removes inactive
                             members — keeping your community vibrant and your member list accurate, with{" "}
                             <span className="text-blue-300 font-medium">zero manual effort.</span>
                         </p>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-4 items-start">
+                    <div className="flex flex-col sm:flex-row gap-4 items-center">
                         <ShinyButton onClick={() => window.open("https://discord.com/oauth2/authorize", "_blank")}>
-                            Add AutoKicker for Free
+                            Add Autokicker for Free
                         </ShinyButton>
                         <a
                             href="#how-it-works"
-                            className="flex items-center gap-2 px-6 py-4 rounded-full text-blue-300 border border-blue-500/20 hover:border-blue-500/40 hover:text-white hover:bg-blue-500/5 transition-all duration-200 text-sm font-medium"
+                            className="flex items-center gap-2 px-8 py-5 rounded-full text-blue-300 border border-blue-500/20 hover:border-blue-500/40 hover:text-white hover:bg-blue-500/5 transition-all duration-200 text-sm font-medium"
                         >
                             See How It Works
                         </a>
@@ -350,10 +351,10 @@ function HeroSection() {
             </div>
 
             {/* scroll hint */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-blue-400/40">
+            {/* <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-blue-400/40">
                 <span className="text-xs font-mono tracking-widest uppercase">Scroll</span>
                 <div className="w-px h-8 bg-gradient-to-b from-blue-400/40 to-transparent" />
-            </div>
+            </div> */}
         </section>
     )
 }
@@ -436,7 +437,7 @@ function HowItWorksSection() {
             num: "02",
             title: "We Monitor Quietly",
             description:
-                "AutoKicker watches your server 24/7, tracking exactly when each user was last active without interrupting the chat flow.",
+                "Autokicker watches your server 24/7, tracking exactly when each user was last active without interrupting the chat flow.",
             icon: Activity
         },
         {
@@ -527,12 +528,12 @@ function CTASection() {
                 </h2>
                 <p className="text-blue-200/60 text-xl mb-12 max-w-xl mx-auto">
                     Stop letting inactive users clutter your member list. Join thousands of servers already using
-                    AutoKicker.
+                    Autokicker.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <ShinyButton onClick={() => window.open("https://discord.com/oauth2/authorize", "_blank")}>
-                        Invite AutoKicker Now — It&apos;s Free
+                        Invite Autokicker Now — It&apos;s Free
                     </ShinyButton>
                 </div>
 
@@ -557,7 +558,7 @@ export default function Home() {
             <section id="pricing">
                 <Pricing2
                     heading="Simple, Free Pricing"
-                    description="AutoKicker is completely free. No hidden fees, no tiers, no limits."
+                    description="Autokicker is completely free. No hidden fees, no tiers, no limits."
                     plans={FREE_PLANS}
                 />
             </section>
@@ -566,12 +567,8 @@ export default function Home() {
 
             <div className="bg-[#030711] border-t border-blue-500/10 text-blue-200/60">
                 <Footer
-                    logo={
-                        <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center">
-                            <UserX size={12} className="text-white" />
-                        </div>
-                    }
-                    brandName="AutoKicker"
+                    logo={<Image width={30} height={30} src="/icon.svg" alt="Icon" className="rounded-full" />}
+                    brandName="Autokicker"
                     socialLinks={
                         [
                             // {
@@ -597,7 +594,7 @@ export default function Home() {
                         { href: "/terms", label: "Terms of Service" }
                     ]}
                     copyright={{
-                        text: `© ${new Date().getFullYear()} AutoKicker. All rights reserved.`,
+                        text: `© ${new Date().getFullYear()} Autokicker. All rights reserved.`,
                         license: "Made with ❤️ for Discord communities."
                     }}
                 />
@@ -605,4 +602,3 @@ export default function Home() {
         </div>
     )
 }
-

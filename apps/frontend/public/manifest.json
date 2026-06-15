@@ -1,6 +1,6 @@
 {
     "name": "Autokicker - Automatically Kick Inactive Discord Members",
-    "short_name": "AutoKicker",
+    "short_name": "Autokicker",
     "description": "A tool to automatically kick inactive members from your Discord server.",
     "start_url": "/",
     "display": "standalone",
