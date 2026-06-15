@@ -1,4 +1,4 @@
-import { Figtree, Cascadia_Code, Comfortaa } from "next/font/google"
+import { Figtree, Fira_Code, Comfortaa } from "next/font/google"
 import { ThemeProvider } from "next-themes"
 import { Metadata } from "next"
 import { cn } from "@/lib/utils"
@@ -6,7 +6,7 @@ import "./globals.css"
 
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" })
 const comfortaa = Comfortaa({ subsets: ["latin"], variable: "--font-comfortaa" })
-const cascadiaCode = Cascadia_Code({ subsets: ["latin"], variable: "--font-mono" })
+const firaCode = Fira_Code({ subsets: ["latin"], variable: "--font-mono" })
 
 export const metadata: Metadata = {
     title: "Autokicker - Automatically Kick Inactive Discord Members",
@@ -75,7 +75,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <html
             lang="en"
             suppressHydrationWarning
-            className={cn("font-sans scroll-smooth", figtree.variable, cascadiaCode.variable, comfortaa.variable)}
+            className={cn("font-sans scroll-smooth", figtree.variable, firaCode.variable, comfortaa.variable)}
         >
             <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
             <head>
