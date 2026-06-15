@@ -27,6 +27,7 @@
         "@repo/schema": "workspace:*",
         "@repo/utils": "workspace:*",
         "@scalar/fastify-api-reference": "^1.58.0",
+        "@socket.io/admin-ui": "^0.5.1",
         "discord-api-types": "^0.38.48",
         "drizzle-orm": "1.0.0-rc.4-273829f",
         "fastify": "^5.8.5",

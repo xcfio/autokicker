@@ -59,6 +59,9 @@ importers:
       '@scalar/fastify-api-reference':
         specifier: ^1.58.0
         version: 1.58.0
+      '@socket.io/admin-ui':
+        specifier: ^0.5.1
+        version: 0.5.1(socket.io@4.8.3)
       discord-api-types:
         specifier: ^0.38.48
         version: 0.38.48
@@ -1980,6 +1983,11 @@ packages:
     resolution: {integrity: sha512-tlqY9xq5ukxTUZBmoOp+m61cqwQD5pHJtFY3Mn8CA8ps6yghLH/Hw8UPdqg4OLmFW3IFlcXnQNmo/dh8HzXYIQ==}
     engines: {node: '>=18'}
 
+  '@socket.io/admin-ui@0.5.1':
+    resolution: {integrity: sha512-1dlGL2FGm6T+uL1e6iDvbo2eCINwvW7iVbjIblwh5kPPRM1SP8lmZrbFZf4QNJ/cqQ+JLcx49eXGM9WAB4TK7w==}
+    peerDependencies:
+      socket.io: '>=3.1.0'
+
   '@socket.io/component-emitter@3.1.2':
     resolution: {integrity: sha512-9BCxFwvbGg/RsZK9tjXd8s4UcwR0MWeFQ1XEKIQVVvAGJyINdrqKMcTRyLoK8Rse1GjzLV9cwjWV1olXRWEXVA==}
 
@@ -2114,6 +2122,9 @@ packages:
   '@tybys/wasm-util@0.10.2':
     resolution: {integrity: sha512-RoBvJ2X0wuKlWFIjrwffGw1IqZHKQqzIchKaadZZfnNpsAYp2mM0h36JtPCjNDAHGgYez/15uMBpfGwchhiMgg==}
 
+  '@types/bcryptjs@2.4.6':
+    resolution: {integrity: sha512-9xlo6R2qDs5uixm0bcIqCeMCE6HiQsIyel9KQySStiyqNl2tnj2mP3DX1Nf56MD6KMenNNlBBsy3LJ7gUEQPXQ==}
+
   '@types/cors@2.8.19':
     resolution: {integrity: sha512-mFNylyeyqN93lfe/9CSxOGREz8cpzAhH+E93xJ4xWQf62V8sQ/24reV2nyzUWM6H6Xji+GGHpkbLe7pVoUEskg==}
 
@@ -2222,6 +2233,9 @@ packages:
     resolution: {integrity: sha512-girxaJ7WZssDOFhzCGZTDKoTa1gk6A1TbflaYTpykLJ4UU9Fz9kx1aREM8JCuoVHbL8X8T/mJg7w2oYSq72Oig==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+
+  bcryptjs@2.4.3:
+    resolution: {integrity: sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==}
 
   bn.js@4.12.3:
     resolution: {integrity: sha512-fGTi3gxV/23FTYdAoUtLYp6qySe2KE3teyZitipKNRuVYcBkoP/bB3guXN/XVKUe9mxCHXnc9C4ocyz8OmgN0g==}
@@ -2363,6 +2377,15 @@ packages:
   data-uri-to-buffer@4.0.1:
     resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
     engines: {node: '>= 12'}
+
+  debug@4.3.7:
+    resolution: {integrity: sha512-Er2nc/H7RrMXZBFCEim6TCmMk02Z8vLC2Rbi1KEBggpo0fS6l0S1nnapwmIi3yW/+GOJap1Krg4w0Hg80oCqgQ==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
 
   debug@4.4.3:
     resolution: {integrity: sha512-RGwwWnwQvkVfavKVt22FGLw+xYSdzARwm0ru6DhTVA3umU5hZc28V3kO4stgYryrTlLpuvgI9GiijltAjNbcqA==}
@@ -5583,6 +5606,15 @@ snapshots:
 
   '@sindresorhus/merge-streams@4.0.0': {}
 
+  '@socket.io/admin-ui@0.5.1(socket.io@4.8.3)':
+    dependencies:
+      '@types/bcryptjs': 2.4.6
+      bcryptjs: 2.4.3
+      debug: 4.3.7
+      socket.io: 4.8.3
+    transitivePeerDependencies:
+      - supports-color
+
   '@socket.io/component-emitter@3.1.2': {}
 
   '@swc/helpers@0.5.15':
@@ -5687,6 +5719,8 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
+  '@types/bcryptjs@2.4.6': {}
+
   '@types/cors@2.8.19':
     dependencies:
       '@types/node': 25.9.1
@@ -5777,6 +5811,8 @@ snapshots:
   baseline-browser-mapping@2.10.27: {}
 
   baseline-browser-mapping@2.10.37: {}
+
+  bcryptjs@2.4.3: {}
 
   bn.js@4.12.3: {}
 
@@ -5897,6 +5933,10 @@ snapshots:
   csstype@3.2.3: {}
 
   data-uri-to-buffer@4.0.1: {}
+
+  debug@4.3.7:
+    dependencies:
+      ms: 2.1.3
 
   debug@4.4.3:
     dependencies:

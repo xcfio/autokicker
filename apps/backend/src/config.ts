@@ -16,6 +16,10 @@ const config = {
         cookie: env<Env>("COOKIE_SECRET"),
         jwt: env<Env>("JWT_SECRET"),
         hmac: env<Env>("HMAC_SECRET")
+    },
+    io: {
+        username: env<Env>("IO_USERNAME"),
+        password: env<Env>("IO_PASSWORD")
     }
 } as const
 

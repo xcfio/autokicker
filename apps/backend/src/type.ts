@@ -36,4 +36,7 @@ export type Env = {
     COOKIE_SECRET: string
     JWT_SECRET: string
     HMAC_SECRET: string
+
+    IO_USERNAME: string
+    IO_PASSWORD: string
 }

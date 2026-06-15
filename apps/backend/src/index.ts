@@ -1,6 +1,7 @@
 import { ValidationErrorHandler as schemaErrorFormatter } from "fastify-utils"
 import { ClientToServerEvents, InterServerEvents, ServerToClientEvents } from "@repo/schema"
 import { TypeBoxTypeProvider } from "@fastify/type-provider-typebox"
+import { instrument } from "@socket.io/admin-ui"
 import { logger, xcf } from "./utils"
 import { Server } from "socket.io"
 import Decorate from "./decorate"
@@ -24,11 +25,11 @@ export const io = new Server<
     ServerToClientEvents,
     InterServerEvents,
     { fastify: typeof fastify }
->(fastify.server, { cookie: true, cors: { origin: config.origin, credentials: true } })
-
-fastify.io = io
+>(fastify.server, { cookie: true, cors: { origin: [config.origin, "https://admin.socket.io"], credentials: true } })
+instrument(io, { auth: { ...config.io, type: "basic" }, mode: "development" })
 
 export async function main() {
+    fastify.io = io
     await Plugin(fastify)
     Decorate(fastify)
     Routes(fastify)
