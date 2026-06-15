@@ -1,14 +1,17 @@
 "use client"
 
 import type React from "react"
+import Link from "next/link"
 
 interface ShinyButtonProps {
     children: React.ReactNode
     onClick?: () => void
+    href?: string
+    target?: string
     className?: string
 }
 
-export function ShinyButton({ children, onClick, className = "" }: ShinyButtonProps) {
+export function ShinyButton({ children, onClick, href, target, className = "" }: ShinyButtonProps) {
     return (
         <>
             <style>{`
@@ -49,6 +52,10 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
           --shadow-size: 2px;
           --transition: 800ms cubic-bezier(0.25, 1, 0.5, 1);
           
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
           isolation: isolate;
           position: relative;
           overflow: hidden;
@@ -193,9 +200,27 @@ export function ShinyButton({ children, onClick, className = "" }: ShinyButtonPr
         }
       `}</style>
 
-            <button className={`shiny-cta ${className}`} onClick={onClick}>
-                <span>{children}</span>
-            </button>
+            {href ? (
+                href.startsWith("http") || href.startsWith("//") ? (
+                    <a
+                        href={href}
+                        target={target}
+                        rel={target === "_blank" ? "noopener noreferrer" : undefined}
+                        className={`shiny-cta ${className}`}
+                        onClick={onClick}
+                    >
+                        <span>{children}</span>
+                    </a>
+                ) : (
+                    <Link href={href} target={target} className={`shiny-cta ${className}`} onClick={onClick}>
+                        <span>{children}</span>
+                    </Link>
+                )
+            ) : (
+                <button className={`shiny-cta ${className}`} onClick={onClick}>
+                    <span>{children}</span>
+                </button>
+            )}
         </>
     )
 }

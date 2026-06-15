@@ -1,15 +1,16 @@
 "use client"
 
-import { useEffect, useRef } from "react"
 import { Activity, Bell, BookOpen, Bot, Clock, Shield, Sword, UserX, Zap } from "lucide-react"
-
-import AnoAI from "@/components/animated-shader-background"
-import { Pricing2 } from "@/components/pricing-cards"
 import { ShinyButton } from "@/components/shiny-button"
-import { Footer } from "@/components/ui/footer"
-import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline"
-import Image from "next/image"
+import { Pricing2 } from "@/components/pricing-cards"
 import { Github } from "@/components/icon/github"
+import { Footer } from "@/components/ui/footer"
+import { useEffect, useRef } from "react"
+
+import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline"
+import AnoAI from "@/components/animated-shader-background"
+import Image from "next/image"
+import Link from "next/link"
 
 // ---------- orbital timeline data ----------
 const HOW_IT_WORKS_DATA = [
@@ -106,7 +107,7 @@ const FREE_PLANS = [
         ],
         button: {
             text: "Add to Discord — It's Free",
-            url: "https://discord.com/oauth2/authorize"
+            url: "https://discord.com/oauth2/authorize?client_id=1477127592724140195"
         }
     }
 ]
@@ -162,34 +163,32 @@ function Navbar() {
     return (
         <nav className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl border-b border-blue-500/10 bg-[#030711]/70">
             <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-                <a href="/" className="flex items-center gap-2.5 group">
+                <Link href="/" className="flex items-center gap-2.5 group">
                     <div className="relative w-10 h-10">
                         <div className="absolute inset-0.5 rounded-full bg-[#030711] flex items-center justify-center">
                             <Image width={100} height={100} src="/icon.svg" alt="Icon" className="rounded-full" />
-                            {/* <UserX size={14} className="text-blue-400" /> */}
                         </div>
                     </div>
                     <span className="font-bold text-lg tracking-tight text-white">Autokicker</span>
-                </a>
+                </Link>
 
                 <div className="hidden md:flex items-center gap-8 text-sm text-blue-200/60">
-                    <a href="#features" className="hover:text-white transition-colors">
+                    <Link href="#features" className="hover:text-white transition-colors">
                         Features
-                    </a>
-                    <a href="#how-it-works" className="hover:text-white transition-colors">
+                    </Link>
+                    <Link href="#how-it-works" className="hover:text-white transition-colors">
                         How It Works
-                    </a>
-                    <a href="#pricing" className="hover:text-white transition-colors">
+                    </Link>
+                    <Link href="#pricing" className="hover:text-white transition-colors">
                         Pricing
-                    </a>
+                    </Link>
                 </div>
-
-                <a
-                    href="https://discord.com/oauth2/authorize"
+                <Link
+                    href="https://discord.com/oauth2/authorize?client_id=1477127592724140195"
                     className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-blue-600 hover:bg-blue-500 text-white transition-all duration-200 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40"
                 >
                     Add to Discord
-                </a>
+                </Link>
             </div>
         </nav>
     )
@@ -291,27 +290,31 @@ function HeroSection() {
                         <p className="text-lg text-blue-100/60 leading-relaxed max-w-lg">
                             Autokicker silently tracks activity, warns lurkers, and automatically removes inactive
                             members — keeping your community vibrant and your member list accurate, with{" "}
-                            <span className="text-blue-300 font-medium">zero manual effort.</span>
+                            <span className="text-blue-400 font-medium">zero manual effort.</span>
                         </p>
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-4 items-center">
-                        <ShinyButton onClick={() => window.open("https://discord.com/oauth2/authorize", "_blank")}>
+                        <ShinyButton
+                            href="https://discord.com/oauth2/authorize?client_id=1477127592724140195"
+                            target="_blank"
+                            className="w-full sm:w-auto"
+                        >
                             Add Autokicker for Free
                         </ShinyButton>
-                        <a
-                            href="#how-it-works"
-                            className="flex items-center gap-2 px-8 py-5 rounded-full text-blue-300 border border-blue-500/20 hover:border-blue-500/40 hover:text-white hover:bg-blue-500/5 transition-all duration-200 text-sm font-medium"
+                        <Link
+                            href="/login"
+                            className="flex items-center justify-center w-full sm:w-auto text-lg gap-2 px-8 py-4 rounded-full text-blue-300 border border-blue-500/20 hover:border-blue-500/40 hover:text-white hover:bg-blue-500/5 transition-all duration-200 font-medium"
                         >
-                            See How It Works
-                        </a>
+                            Login
+                        </Link>
                     </div>
 
                     {/* stats */}
                     <div className="flex gap-8 pt-4 border-t border-blue-500/10">
                         {[
                             { value: "24/7", label: "Active monitoring" },
-                            { value: "1hr", label: "Sweep interval" },
+                            { value: "1 day", label: "Sweep interval" },
                             { value: "0", label: "Manual effort" }
                         ].map((stat) => (
                             <div key={stat.label}>
@@ -323,7 +326,7 @@ function HeroSection() {
                 </div>
 
                 {/* RIGHT: radial orbital timeline */}
-                <div className="relative h-130 lg:h-150 flex items-center justify-center">
+                <div className="hidden relative h-130 lg:h-150 sm:flex items-center justify-center">
                     {/* glow behind */}
                     <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-blue-600/5 to-cyan-500/5 border border-blue-500/10 backdrop-blur-sm" />
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -385,14 +388,14 @@ function FeaturesSection() {
                             >
                                 {/* hover glow */}
                                 <div
-                                    className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-br ${feature.gradient} opacity-[0.04]`}
+                                    className={`absolute inset-0 opacity-0 group-hover:opacity-[0.07] transition-opacity duration-500 bg-linear-to-br ${feature.gradient} opacity-[0.04]`}
                                 />
                                 <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-blue-500/5 blur-2xl group-hover:bg-blue-500/10 transition-colors duration-500" />
 
                                 <div
                                     className={`relative w-11 h-11 rounded-xl bg-linear-to-br ${feature.gradient} p-0.5 mb-5`}
                                 >
-                                    <div className="w-full h-full rounded-[10px] bg-[#030711] flex items-center justify-center">
+                                    <div className="w-full h-full rounded-[12px] bg-[#030711] flex items-center justify-center">
                                         <Icon size={18} className="text-blue-300" />
                                     </div>
                                 </div>
@@ -440,9 +443,6 @@ function HowItWorksSection() {
 
     return (
         <section id="how-it-works" className="relative bg-[#030711] py-24 pb-16 overflow-hidden">
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue-500/20 to-transparent" />
-            <div className="absolute top-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-blue-500/20 to-transparent" />
-
             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-20">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-medium mb-6">
@@ -520,8 +520,12 @@ function CTASection() {
                     Autokicker.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <ShinyButton onClick={() => window.open("https://discord.com/oauth2/authorize", "_blank")}>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <ShinyButton
+                        href="https://discord.com/oauth2/authorize?client_id=1477127592724140195"
+                        target="_blank"
+                        className="w-full sm:w-auto"
+                    >
                         Invite Autokicker Now — It&apos;s Free
                     </ShinyButton>
                 </div>
@@ -569,7 +573,10 @@ export default function Home() {
                         { href: "#features", label: "Features" },
                         { href: "#how-it-works", label: "How It Works" },
                         { href: "#pricing", label: "Pricing" },
-                        { href: "https://discord.com/oauth2/authorize", label: "Add to Discord" }
+                        {
+                            href: "https://discord.com/oauth2/authorize?client_id=1477127592724140195",
+                            label: "Add to Discord"
+                        }
                     ]}
                     legalLinks={[
                         { href: "/privacy", label: "Privacy Policy" },
