@@ -83,7 +83,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                     <script
                         defer
                         src="https://cool-xcfio.vercel.app/script.js"
-                        data-website-id="7254c75e-d3bd-4c9a-ac98-dc5e45dde948"
+                        data-website-id="9a4ce4bd-8f6d-4e11-b623-86503a3c7f84"
                     ></script>
                 )}
                 <script
