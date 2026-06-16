@@ -1,12 +1,33 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-import { ArrowRight, CircleCheck } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { forwardRef, useEffect, useRef, useState } from "react"
+import { ArrowRight, CircleCheck } from "lucide-react"
+import { Switch as SwitchPrimitives } from "radix-ui"
 import { Separator } from "@/components/ui/separator"
-import { Switch } from "@/components/ui/switch"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+
+const Switch = forwardRef<
+    React.ComponentRef<typeof SwitchPrimitives.Root>,
+    React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root>
+>(({ className, ...props }, ref) => (
+    <SwitchPrimitives.Root
+        className={cn(
+            "peer inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input",
+            className
+        )}
+        {...props}
+        ref={ref}
+    >
+        <SwitchPrimitives.Thumb
+            className={cn(
+                "pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform data-[state=checked]:translate-x-5 data-[state=unchecked]:translate-x-0"
+            )}
+        />
+    </SwitchPrimitives.Root>
+))
+Switch.displayName = SwitchPrimitives.Root.displayName
 
 interface PricingFeature {
     text: string
@@ -29,7 +50,7 @@ interface Pricing2Props {
     plans?: PricingPlan[]
 }
 
-const Pricing2 = ({
+export const Pricing = ({
     heading = "Plans & Pricing",
     description = "Choose the plan that matches your workflow and scale with ease.",
     plans = [
@@ -205,7 +226,11 @@ const Pricing2 = ({
 
                     <div className="flex items-center gap-3 text-lg">
                         Monthly
-                        <Switch checked={isYearly} onCheckedChange={() => setIsYearly(!isYearly)} />
+                        <Switch
+                            className="text-blue-600"
+                            checked={isYearly}
+                            onCheckedChange={() => setIsYearly(!isYearly)}
+                        />
                         Yearly
                     </div>
 
@@ -227,11 +252,9 @@ const Pricing2 = ({
                                         {isYearly ? plan.yearlyPrice : plan.monthlyPrice}
                                     </span>
                                     <p className="text-blue-300/40">
-                                        Billed{" "}
                                         {isYearly
-                                            ? `$${Number(plan.yearlyPrice.slice(1)) * 12}`
-                                            : `$${Number(plan.monthlyPrice.slice(1)) * 12}`}{" "}
-                                        {isYearly ? "annually" : "monthly"}
+                                            ? `Billed ${plan.yearlyPrice.slice(0, 1)}${Number(plan.yearlyPrice.slice(1))} annually`
+                                            : `Billed ${plan.monthlyPrice.slice(0, 1)}${Number(plan.monthlyPrice.slice(1)) * 12} annually`}
                                     </p>
                                 </CardHeader>
 
@@ -269,5 +292,3 @@ const Pricing2 = ({
         </section>
     )
 }
-
-export { Pricing2 }

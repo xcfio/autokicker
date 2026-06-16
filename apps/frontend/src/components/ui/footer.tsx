@@ -34,7 +34,7 @@ export function Footer({ logo, brandName, socialLinks, mainLinks, legalLinks, co
                     <ul className="flex list-none mt-6 md:mt-0 space-x-3">
                         {socialLinks.map((link, i) => (
                             <li key={i}>
-                                <Button variant="secondary" size="icon" className="h-10 w-10 rounded-full" asChild>
+                                <Button variant="outline" size="icon" className="h-10 w-10 rounded-full" asChild>
                                     <a href={link.href} target="_blank" aria-label={link.label}>
                                         {link.icon}
                                     </a>
