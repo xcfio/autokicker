@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+
 "use client"
 
 import { Temporal, toTemporalInstant } from "temporal-polyfill"
@@ -5,14 +7,14 @@ import { useEffect } from "react"
 import { toast } from "sonner"
 
 if (typeof globalThis.Temporal === "undefined") {
-    // @ts-ignore - Polyfill Temporal
+    // @ts-expect-error - Polyfill Temporal
     globalThis.Temporal = Temporal
-    // @ts-ignore - Polyfill Temporal
+    // @ts-expect-error - Polyfill Temporal
     globalThis.Temporal.polyfilled = true
 }
 
 if (typeof Date.prototype.toTemporalInstant !== "function") {
-    // @ts-ignore - Polyfill Temporal
+    // @ts-expect-error - Polyfill Temporal
     Date.prototype.toTemporalInstant = toTemporalInstant
 }
 

@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+
 import { TemporalPolyfill } from "@/components/temporal-polyfill"
 import { Figtree, Fira_Code, Comfortaa } from "next/font/google"
 import { Temporal, toTemporalInstant } from "temporal-polyfill"
@@ -13,22 +15,22 @@ const comfortaa = Comfortaa({ subsets: ["latin"], variable: "--font-comfortaa" }
 const firaCode = Fira_Code({ subsets: ["latin"], variable: "--font-mono" })
 
 if (typeof globalThis.Temporal === "undefined") {
-    // @ts-ignore - Polyfill Temporal
+    // @ts-expect-error - Polyfill Temporal
     globalThis.Temporal = Temporal
-    // @ts-ignore - Polyfill Temporal
+    // @ts-expect-error - Polyfill Temporal
     globalThis.Temporal.polyfilled = true
 
-    console.info("Server -> Temporal not defined - polyfilling")
+    console.info("Server -> Temporal not defined - polyfilled")
 } else {
     console.info("Server -> Temporal is already defined - not polyfilling")
 }
 
 if (typeof Date.prototype.toTemporalInstant !== "function") {
-    // @ts-ignore - Polyfill Temporal
+    // @ts-expect-error - Polyfill Temporal
     Date.prototype.toTemporalInstant = toTemporalInstant
-    console.info("Server -> toTemporalInstant not defined - polyfilling")
+    console.info("Server -> Date.prototype.toTemporalInstant not defined - polyfilling")
 } else {
-    console.info("Server -> toTemporalInstant is already defined - not polyfilling")
+    console.info("Server -> Date.prototype.toTemporalInstant is already defined - not polyfilling")
 }
 
 export const metadata: Metadata = {

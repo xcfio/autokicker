@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { TSchema, TSchemaOptions, Type } from "typebox"
 // @ts-ignore
 import { randomUUIDv7 } from "node:crypto"

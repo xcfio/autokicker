@@ -8,9 +8,12 @@
         "clean": "powershell -Command \"Get-ChildItem -Path . -Filter node_modules -Recurse -Directory | Remove-Item -Recurse -Force\"",
         "dev": "turbo watch dev",
         "fmt": "prettier --config=.prettierrc --write .",
+        "fmt:test": "prettier --config=.prettierrc --check src",
         "lint": "node --experimental-strip-types --no-warnings ./node_modules/eslint/bin/eslint.js --flag unstable_native_nodejs_ts_config --config eslint.config.ts",
+        "lint:fix": "node --experimental-strip-types --no-warnings ./node_modules/eslint/bin/eslint.js --flag unstable_native_nodejs_ts_config --config eslint.config.ts --fix",
         "preinstall": "npx only-allow pnpm",
         "start": "turbo run start",
+        "studio": "turbo run studio",
         "test": "turbo run test"
     },
     "repository": {
@@ -22,13 +25,23 @@
         "email": "xcfio@proton.me"
     },
     "devDependencies": {
-        "lefthook": "^2.1.9",
-        "prettier": "^3.8.3",
+        "@commitlint/config-conventional": "^21.0.2",
+        "@commitlint/format": "^21.0.1",
+        "@commitlint/types": "^21.0.1",
+        "@eslint/js": "^10.0.1",
+        "commitlint": "^21.0.2",
+        "eslint": "^10.5.0",
+        "eslint-config-prettier": "^10.1.8",
+        "prettier": "^3.8.4",
         "turbo": "^2.9.18",
-        "typescript": "6.0.3"
+        "typescript": "6.0.3",
+        "typescript-eslint": "^8.61.1"
     },
-    "packageManager": "pnpm@11.5.1",
+    "packageManager": "pnpm@11.7.0",
     "engines": {
         "node": ">=26.1"
+    },
+    "dependencies": {
+        "lefthook": "^2.1.9"
     }
 }

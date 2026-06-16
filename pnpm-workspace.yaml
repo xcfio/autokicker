@@ -6,8 +6,19 @@ allowBuilds:
   "@parcel/watcher": true
   "@swc/core": true
   esbuild: true
-  fastify-socket: true
-  fastify-socket.io: true
   lefthook: true
   msw: true
   sharp: true
+
+minimumReleaseAgeExclude:
+  - '@typescript-eslint/eslint-plugin@8.61.1'
+  - '@typescript-eslint/parser@8.61.1'
+  - '@typescript-eslint/project-service@8.61.1'
+  - '@typescript-eslint/scope-manager@8.61.1'
+  - '@typescript-eslint/tsconfig-utils@8.61.1'
+  - '@typescript-eslint/type-utils@8.61.1'
+  - '@typescript-eslint/types@8.61.1'
+  - '@typescript-eslint/typescript-estree@8.61.1'
+  - '@typescript-eslint/utils@8.61.1'
+  - '@typescript-eslint/visitor-keys@8.61.1'
+  - typescript-eslint@8.61.1

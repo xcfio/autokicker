@@ -203,21 +203,21 @@ export const Pricing = ({
             className="relative min-h-screen py-24 md:py-32 bg-[#030711] text-white overflow-hidden isolate"
         >
             <style>{`
-        .pricing-accent-lines{position:absolute;inset:0;pointer-events:none;opacity:.5}
-        .pricing-hline,.pricing-vline{position:absolute;background:rgba(59,130,246,0.15)}
-        .pricing-hline{left:0;right:0;height:1px;transform:scaleX(0);transform-origin:50% 50%;animation:pDrawX .6s ease forwards}
-        .pricing-vline{top:0;bottom:0;width:1px;transform:scaleY(0);transform-origin:50% 0%;animation:pDrawY .7s ease forwards}
-        .pricing-hline:nth-child(1){top:18%;animation-delay:.08s}
-        .pricing-hline:nth-child(2){top:50%;animation-delay:.16s}
-        .pricing-hline:nth-child(3){top:82%;animation-delay:.24s}
-        .pricing-vline:nth-child(4){left:18%;animation-delay:.20s}
-        .pricing-vline:nth-child(5){left:50%;animation-delay:.28s}
-        .pricing-vline:nth-child(6){left:82%;animation-delay:.36s}
-        @keyframes pDrawX{to{transform:scaleX(1)}}
-        @keyframes pDrawY{to{transform:scaleY(1)}}
-        .card-animate{opacity:0;transform:translateY(12px);animation:fadeUp .6s ease .25s forwards}
-        @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-      `}</style>
+                .pricing-accent-lines{position:absolute;inset:0;pointer-events:none;opacity:.5}
+                .pricing-hline,.pricing-vline{position:absolute;background:rgba(59,130,246,0.15)}
+                .pricing-hline{left:0;right:0;height:1px;transform:scaleX(0);transform-origin:50% 50%;animation:pDrawX .6s ease forwards}
+                .pricing-vline{top:0;bottom:0;width:1px;transform:scaleY(0);transform-origin:50% 0%;animation:pDrawY .7s ease forwards}
+                .pricing-hline:nth-child(1){top:18%;animation-delay:.08s}
+                .pricing-hline:nth-child(2){top:50%;animation-delay:.16s}
+                .pricing-hline:nth-child(3){top:82%;animation-delay:.24s}
+                .pricing-vline:nth-child(4){left:18%;animation-delay:.20s}
+                .pricing-vline:nth-child(5){left:50%;animation-delay:.28s}
+                .pricing-vline:nth-child(6){left:82%;animation-delay:.36s}
+                @keyframes pDrawX{to{transform:scaleX(1)}}
+                @keyframes pDrawY{to{transform:scaleY(1)}}
+                .card-animate{opacity:0;transform:translateY(12px);animation:fadeUp .6s ease .25s forwards}
+                @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+            `}</style>
 
             {/* Blue glow blobs */}
             <div className="pointer-events-none absolute inset-0">

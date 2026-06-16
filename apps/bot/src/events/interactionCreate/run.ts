@@ -77,35 +77,40 @@ export async function run(interaction: Interaction) {
     }
 
     switch (true) {
-        case interaction.isChatInputCommand():
+        case interaction.isChatInputCommand(): {
             const command = ChatInput.get(interaction.commandName)
             if (!command || typeof command.run !== "function") return interaction.reply("404 - Unknown Command")
             command.run(interaction)
             break
+        }
 
-        case interaction.isContextMenuCommand():
+        case interaction.isContextMenuCommand(): {
             const context = Context.get(interaction.commandName)
             if (!context || typeof context.run !== "function") return interaction.reply("404 - Unknown Command")
             context.run(interaction)
             break
+        }
 
-        case interaction.isButton():
+        case interaction.isButton(): {
             const button = Button.get(interaction.customId.split(/-/).shift() ?? "") ?? Button.get(interaction.customId)
             if (interaction.deferred || interaction.replied) return
             if (button && typeof button === "function") button(interaction)
             break
+        }
 
-        case interaction.isModalSubmit():
+        case interaction.isModalSubmit(): {
             const modal = Modal.get(interaction.customId)
             if (interaction.deferred || interaction.replied) return
             if (modal && typeof modal === "function") modal(interaction)
             break
+        }
 
-        case interaction.isAnySelectMenu():
+        case interaction.isAnySelectMenu(): {
             const selectmenu = SelectMenu.get(interaction.customId)
             if (interaction.deferred || interaction.replied) return
             if (selectmenu && typeof selectmenu === "function") selectmenu(interaction)
             break
+        }
 
         case interaction.isAutocomplete(): {
             const input = ChatInput.get(interaction.commandName)
