@@ -91,10 +91,28 @@ export const Pricing = ({
     ]
 }: Pricing2Props) => {
     const [isYearly, setIsYearly] = useState(false)
+    const [isDesktop, setIsDesktop] = useState(false)
+
+    useEffect(() => {
+        // Check screen size on client side (using Tailwind's sm breakpoint of 640px)
+        const mediaQuery = window.matchMedia("(min-width: 640px)")
+        setIsDesktop(mediaQuery.matches)
+
+        const handleMediaChange = (e: MediaQueryListEvent) => {
+            setIsDesktop(e.matches)
+        }
+
+        mediaQuery.addEventListener("change", handleMediaChange)
+        return () => {
+            mediaQuery.removeEventListener("change", handleMediaChange)
+        }
+    }, [])
 
     // --- minimal hero particles ---
     const canvasRef = useRef<HTMLCanvasElement | null>(null)
     useEffect(() => {
+        if (!isDesktop) return
+
         const canvas = canvasRef.current
         const ctx = canvas?.getContext("2d")
         if (!canvas || !ctx) return
@@ -131,7 +149,21 @@ export const Pricing = ({
             for (let i = 0; i < count; i++) parts.push(make())
         }
 
+        // Only draw/animate when visible in the viewport
+        let isVisible = true
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                isVisible = entry.isIntersecting
+            },
+            { threshold: 0.01 }
+        )
+        if (canvas.parentElement) {
+            observer.observe(canvas.parentElement)
+        }
+
         const draw = () => {
+            raf = requestAnimationFrame(draw)
+            if (!isVisible) return
             const w = canvas.width / (window.devicePixelRatio || 1)
             const h = canvas.height / (window.devicePixelRatio || 1)
             ctx.clearRect(0, 0, w, h)
@@ -146,7 +178,6 @@ export const Pricing = ({
                 ctx.fillStyle = `rgba(250,250,250,${p.o})`
                 ctx.fillRect(p.x, p.y, 0.7, 2.2)
             })
-            raf = requestAnimationFrame(draw)
         }
 
         const onResize = () => {
@@ -161,9 +192,10 @@ export const Pricing = ({
         raf = requestAnimationFrame(draw)
         return () => {
             ro.disconnect()
+            observer.disconnect()
             cancelAnimationFrame(raf)
         }
-    }, [])
+    }, [isDesktop])
 
     return (
         <section
@@ -205,7 +237,9 @@ export const Pricing = ({
             </div>
 
             {/* Particles */}
-            <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-50 pointer-events-none" />
+            {isDesktop && (
+                <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-50 pointer-events-none" />
+            )}
 
             {/* Content */}
             <div className="relative max-w-7xl mx-auto px-6">

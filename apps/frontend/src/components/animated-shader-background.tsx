@@ -1,16 +1,35 @@
 "use client"
-import React, { useEffect, useRef } from "react"
 
-import * as THREE from "three"
+import { useEffect, useRef, useState } from "react"
+import * as Three from "three"
+
 const AnoAI = () => {
     const containerRef = useRef<HTMLDivElement>(null)
+    const [isDesktop, setIsDesktop] = useState(false)
 
     useEffect(() => {
+        // Check screen size on client side (using Tailwind's sm breakpoint of 640px)
+        const mediaQuery = window.matchMedia("(min-width: 640px)")
+        setIsDesktop(mediaQuery.matches)
+
+        const handleMediaChange = (e: MediaQueryListEvent) => {
+            setIsDesktop(e.matches)
+        }
+
+        mediaQuery.addEventListener("change", handleMediaChange)
+        return () => {
+            mediaQuery.removeEventListener("change", handleMediaChange)
+        }
+    }, [])
+
+    useEffect(() => {
+        if (!isDesktop) return
+
         const container = containerRef.current
         if (!container) return
-        const scene = new THREE.Scene()
-        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+        const scene = new Three.Scene()
+        const camera = new Three.OrthographicCamera(-1, 1, 1, -1, 0, 1)
+        const renderer = new Three.WebGLRenderer({ antialias: true, alpha: true })
         const w = container.offsetWidth || window.innerWidth
         const h = container.offsetHeight || window.innerHeight
         renderer.setSize(w, h)
@@ -20,10 +39,10 @@ const AnoAI = () => {
         renderer.domElement.style.height = "100%"
         container.appendChild(renderer.domElement)
 
-        const material = new THREE.ShaderMaterial({
+        const material = new Three.ShaderMaterial({
             uniforms: {
                 iTime: { value: 0 },
-                iResolution: { value: new THREE.Vector2(w, h) }
+                iResolution: { value: new Three.Vector2(w, h) }
             },
             vertexShader: `
         void main() {
@@ -92,15 +111,26 @@ const AnoAI = () => {
       `
         })
 
-        const geometry = new THREE.PlaneGeometry(2, 2)
-        const mesh = new THREE.Mesh(geometry, material)
+        const geometry = new Three.PlaneGeometry(2, 2)
+        const mesh = new Three.Mesh(geometry, material)
         scene.add(mesh)
+
+        // Only render/compute when visible in the viewport
+        let isVisible = true
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                isVisible = entry.isIntersecting
+            },
+            { threshold: 0.01 }
+        )
+        observer.observe(container)
 
         let frameId: number
         const animate = () => {
+            frameId = requestAnimationFrame(animate)
+            if (!isVisible) return
             material.uniforms.iTime.value += 0.016
             renderer.render(scene, camera)
-            frameId = requestAnimationFrame(animate)
         }
         animate()
 
@@ -113,17 +143,23 @@ const AnoAI = () => {
         window.addEventListener("resize", handleResize)
 
         return () => {
+            observer.disconnect()
             cancelAnimationFrame(frameId)
             window.removeEventListener("resize", handleResize)
-            container.removeChild(renderer.domElement)
+            if (container.contains(renderer.domElement)) {
+                container.removeChild(renderer.domElement)
+            }
             geometry.dispose()
             material.dispose()
             renderer.dispose()
         }
-    }, [])
+    }, [isDesktop])
 
     return (
-        <div ref={containerRef} className="absolute inset-0 overflow-hidden">
+        <div
+            ref={containerRef}
+            className={`absolute inset-0 overflow-hidden ${!isDesktop ? "bg-linear-to-br from-blue-950/40 via-[#030711] to-violet-950/40 opacity-70" : ""}`}
+        >
             <div className="absolute inset-0 z-10" />
         </div>
     )

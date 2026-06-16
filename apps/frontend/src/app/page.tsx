@@ -5,7 +5,7 @@ import { ShinyButton } from "@/components/shiny-button"
 import { Pricing } from "@/components/pricing-cards"
 import { Github } from "@/components/icon/github"
 import { Footer } from "@/components/ui/footer"
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline"
 import Shader from "@/components/animated-shader-background"
@@ -184,8 +184,26 @@ const Steps = [
 
 export default () => {
     const canvasRef = useRef<HTMLCanvasElement>(null)
+    const [isDesktop, setIsDesktop] = useState(false)
 
     useEffect(() => {
+        // Check screen size on client side (using Tailwind's sm breakpoint of 640px)
+        const mediaQuery = window.matchMedia("(min-width: 640px)")
+        setIsDesktop(mediaQuery.matches)
+
+        const handleMediaChange = (e: MediaQueryListEvent) => {
+            setIsDesktop(e.matches)
+        }
+
+        mediaQuery.addEventListener("change", handleMediaChange)
+        return () => {
+            mediaQuery.removeEventListener("change", handleMediaChange)
+        }
+    }, [])
+
+    useEffect(() => {
+        if (!isDesktop) return
+
         const canvas = canvasRef.current
         if (!canvas) return
         const ctx = canvas.getContext("2d")
@@ -211,8 +229,20 @@ export default () => {
             })
         }
 
+        // Only draw/animate when visible in the viewport
+        let isVisible = true
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                isVisible = entry.isIntersecting
+            },
+            { threshold: 0.01 }
+        )
+        observer.observe(canvas)
+
         let raf: number
         const draw = () => {
+            raf = requestAnimationFrame(draw)
+            if (!isVisible) return
             ctx.clearRect(0, 0, canvas.width, canvas.height)
             particles.forEach((p) => {
                 p.x += p.vx
@@ -226,15 +256,15 @@ export default () => {
                 ctx.fillStyle = `rgba(96,165,250,${p.o})`
                 ctx.fill()
             })
-            raf = requestAnimationFrame(draw)
         }
         draw()
 
         return () => {
+            observer.disconnect()
             cancelAnimationFrame(raf)
             window.removeEventListener("resize", resize)
         }
-    }, [])
+    }, [isDesktop])
 
     return (
         <div className="min-h-screen bg-[#030711]">
@@ -347,20 +377,22 @@ export default () => {
                     </div>
 
                     {/* RIGHT: radial orbital timeline */}
-                    <div className="hidden relative h-130 lg:h-150 sm:flex items-center justify-center">
-                        {/* glow behind */}
-                        <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-blue-600/5 to-cyan-500/5 border border-blue-500/10 backdrop-blur-sm" />
-                        <div className="absolute inset-0 flex items-center justify-center">
-                            <div className="w-80 h-80 rounded-full bg-blue-600/5 blur-3xl" />
+                    {isDesktop && (
+                        <div className="hidden relative h-130 lg:h-150 sm:flex items-center justify-center">
+                            {/* glow behind */}
+                            <div className="absolute inset-0 rounded-3xl bg-linear-to-br from-blue-600/5 to-cyan-500/5 border border-blue-500/10 backdrop-blur-sm" />
+                            <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="w-80 h-80 rounded-full bg-blue-600/5 blur-3xl" />
+                            </div>
+                            <div className="relative w-full h-full">
+                                <RadialOrbitalTimeline timelineData={Orbital} />
+                            </div>
+                            {/* label */}
+                            <div className="absolute bottom-4 inset-x-0 text-center text-xs text-blue-400/40 font-mono tracking-widest uppercase">
+                                Click a node to explore
+                            </div>
                         </div>
-                        <div className="relative w-full h-full">
-                            <RadialOrbitalTimeline timelineData={Orbital} />
-                        </div>
-                        {/* label */}
-                        <div className="absolute bottom-4 inset-x-0 text-center text-xs text-blue-400/40 font-mono tracking-widest uppercase">
-                            Click a node to explore
-                        </div>
-                    </div>
+                    )}
                 </div>
             </section>
 
@@ -550,7 +582,7 @@ export default () => {
                         { href: "/terms", label: "Terms of Service" }
                     ]}
                     copyright={{
-                        text: `© ${new Date().getFullYear()} Autokicker. All rights reserved.`,
+                        text: `© ${Temporal.Now.plainDateISO().year} Autokicker. All rights reserved.`,
                         license: "Made with ❤️ for Discord communities."
                     }}
                 />
