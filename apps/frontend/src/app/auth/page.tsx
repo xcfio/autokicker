@@ -1,3 +1,3 @@
-export default function Login() {
+export default () => {
     return <p>Still not available yet</p>
 }

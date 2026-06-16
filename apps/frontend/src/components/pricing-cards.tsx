@@ -210,12 +210,6 @@ export const Pricing = ({
             {/* Content */}
             <div className="relative max-w-7xl mx-auto px-6">
                 <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-medium">
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor">
-                            <circle cx="5" cy="5" r="5" />
-                        </svg>
-                        Always free, no strings attached
-                    </div>
                     <h2 className="text-pretty text-4xl font-black lg:text-6xl tracking-tight">
                         {heading.split(",")[0]},{" "}
                         <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
