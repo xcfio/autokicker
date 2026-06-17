@@ -36,9 +36,8 @@ export async function main() {
     Hooks(fastify)
     Socket(io)
 
-    const port = Number(config.port ?? 7200)
-    await fastify.listen({ host: "0.0.0.0", port })
-    console.log(`Server listening at http://localhost:${port}`)
+    await fastify.listen({ host: "0.0.0.0", port: config.port })
+    console.log(`Server listening at http://localhost:${config.port}`)
 }
 
 process.on("uncaughtException", (err: Error, origin: string) => xcf(err, "Uncaught Exception", origin, false))

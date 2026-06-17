@@ -5,7 +5,8 @@ const config = {
     environment: env<Env, "NODE_ENV">("NODE_ENV"),
     url: env<Env>("DATABASE_URL"),
     origin: env<Env>("FRONTEND_URL", false) ?? "http://localhost:7700",
-    port: env<Env>("PORT"),
+    bot: env<Env>("DISCORD_URL", false) ?? "http://localhost:7800",
+    port: Number(env<Env>("PORT", false) ?? 7200),
     discord: {
         id: env<Env>("CLIENT_ID"),
         secret: env<Env>("CLIENT_SECRET"),

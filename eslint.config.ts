@@ -25,6 +25,15 @@ export default defineConfig([
                     argsIgnorePattern: "^_",
                     varsIgnorePattern: "^_"
                 }
+            ],
+            "@typescript-eslint/naming-convention": [
+                "error",
+                { selector: "default", format: ["snake_case", "camelCase", "PascalCase"] },
+                { selector: "objectLiteralProperty", format: null },
+                { selector: "import", filter: { regex: "^__?$", match: true }, format: null },
+                { selector: "import", format: ["camelCase", "PascalCase"], leadingUnderscore: "allow" },
+                { selector: "parameter", filter: { regex: "^__?$", match: true }, format: null },
+                { selector: "parameter", format: ["camelCase", "PascalCase"], leadingUnderscore: "allow" }
             ]
         }
     },

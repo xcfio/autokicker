@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import {
     AutocompleteInteraction,
     ChatInputCommandInteraction,
@@ -27,6 +29,8 @@ export type Env = {
     NODE_ENV: "development" | "production" | "test"
     DATABASE_URL: string
     FRONTEND_URL: string
+    API_URL: string
+    PORT: string
 
     SECRET: string
     TOKEN: string

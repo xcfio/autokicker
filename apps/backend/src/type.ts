@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import { Payload } from "@repo/schema"
 import { OAuth2Namespace } from "@fastify/oauth2"
 import { fastify, io } from "./"
@@ -26,6 +28,7 @@ export type Env = {
     NODE_ENV: "development" | "production" | "test"
     DATABASE_URL: string
     FRONTEND_URL: string
+    DISCORD_URL: string
     PORT: string
 
     CLIENT_ID: string

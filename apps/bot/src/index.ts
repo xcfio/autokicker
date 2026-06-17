@@ -51,7 +51,7 @@ try {
     fastify.get("/status", (_, reply) => reply.code(200).send("OK"))
     fastify.get("/", () => process.uptime())
 
-    fastify.listen({ host: "0.0.0.0", port: 8700 }, (error, address) => {
+    fastify.listen({ host: "0.0.0.0", port: config.port }, (error, address) => {
         console.log(error ?? `Server listening on: ${address}`)
     })
 } catch (error) {

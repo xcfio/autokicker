@@ -11,6 +11,7 @@ import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline"
 import Shader from "@/components/animated-shader-background"
 import Image from "next/image"
 import Link from "next/link"
+import { BentoGrid, type BentoItem } from "@/components/ui/bento-grid"
 
 // ---------- orbital timeline data ----------
 const Orbital = [
@@ -113,47 +114,69 @@ const Plans = [
 ]
 
 // ---------- features data ----------
-const Features = [
+const Features: BentoItem[] = [
     {
-        icon: Activity,
         title: "Smart Activity Tracking",
+        meta: "Real-time",
         description:
             "We don't just look at messages. Autokicker tracks voice channel joins, text messages, and reactions to get a true picture of who is actually participating.",
+        icon: <Activity className="w-4.5 h-4.5" />,
+        status: "Active",
+        tags: ["Voice", "Text", "Reactions"],
+        colSpan: 2,
+        hasPersistentHover: true,
         gradient: "from-blue-500 to-cyan-400"
     },
     {
-        icon: Bell,
         title: "Automated Multi-Stage Warnings",
+        meta: "Custom intervals",
         description:
             "Give them a chance to stay. Set custom warning intervals so members receive an automated DM nudging them to say hello before they're removed.",
+        icon: <Bell className="w-4.5 h-4.5" />,
+        status: "Smart",
+        tags: ["DM Warnings", "Nudges"],
         gradient: "from-blue-600 to-blue-400"
     },
     {
-        icon: Shield,
         title: "Ironclad Whitelists",
+        meta: "Exemptions",
         description:
             "Protect your VIPs. Easily whitelist specific roles or users so your moderators, bots, and special guests are completely exempt from the inactivity sweeps.",
+        icon: <Shield className="w-4.5 h-4.5" />,
+        status: "Secure",
+        tags: ["Roles", "Bots", "VIPs"],
         gradient: "from-indigo-500 to-blue-500"
     },
     {
-        icon: Sword,
-        title: "Kick or Ban: You Decide",
-        description:
-            "Tailor the bot to your community's strictness level. Choose whether inactive members are softly kicked (allowing them to return) or permanently banned.",
-        gradient: "from-blue-700 to-indigo-500"
-    },
-    {
-        icon: Clock,
         title: "Zero-Touch Enforcement",
+        meta: "Set & forget",
         description:
             "Set it and forget it. Our background engine runs seamlessly every hour to evaluate thresholds and clean your server while you sleep.",
+        icon: <Clock className="w-4.5 h-4.5" />,
+        status: "Automated",
+        tags: ["Hourly Sweeps"],
+        colSpan: 2,
         gradient: "from-sky-500 to-blue-600"
     },
     {
-        icon: BookOpen,
+        title: "Kick or Ban: You Decide",
+        meta: "Custom policy",
+        description:
+            "Tailor the bot to your community's strictness level. Choose whether inactive members are softly kicked (allowing them to return) or permanently banned.",
+        icon: <Sword className="w-4.5 h-4.5" />,
+        status: "Flexible",
+        tags: ["Soft Kick", "Permanent Ban"],
+        gradient: "from-blue-700 to-indigo-500"
+    },
+    {
         title: "Transparent Audit Logging",
+        meta: "History",
         description:
             "Never wonder where someone went. Every warning, kick, and ban is cleanly logged to your private mod channel with exact timestamps and reasons.",
+        icon: <BookOpen className="w-4.5 h-4.5" />,
+        status: "Logged",
+        tags: ["Mod Channels"],
+        colSpan: 2,
         gradient: "from-blue-500 to-violet-500"
     }
 ]
@@ -420,39 +443,7 @@ export default () => {
                     </div>
 
                     {/* feature grid */}
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {Features.map((feature, i) => {
-                            const Icon = feature.icon
-                            return (
-                                <div
-                                    key={feature.title}
-                                    className="group relative p-6 rounded-2xl border border-blue-500/10 bg-blue-950/20 backdrop-blur-sm hover:border-blue-500/30 hover:bg-blue-950/40 transition-all duration-300 overflow-hidden"
-                                    style={{ animationDelay: `${i * 0.08}s` }}
-                                >
-                                    {/* hover glow */}
-                                    <div
-                                        className={`absolute inset-0 opacity-0 group-hover:opacity-[0.07] transition-opacity duration-500 bg-linear-to-br ${feature.gradient} opacity-[0.04]`}
-                                    />
-                                    <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-blue-500/5 blur-2xl group-hover:bg-blue-500/10 transition-colors duration-500" />
-
-                                    <div
-                                        className={`relative w-11 h-11 rounded-xl bg-linear-to-br ${feature.gradient} p-0.5 mb-5`}
-                                    >
-                                        <div className="w-full h-full rounded-[12px] bg-[#030711] flex items-center justify-center">
-                                            <Icon size={18} className="text-blue-300" />
-                                        </div>
-                                    </div>
-
-                                    <h3 className="font-bold text-white text-lg mb-2 group-hover:text-blue-100 transition-colors">
-                                        {feature.title}
-                                    </h3>
-                                    <p className="text-blue-200/50 text-sm leading-relaxed group-hover:text-blue-200/70 transition-colors">
-                                        {feature.description}
-                                    </p>
-                                </div>
-                            )
-                        })}
-                    </div>
+                    <BentoGrid items={Features} />
                 </div>
             </section>
 
