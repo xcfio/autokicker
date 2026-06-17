@@ -38,6 +38,25 @@ export default function SonnerTypes() {
             >
                 Promise
             </Button>
+            <Button
+                variant="outline"
+                onClick={() =>
+                    toast.warning("Temporal API not supported", {
+                        description:
+                            "Your browser doesn't support the Temporal API. Some features may not work as expected.",
+                        dismissible: true,
+                        duration: 5000,
+                        action: {
+                            label: "See Compatible Browsers",
+                            onClick: () => {
+                                alert("cool")
+                            }
+                        }
+                    })
+                }
+            >
+                Temporal
+            </Button>
         </div>
     )
 }

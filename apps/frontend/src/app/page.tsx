@@ -6,7 +6,7 @@ import { Grid, GridItem } from "@/components/ui/grid"
 import { Pricing } from "@/components/pricing-cards"
 import { useEffect, useRef, useState } from "react"
 import { Github } from "@/components/icon/github"
-import { Footer } from "@/components/ui/footer"
+import { Footer } from "@/components/footer"
 
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline"
 import Shader from "@/components/animated-shader-background"
