@@ -158,6 +158,7 @@ export default function Shader() {
     return (
         <div
             ref={containerRef}
+            aria-hidden="true"
             className={`absolute inset-0 overflow-hidden ${!isDesktop ? "bg-linear-to-br from-blue-950/40 via-[#030711] to-violet-950/40 opacity-70" : ""}`}
         >
             <div className="absolute inset-0 z-10" />

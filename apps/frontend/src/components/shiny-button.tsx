@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 "use client"
 
 import type React from "react"
@@ -9,6 +11,8 @@ interface ShinyButtonProps {
     href?: string
     target?: string
     className?: string
+    "aria-label"?: string
+    "aria-describedby"?: string
 }
 
 const Style = `
@@ -195,7 +199,7 @@ const Style = `
 }
 `
 
-export function ShinyButton({ children, onClick, href, target, className = "" }: ShinyButtonProps) {
+export function ShinyButton({ children, onClick, href, target, className = "", ...props }: ShinyButtonProps) {
     return (
         <>
             <style>{Style}</style>
@@ -207,11 +211,12 @@ export function ShinyButton({ children, onClick, href, target, className = "" }:
                     rel={target === "_blank" ? "noopener noreferrer" : undefined}
                     className={`shiny-cta ${className}`}
                     onClick={onClick}
+                    {...props}
                 >
                     <span>{children}</span>
                 </Link>
             ) : (
-                <button className={`shiny-cta ${className}`} onClick={onClick}>
+                <button className={`shiny-cta ${className}`} onClick={onClick} {...props}>
                     <span>{children}</span>
                 </button>
             )}

@@ -220,7 +220,7 @@ export const Pricing = ({
             `}</style>
 
             {/* Blue glow blobs */}
-            <div className="pointer-events-none absolute inset-0">
+            <div className="pointer-events-none absolute inset-0" aria-hidden="true">
                 <div className="absolute top-1/4 left-1/3 w-125 h-125 rounded-full bg-blue-600/8 blur-[120px]" />
                 <div className="absolute bottom-1/4 right-1/3 w-100 h-100 rounded-full bg-cyan-500/6 blur-[100px]" />
             </div>
@@ -238,7 +238,11 @@ export const Pricing = ({
 
             {/* Particles */}
             {isDesktop && (
-                <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-50 pointer-events-none" />
+                <canvas
+                    ref={canvasRef}
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full opacity-50 pointer-events-none"
+                />
             )}
 
             {/* Content */}
@@ -250,7 +254,7 @@ export const Pricing = ({
                             {heading.split(",")[1]?.trim() ?? ""}
                         </span>
                     </h2>
-                    <p className="text-blue-200/50 lg:text-xl">{description}</p>
+                    <p className="text-blue-200/75 lg:text-xl">{description}</p>
 
                     <div className="flex items-center gap-3 text-lg">
                         Monthly
@@ -258,6 +262,7 @@ export const Pricing = ({
                             className="text-blue-600"
                             checked={isYearly}
                             onCheckedChange={() => setIsYearly(!isYearly)}
+                            aria-label="Toggle between monthly and yearly billing"
                         />
                         Yearly
                     </div>
@@ -275,11 +280,11 @@ export const Pricing = ({
                                     <CardTitle>
                                         <p className="text-white">{plan.name}</p>
                                     </CardTitle>
-                                    <p className="text-sm text-blue-200/50">{plan.description}</p>
+                                    <p className="text-sm text-blue-200/75">{plan.description}</p>
                                     <span className="text-4xl font-bold bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
                                         {isYearly ? plan.yearlyPrice : plan.monthlyPrice}
                                     </span>
-                                    <p className="text-blue-300/40">
+                                    <p className="text-blue-300/75">
                                         {isYearly
                                             ? `Billed ${plan.yearlyPrice.slice(0, 1)}${Number(plan.yearlyPrice.slice(1))} annually`
                                             : `Billed ${plan.monthlyPrice.slice(0, 1)}${Number(plan.monthlyPrice.slice(1)) * 12} annually`}
@@ -306,7 +311,12 @@ export const Pricing = ({
                                         asChild
                                         className="w-full rounded-full bg-blue-600 text-white hover:bg-blue-500 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-200"
                                     >
-                                        <a href={plan.button.url} target="_blank" rel="noreferrer">
+                                        <a
+                                            href={plan.button.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`${plan.button.text} (opens in a new tab)`}
+                                        >
                                             {plan.button.text}
                                             <ArrowRight className="ml-2 size-4" />
                                         </a>

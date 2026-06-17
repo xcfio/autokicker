@@ -2,16 +2,16 @@
 
 import { Activity, Bell, BookOpen, Bot, Clock, Shield, Sword, UserX, Zap } from "lucide-react"
 import { ShinyButton } from "@/components/shiny-button"
+import { Grid, GridItem } from "@/components/ui/grid"
 import { Pricing } from "@/components/pricing-cards"
+import { useEffect, useRef, useState } from "react"
 import { Github } from "@/components/icon/github"
 import { Footer } from "@/components/ui/footer"
-import { useEffect, useRef, useState } from "react"
 
 import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline"
 import Shader from "@/components/animated-shader-background"
 import Image from "next/image"
 import Link from "next/link"
-import { BentoGrid, type BentoItem } from "@/components/ui/bento-grid"
 
 // ---------- orbital timeline data ----------
 const Orbital = [
@@ -103,7 +103,7 @@ const Plans = [
             { text: "Multi-stage automated DM warnings" },
             { text: "Role & user whitelist protection" },
             { text: "Kick or ban enforcement choice" },
-            { text: "Hourly background cron sweep" },
+            { text: "Daily background cron sweep" },
             { text: "Transparent mod-channel audit log" }
         ],
         button: {
@@ -114,7 +114,7 @@ const Plans = [
 ]
 
 // ---------- features data ----------
-const Features: BentoItem[] = [
+const Features: Array<GridItem> = [
     {
         title: "Smart Activity Tracking",
         meta: "Real-time",
@@ -141,20 +141,20 @@ const Features: BentoItem[] = [
         title: "Ironclad Whitelists",
         meta: "Exemptions",
         description:
-            "Protect your VIPs. Easily whitelist specific roles or users so your moderators, bots, and special guests are completely exempt from the inactivity sweeps.",
+            "Protect your impotent members. Easily whitelist specific roles or users so your moderators, bots, and special guests are completely exempt from the inactivity sweeps.",
         icon: <Shield className="w-4.5 h-4.5" />,
         status: "Secure",
-        tags: ["Roles", "Bots", "VIPs"],
+        tags: ["Roles", "Bots"],
         gradient: "from-indigo-500 to-blue-500"
     },
     {
         title: "Zero-Touch Enforcement",
         meta: "Set & forget",
         description:
-            "Set it and forget it. Our background engine runs seamlessly every hour to evaluate thresholds and clean your server while you sleep.",
+            "Set it and forget it. Our background engine runs seamlessly every day to evaluate thresholds and clean your server while you sleep.",
         icon: <Clock className="w-4.5 h-4.5" />,
         status: "Automated",
-        tags: ["Hourly Sweeps"],
+        tags: ["Daily Sweeps"],
         colSpan: 2,
         gradient: "from-sky-500 to-blue-600"
     },
@@ -297,7 +297,13 @@ export default () => {
                     <Link href="/" className="flex items-center gap-2.5 group">
                         <div className="relative w-10 h-10">
                             <div className="absolute inset-0.5 rounded-full bg-[#030711] flex items-center justify-center">
-                                <Image width={100} height={100} src="/icon.svg" alt="Icon" className="rounded-full" />
+                                <Image
+                                    width={100}
+                                    height={100}
+                                    src="/icon.svg"
+                                    alt="Autokicker logo"
+                                    className="rounded-full"
+                                />
                             </div>
                         </div>
                         <span className="font-bold text-lg tracking-tight text-white">Autokicker</span>
@@ -326,17 +332,22 @@ export default () => {
             {/* Hero Section */}
             <section id="hero" className="relative min-h-screen flex items-center overflow-hidden bg-[#030711]">
                 {/* background glow blobs */}
-                <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
                     <div className="absolute top-1/4 left-1/4 w-150 h-150 rounded-full bg-blue-600/10 blur-[120px]" />
                     <div className="absolute bottom-1/4 right-1/4 w-100 h-100 rounded-full bg-cyan-500/8 blur-[100px]" />
                     <div className="absolute top-0 right-0 w-75 h-75 rounded-full bg-indigo-600/10 blur-[80px]" />
                 </div>
 
                 {/* particle canvas */}
-                <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none opacity-60" />
+                <canvas
+                    ref={canvasRef}
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full pointer-events-none opacity-60"
+                />
 
                 {/* grid pattern overlay */}
                 <div
+                    aria-hidden="true"
                     className="absolute inset-0 pointer-events-none opacity-[0.03]"
                     style={{
                         backgroundImage: `linear-gradient(rgba(96,165,250,1) 1px, transparent 1px), linear-gradient(90deg, rgba(96,165,250,1) 1px, transparent 1px)`,
@@ -373,6 +384,7 @@ export default () => {
                                 href="https://discord.com/oauth2/authorize?client_id=1477127592724140195"
                                 target="_blank"
                                 className="w-full sm:w-auto"
+                                aria-label="Add Autokicker for Free (opens in a new tab)"
                             >
                                 Add Autokicker for Free
                             </ShinyButton>
@@ -393,7 +405,7 @@ export default () => {
                             ].map((stat) => (
                                 <div key={stat.label}>
                                     <div className="text-2xl font-bold text-white">{stat.value}</div>
-                                    <div className="text-xs text-blue-300/50 mt-0.5">{stat.label}</div>
+                                    <div className="text-xs text-blue-300/75 mt-0.5">{stat.label}</div>
                                 </div>
                             ))}
                         </div>
@@ -437,13 +449,13 @@ export default () => {
                                 thriving server
                             </span>
                         </h2>
-                        <p className="text-blue-100/50 text-lg max-w-2xl mx-auto">
+                        <p className="text-blue-100/75 text-lg max-w-2xl mx-auto">
                             Built specifically for Discord communities that care about engagement over numbers.
                         </p>
                     </div>
 
                     {/* feature grid */}
-                    <BentoGrid items={Features} />
+                    <Grid items={Features} />
                 </div>
             </section>
 
@@ -488,7 +500,7 @@ export default () => {
                                         </div>
 
                                         <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                                        <p className="text-blue-200/50 text-sm leading-relaxed">{step.description}</p>
+                                        <p className="text-blue-200/75 text-sm leading-relaxed">{step.description}</p>
                                     </div>
                                 )
                             })}
@@ -536,12 +548,13 @@ export default () => {
                             href="https://discord.com/oauth2/authorize?client_id=1477127592724140195"
                             target="_blank"
                             className="w-full sm:w-auto"
+                            aria-label="Invite Autokicker Now — It's Free (opens in a new tab)"
                         >
                             Invite Autokicker Now — It&apos;s Free
                         </ShinyButton>
                     </div>
 
-                    <p className="mt-6 text-xs text-blue-400/30 font-mono tracking-wide">
+                    <p className="mt-6 text-xs text-blue-300/75 font-mono tracking-wide">
                         No credit card · No setup fee · Runs in seconds
                     </p>
                 </div>
@@ -550,7 +563,7 @@ export default () => {
             {/* Footer section */}
             <div className="bg-[#030711] border-t border-blue-500/10 text-blue-200/60">
                 <Footer
-                    logo={<Image width={40} height={40} src="/icon.svg" alt="Icon" className="rounded-full" />}
+                    logo={<Image width={40} height={40} src="/icon.svg" alt="" className="rounded-full" />}
                     brandName="Autokicker"
                     socialLinks={[
                         {
