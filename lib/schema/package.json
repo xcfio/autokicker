@@ -21,10 +21,9 @@
     },
     "dependencies": {
         "postgres": "^3.4.9",
-        "typebox": "^1.2.8",
-        "typescript": "^6.0.3"
+        "typebox": "^1.2.14"
     },
     "devDependencies": {
-        "@types/node": "^25.9.1"
+        "@types/node": "^25.9.3"
     }
 }

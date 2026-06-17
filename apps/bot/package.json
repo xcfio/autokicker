@@ -18,16 +18,17 @@
         "@repo/database": "workspace:*",
         "@repo/schema": "workspace:*",
         "@repo/utils": "workspace:*",
-        "drizzle-orm": "1.0.0-rc.4-273829f",
         "colorette": "^2.0.20",
         "coolcake": "^0.0.5",
         "discord.js": "^14.26.4",
+        "drizzle-orm": "1.0.0-rc.4-273829f",
         "fastify": "^5.8.5",
         "node-cron": "^4.2.1",
-        "postgres": "^3.4.9"
+        "postgres": "^3.4.9",
+        "typebox": "^1.2.14"
     },
     "devDependencies": {
-        "@types/node": "^25.9.1",
+        "@types/node": "^25.9.3",
         "rolldown": "1.1.1"
     }
 }

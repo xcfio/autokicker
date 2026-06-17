@@ -102,11 +102,13 @@ export default function PrivacyPage() {
                             <Card
                                 key={section.title}
                                 id={SafeString(section.title)}
-                                className="bg-blue-950/20 border-blue-500/10 hover:border-blue-500/20 transition-colors duration-300"
+                                className="bg-blue-950/20 border-blue-500/10 hover:border-blue-500/20 transition-colors duration-300 scroll-mt-24"
                             >
                                 <CardHeader>
                                     <CardTitle className="text-white text-xl hover:underline">
-                                        <Link href={`#${SafeString(section.title)}`}>{section.title}</Link>
+                                        <Link scroll={false} href={`#${SafeString(section.title)}`}>
+                                            {section.title}
+                                        </Link>
                                     </CardTitle>
                                 </CardHeader>
                                 <CardContent className="flex flex-col gap-3">

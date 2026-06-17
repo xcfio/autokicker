@@ -19,10 +19,7 @@
         "fmt": "prettier --config=.prettierrc --write src",
         "fmt:test": "prettier --config=.prettierrc --check src"
     },
-    "dependencies": {
-        "typescript": "^6.0.3"
-    },
     "devDependencies": {
-        "@types/node": "^25.9.1"
+        "@types/node": "^25.9.3"
     }
 }
