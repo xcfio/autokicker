@@ -84,7 +84,7 @@ export function Grid({ items }: GridProps) {
                             </div>
 
                             <div className="space-y-2">
-                                <h3 className="font-bold text-white tracking-tight text-[16px] group-hover:text-blue-100 transition-colors">
+                                <h3 className="font-comfortaa font-bold text-white tracking-tight text-[16px] group-hover:text-blue-100 transition-colors">
                                     {item.title}
                                     <span className="ml-2 text-xs text-blue-300/75 font-normal">{item.meta}</span>
                                 </h3>

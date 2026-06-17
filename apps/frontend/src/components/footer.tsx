@@ -29,7 +29,7 @@ export function Footer({ logo, brandName, socialLinks, mainLinks, legalLinks, co
                 <div className="md:flex md:items-start md:justify-between">
                     <a href="/" className="flex items-center gap-x-2 pb-4" aria-label={brandName}>
                         {logo}
-                        <span className="font-bold text-xl">{brandName}</span>
+                        <span className="font-comfortaa font-bold text-xl">{brandName}</span>
                     </a>
                     <ul className="flex list-none mt-6 md:mt-0 space-x-3">
                         {socialLinks.map((link, i) => (

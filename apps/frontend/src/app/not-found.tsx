@@ -72,7 +72,7 @@ export default function NotFound() {
                     {/* Main 404 Text */}
                     <div className="relative">
                         <h1
-                            className={`text-404 font-sans text-[clamp(4rem,15vw,9rem)] font-black text-white tracking-widest m-0 relative transition-all duration-200 ${
+                            className={`text-404 font-comfortaa text-[clamp(4rem,15vw,9rem)] font-black text-white tracking-widest m-0 relative transition-all duration-200 ${
                                 glitchActive ? "glitch-active" : ""
                             }`}
                         >
@@ -82,10 +82,10 @@ export default function NotFound() {
                         {/* Glitch overlay */}
                         {glitchActive && (
                             <>
-                                <h1 className="text-404-glitch absolute inset-0 text-[clamp(4rem,15vw,9rem)] font-black tracking-widest m-0 opacity-70 text-red-500 translate-x-1 -translate-y-1">
+                                <h1 className="text-404-glitch absolute inset-0 text-[clamp(4rem,15vw,9rem)] font-comfortaa font-black tracking-widest m-0 opacity-70 text-red-500 translate-x-1 -translate-y-1">
                                     404
                                 </h1>
-                                <h1 className="text-404-glitch absolute inset-0 text-[clamp(4rem,15vw,9rem)] font-black tracking-widest m-0 opacity-70 text-cyan-500 -translate-x-1 translate-y-1">
+                                <h1 className="text-404-glitch absolute inset-0 text-[clamp(4rem,15vw,9rem)] font-comfortaa font-black tracking-widest m-0 opacity-70 text-cyan-500 -translate-x-1 translate-y-1">
                                     404
                                 </h1>
                             </>
@@ -94,7 +94,9 @@ export default function NotFound() {
 
                     {/* Subtitle */}
                     <div className="subtitle-container flex flex-col gap-4">
-                        <h2 className="text-[clamp(1.5rem,4vw,2rem)] font-bold text-white m-0">Oops! Page Not Found</h2>
+                        <h2 className="font-comfortaa text-[clamp(1.5rem,4vw,2rem)] font-bold text-white m-0">
+                            Oops! Page Not Found
+                        </h2>
                         <p className="text-gray-300 text-[clamp(1rem,2.5vw,1.25rem)] max-w-md mx-auto leading-relaxed m-0">
                             The page you're looking for seems to have vanished into the digital void. Don't worry, we'll
                             help you find your way back.

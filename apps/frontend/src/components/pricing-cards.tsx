@@ -248,7 +248,7 @@ export const Pricing = ({
             {/* Content */}
             <div className="relative max-w-7xl mx-auto px-6">
                 <div className="mx-auto flex max-w-5xl flex-col items-center gap-6 text-center">
-                    <h2 className="text-pretty text-4xl font-black lg:text-6xl tracking-tight">
+                    <h2 className="font-comfortaa text-pretty text-4xl font-black lg:text-6xl tracking-tight">
                         {heading.split(",")[0]},{" "}
                         <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
                             {heading.split(",")[1]?.trim() ?? ""}

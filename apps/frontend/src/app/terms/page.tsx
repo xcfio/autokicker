@@ -72,7 +72,7 @@ export default function TermsPage() {
 
                 <div className="relative max-w-4xl mx-auto px-6 py-24">
                     <div className="flex flex-col gap-4 mb-12">
-                        <h1 className="text-4xl sm:text-5xl font-black tracking-tight text-white">
+                        <h1 className="font-comfortaa text-4xl sm:text-5xl font-black tracking-tight text-white">
                             Terms of{" "}
                             <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
                                 Service

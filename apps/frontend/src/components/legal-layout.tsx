@@ -23,7 +23,7 @@ export function LegalLayout({ children }: { children: React.ReactNode }) {
                                 />
                             </div>
                         </div>
-                        <span className="font-bold text-lg tracking-tight text-white">Autokicker</span>
+                        <span className="font-comfortaa font-bold text-lg tracking-tight text-white">Autokicker</span>
                     </Link>
 
                     <div className="hidden md:flex items-center gap-8 text-sm text-blue-200/60">

@@ -306,7 +306,7 @@ export default () => {
                                 />
                             </div>
                         </div>
-                        <span className="font-bold text-lg tracking-tight text-white">Autokicker</span>
+                        <span className="font-comfortaa font-bold text-lg tracking-tight text-white">Autokicker</span>
                     </Link>
 
                     <div className="hidden md:flex items-center gap-8 text-sm text-blue-200/60">
@@ -364,7 +364,7 @@ export default () => {
                         </div>
 
                         <div className="space-y-4">
-                            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.9] tracking-tight text-white">
+                            <h1 className="font-comfortaa text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.9] tracking-tight text-white">
                                 Dead Chat?
                                 <br />
                                 <span className="bg-linear-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
@@ -443,7 +443,7 @@ export default () => {
                             <Zap size={10} />
                             Feature-packed, zero complexity
                         </div>
-                        <h2 className="text-4xl sm:text-5xl font-black text-white mb-4 tracking-tight">
+                        <h2 className="font-comfortaa text-4xl sm:text-5xl font-black text-white mb-4 tracking-tight">
                             Everything you need to run a{" "}
                             <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
                                 thriving server
@@ -466,7 +466,7 @@ export default () => {
                         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-medium mb-6">
                             <Clock size={10} />3 steps to a cleaner server
                         </div>
-                        <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
+                        <h2 className="font-comfortaa text-4xl sm:text-5xl font-black text-white tracking-tight">
                             Simple as{" "}
                             <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
                                 1, 2, 3
@@ -499,7 +499,9 @@ export default () => {
                                             </div>
                                         </div>
 
-                                        <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                                        <h3 className="font-comfortaa text-xl font-bold text-white mb-3">
+                                            {step.title}
+                                        </h3>
                                         <p className="text-blue-200/75 text-sm leading-relaxed">{step.description}</p>
                                     </div>
                                 )
@@ -532,7 +534,7 @@ export default () => {
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-100 bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
 
                 <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-                    <h2 className="text-4xl sm:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
+                    <h2 className="font-comfortaa text-4xl sm:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
                         Ready to revive{" "}
                         <span className="bg-linear-to-r from-blue-400 via-cyan-300 to-blue-500 bg-clip-text text-transparent">
                             your server?
