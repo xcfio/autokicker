@@ -1,4 +1,4 @@
-/* eslint-disable no-restricted-globals */
+// oxlint-disable
 
 "use client"
 

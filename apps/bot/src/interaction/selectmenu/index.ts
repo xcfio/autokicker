@@ -1,3 +1,4 @@
+import { whitelist_add, whitelist_add_user, whitelist_add_role, whitelist_add_channel } from "./whitelist-add"
 import { AnySelectMenuInteraction as SelectMenuInteraction } from "discord.js"
 import { whitelist_remove } from "./whitelist-remove"
 import { warning_remove } from "./warning-remove"
@@ -13,5 +14,9 @@ export default new Map<string, (arg: SelectMenuInteraction) => any>([
     ["cfg-warnings", cfg_warnings],
     ["whitelist-remove", whitelist_remove],
     ["warning-remove", warning_remove],
+    ["whitelist-add-type", whitelist_add],
+    ["whitelist-add-user", whitelist_add_user],
+    ["whitelist-add-role", whitelist_add_role],
+    ["whitelist-add-channel", whitelist_add_channel],
     ["return", return_handler]
 ] as Array<[string, (arg: any) => any]>)

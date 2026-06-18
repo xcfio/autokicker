@@ -5,7 +5,7 @@
     "unwantedRecommendations": ["github.copilot-chat"],
     "recommendations": [
         "streetsidesoftware.code-spell-checker",
-        "dbaeumer.vscode-eslint",
+        "oxc.oxc-vscode",
         "expo.vscode-expo-tools",
         "esbenp.prettier-vscode",
         "YoavBls.pretty-ts-errors",

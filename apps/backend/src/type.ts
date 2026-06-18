@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import { Payload } from "@repo/schema"
 import { OAuth2Namespace } from "@fastify/oauth2"
 import { fastify, io } from "./"

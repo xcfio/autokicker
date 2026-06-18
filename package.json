@@ -1,7 +1,7 @@
 {
     "name": "autokicker",
     "author": "Omar Faruk (Aka. xcfio)",
-    "homepage": "https://github.com/xcfio/diploma-bazar#readme",
+    "homepage": "https://github.com/xcfio/autokicker#readme",
     "license": "Proprietary",
     "scripts": {
         "build": "turbo run build",
@@ -9,8 +9,8 @@
         "dev": "turbo watch dev",
         "fmt": "prettier --config=.prettierrc --write .",
         "fmt:test": "prettier --config=.prettierrc --check src",
-        "lint": "node --experimental-strip-types --no-warnings ./node_modules/eslint/bin/eslint.js --flag unstable_native_nodejs_ts_config --config eslint.config.ts",
-        "lint:fix": "node --experimental-strip-types --no-warnings ./node_modules/eslint/bin/eslint.js --flag unstable_native_nodejs_ts_config --config eslint.config.ts --fix",
+        "lint": "oxlint .",
+        "lint:fix": "oxlint . --fix",
         "preinstall": "npx only-allow pnpm",
         "start": "turbo run start",
         "studio": "turbo run studio",
@@ -18,24 +18,23 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/xcfio/diploma-bazar"
+        "url": "https://github.com/xcfio/autokicker"
     },
     "bugs": {
-        "url": "https://github.com/xcfio/diploma-bazar/issues",
+        "url": "https://github.com/xcfio/autokicker/issues",
         "email": "xcfio@proton.me"
     },
     "devDependencies": {
         "@commitlint/config-conventional": "^21.0.2",
         "@commitlint/format": "^21.0.1",
         "@commitlint/types": "^21.0.1",
-        "@eslint/js": "^10.0.1",
         "commitlint": "^21.0.2",
-        "eslint": "^10.5.0",
-        "eslint-config-prettier": "^10.1.8",
+        "oxlint": "^1.70.0",
+        "oxlint-plugin-eslint": "^1.70.0",
+        "oxlint-tsgolint": "^0.23.0",
         "prettier": "^3.8.4",
         "turbo": "^2.9.18",
-        "typescript": "6.0.3",
-        "typescript-eslint": "^8.61.1"
+        "typescript": "6.0.3"
     },
     "packageManager": "pnpm@11.7.0",
     "engines": {
