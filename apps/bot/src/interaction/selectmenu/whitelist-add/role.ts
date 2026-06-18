@@ -1,22 +1,24 @@
 import { RoleSelectMenuInteraction } from "discord.js"
 import { message, erx, xcf, db } from "../../../utils"
-import { Snowflake } from "@repo/schema"
+import { Whitelist } from "@repo/schema"
 import { table } from "@repo/database"
 import { Value } from "typebox/value"
 import { eq } from "drizzle-orm"
 import { Type } from "typebox"
 
-export async function whitelist_add_role(interaction: RoleSelectMenuInteraction<"cached">) {
+export async function whitelist_add_role(interaction: RoleSelectMenuInteraction) {
     try {
+        if (!interaction.inCachedGuild()) return void xcf(interaction)
         const roles = interaction.values
 
-        const exist = await db.select().from(table.whitelist).where(eq(table.whitelist.guildId, interaction.guildId))
-        const err = [...Value.Errors(Type.Array(Snowflake, { minItems: 1, maxItems: 3 }), roles)]
-
+        const err = Value.Errors(Type.Array(Type.Index(Whitelist, ["entry"]), { minItems: 1, maxItems: 3 }), roles)
         if (err.length) {
-            return await interaction.update(message.error(`Invalid role ID: \`${JSON.stringify(err)}\``))
+            return await interaction.update(
+                message.error(`Invalid role \`\`\`json\n${JSON.stringify(err, null, 4)}\n\`\`\``)
+            )
         }
 
+        const exist = await db.select().from(table.whitelist).where(eq(table.whitelist.guildId, interaction.guildId))
         if (exist.length + roles.length > 3) {
             return await interaction.update(
                 message.error(
@@ -27,7 +29,11 @@ export async function whitelist_add_role(interaction: RoleSelectMenuInteraction<
 
         for (const role of roles) {
             if (!interaction.guild?.roles.cache.has(role)) {
-                return await interaction.update(message.error(`Role **${role}** does not exist in this server.`))
+                return await interaction.update(message.error(`Role <@&${role}> does not exist in this server.`))
+            }
+
+            if (exist.some((v) => v.entry === role)) {
+                return await interaction.update(message.error(`Role <@&${role}> is already whitelisted. (ID: ${role})`))
             }
         }
 

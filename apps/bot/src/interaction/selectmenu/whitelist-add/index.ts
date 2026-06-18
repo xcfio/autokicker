@@ -5,7 +5,7 @@ import { whitelist_add_user } from "./user"
 import { whitelist_add_role } from "./role"
 import { whitelist_add_channel } from "./channel"
 
-export function whitelist_add(interaction: AnySelectMenuInteraction<"cached">) {
+export function whitelist_add(interaction: AnySelectMenuInteraction) {
     const invalid = isInvalid(interaction)
     if (invalid) return interaction.reply(message.error(invalid))
 

@@ -8,7 +8,6 @@ export async function whitelist_remove(interaction: StringSelectMenuInteraction)
     try {
         const value = interaction.values[0]
         if (value === "return") return await return_handler(interaction)
-
         const [entry] = await db.select().from(table.whitelist).where(eq(table.whitelist.id, value))
 
         if (!entry) {
@@ -17,9 +16,9 @@ export async function whitelist_remove(interaction: StringSelectMenuInteraction)
 
         await db.delete(table.whitelist).where(eq(table.whitelist.id, value))
 
-        const prefix = entry.type === "user" ? "@" : entry.type === "role" ? "&" : "#"
+        const prefix = entry.type === "user" ? "@" : entry.type === "role" ? "@&" : "#"
         return await interaction.update(
-            message.success(`Whitelist entry removed: **${entry.type}: ${prefix}${entry.entry}**.`)
+            message.success(`Whitelist entry removed: **${entry.type}**: <${prefix}${entry.entry}>.`)
         )
     } catch (error) {
         erx(error as Error)

@@ -247,7 +247,7 @@ export const message = {
     },
     error: function (
         text: string,
-        components?: APIActionRowComponent<APIStringSelectComponent>
+        components: APIActionRowComponent<APIStringSelectComponent> = component.return()
     ): InteractionReplyOptions & InteractionUpdateOptions {
         const base = this.base(false, text)
         if (components) base.components[0].components.push(components)

@@ -1,22 +1,24 @@
 import { UserSelectMenuInteraction } from "discord.js"
 import { message, erx, xcf, db } from "../../../utils"
-import { Snowflake } from "@repo/schema"
+import { Whitelist } from "@repo/schema"
 import { table } from "@repo/database"
 import { Value } from "typebox/value"
 import { eq } from "drizzle-orm"
 import { Type } from "typebox"
 
-export async function whitelist_add_user(interaction: UserSelectMenuInteraction<"cached">) {
+export async function whitelist_add_user(interaction: UserSelectMenuInteraction) {
     try {
+        if (!interaction.inCachedGuild()) return void xcf(interaction)
         const users = interaction.values
 
-        const exist = await db.select().from(table.whitelist).where(eq(table.whitelist.guildId, interaction.guildId))
-        const err = [...Value.Errors(Type.Array(Snowflake, { minItems: 1, maxItems: 3 }), users)]
-
+        const err = Value.Errors(Type.Array(Type.Index(Whitelist, ["entry"]), { minItems: 1, maxItems: 3 }), users)
         if (err.length) {
-            return await interaction.update(message.error(`Invalid user ID: \`${JSON.stringify(err)}\``))
+            return await interaction.update(
+                message.error(`Invalid user ID: \`\`\`json\n${JSON.stringify(err, null, 4)}\n\`\`\``)
+            )
         }
 
+        const exist = await db.select().from(table.whitelist).where(eq(table.whitelist.guildId, interaction.guildId))
         if (exist.length + users.length > 3) {
             return await interaction.update(
                 message.error(
@@ -27,7 +29,11 @@ export async function whitelist_add_user(interaction: UserSelectMenuInteraction<
 
         for (const user of users) {
             if (!interaction.guild?.members.cache.has(user)) {
-                return await interaction.update(message.error(`User **${user}** does not exist in this server.`))
+                return await interaction.update(message.error(`User <@${user}> does not exist in this server.`))
+            }
+
+            if (exist.some((v) => v.entry === user)) {
+                return await interaction.update(message.error(`User <@${user}> is already whitelisted. (ID: ${user})`))
             }
         }
 

@@ -1,4 +1,4 @@
-import { ComponentType, MessageFlags, StringSelectMenuInteraction } from "discord.js"
+import { ChannelType, ComponentType, MessageFlags, StringSelectMenuInteraction } from "discord.js"
 import { Emoji, erx, xcf } from "../../../utils"
 import { return_handler } from "../return"
 
@@ -7,29 +7,36 @@ export async function whitelist_add_type(interaction: StringSelectMenuInteractio
         const value = interaction.values[0]
         if (value === "return") return await return_handler(interaction)
 
-        let componentType: ComponentType.UserSelect | ComponentType.RoleSelect | ComponentType.ChannelSelect
+        let type: ComponentType.UserSelect | ComponentType.RoleSelect | ComponentType.ChannelSelect
+        let channel_types: Array<ChannelType> | undefined
         let placeholder: string
         let title: string
 
         switch (value) {
             case "user": {
-                componentType = ComponentType.UserSelect
+                type = ComponentType.UserSelect
                 placeholder = "Select a user to whitelist"
                 title = "Whitelist User"
                 break
             }
 
             case "role": {
-                componentType = ComponentType.RoleSelect
+                type = ComponentType.RoleSelect
                 placeholder = "Select a role to whitelist"
                 title = "Whitelist Role"
                 break
             }
 
             case "channel": {
-                componentType = ComponentType.ChannelSelect
+                type = ComponentType.ChannelSelect
                 placeholder = "Select a channel to whitelist"
                 title = "Whitelist Channel"
+                channel_types = [
+                    ChannelType.GuildText,
+                    ChannelType.GuildAnnouncement,
+                    ChannelType.GuildForum,
+                    ChannelType.GuildMedia
+                ]
                 break
             }
 
@@ -57,8 +64,9 @@ export async function whitelist_add_type(interaction: StringSelectMenuInteractio
                             components: [
                                 {
                                     custom_id: "whitelist-add",
-                                    placeholder: placeholder,
-                                    type: componentType,
+                                    type,
+                                    placeholder,
+                                    channel_types,
                                     max_values: 25,
                                     min_values: 1
                                 }

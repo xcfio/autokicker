@@ -12,7 +12,7 @@ export const whitelist = pgTable(
             .notNull()
             .references(() => guild.id, { onDelete: "cascade" }),
         type: WhitelistType("type").notNull(),
-        entry: varchar("id", { length: 20 }).notNull(),
+        entry: varchar("entry", { length: 20 }).notNull(),
         createdAt: timestamp("created_at", { mode: "string", withTimezone: false })
             .notNull()
             .$defaultFn(() => Temporal.Now.instant().toString()),
