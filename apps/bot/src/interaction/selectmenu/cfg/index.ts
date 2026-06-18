@@ -6,28 +6,28 @@ import { autokick } from "./autokick"
 import { toggle } from "./toggle"
 import { status } from "./status"
 
-export async function cfg(interaction: StringSelectMenuInteraction) {
+export function cfg(interaction: StringSelectMenuInteraction) {
     const invalid = isInvalid(interaction)
     if (invalid) return interaction.reply(message.error(invalid))
 
     switch (interaction.values[0]) {
         case "status": {
-            return await status(interaction)
+            return status(interaction)
         }
         case "toggle": {
-            return await toggle(interaction)
+            return toggle(interaction)
         }
         case "autokick": {
-            return await autokick(interaction)
+            return autokick(interaction)
         }
         case "whitelist": {
-            return await whitelist(interaction)
+            return whitelist(interaction)
         }
         case "warnings": {
-            return await warnings(interaction)
+            return warnings(interaction)
         }
         default: {
-            return await interaction.reply(message.error("Invalid option"))
+            return interaction.reply(message.error("Invalid option"))
         }
     }
 }

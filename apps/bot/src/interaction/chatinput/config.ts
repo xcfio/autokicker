@@ -19,6 +19,6 @@ export async function run(interaction: ChatInputCommandInteraction) {
         await interaction.followUp(cfg_message())
     } catch (error) {
         erx(error as Error)
-        xcf(interaction)
+        void xcf(interaction)
     }
 }

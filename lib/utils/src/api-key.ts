@@ -33,7 +33,7 @@ export const key = {
         if (c.length !== 12 || e.length !== 50) return false
 
         try {
-            const epochNano = [...c].reduce((acc, char) => acc * 36n + BigInt(parseInt(char, 36)), 0n)
+            const epochNano = c.split("").reduce((acc, char) => acc * 36n + BigInt(parseInt(char, 36)), 0n)
             const now = Temporal.Now.instant().epochNanoseconds
 
             const diffMs = Number((now - epochNano) / 1_000_000n)

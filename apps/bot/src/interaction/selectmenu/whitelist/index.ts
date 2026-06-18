@@ -5,25 +5,25 @@ import { whitelist_add } from "./add"
 import { whitelist_remove } from "./remove"
 import { whitelist_list } from "./list"
 
-export async function cfg_whitelist(interaction: StringSelectMenuInteraction) {
+export function cfg_whitelist(interaction: StringSelectMenuInteraction) {
     const invalid = isInvalid(interaction)
     if (invalid) return interaction.reply(message.error(invalid))
 
     switch (interaction.values[0]) {
         case "add": {
-            return await whitelist_add(interaction)
+            return whitelist_add(interaction)
         }
         case "remove": {
-            return await whitelist_remove(interaction)
+            return whitelist_remove(interaction)
         }
         case "list": {
-            return await whitelist_list(interaction)
+            return whitelist_list(interaction)
         }
         case "return": {
-            return await return_handler(interaction)
+            return return_handler(interaction)
         }
         default: {
-            return await interaction.reply(message.error("Invalid option"))
+            return interaction.reply(message.error("Invalid option"))
         }
     }
 }

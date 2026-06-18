@@ -55,6 +55,6 @@ export async function whitelist_add(interaction: StringSelectMenuInteraction) {
         })
     } catch (error) {
         erx(error as Error)
-        xcf(interaction)
+        void xcf(interaction)
     }
 }

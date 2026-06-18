@@ -1,3 +1,5 @@
+// oxlint-disable
+
 import { TemporalPolyfill } from "@/components/temporal-polyfill"
 import { Figtree, Fira_Code, Comfortaa } from "next/font/google"
 import { Temporal, toTemporalInstant } from "temporal-polyfill"

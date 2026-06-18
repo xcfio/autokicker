@@ -40,7 +40,7 @@ export async function main() {
     console.log(`Server listening at http://localhost:${config.port}`)
 }
 
-process.on("uncaughtException", (err: Error, origin: string) => xcf(err, "Uncaught Exception", origin, false))
-process.on("unhandledRejection", (reason: Error, origin: string) => xcf(reason, "Unhandled Rejection", origin, false))
-process.on("uncaughtExceptionMonitor", (err: Error, origin: string) => xcf(err, "Uncaught Exception", origin, false))
-main()
+process.on("uncaughtException", (err: Error, org: string) => void xcf(err, "Uncaught Exception", org, false))
+process.on("unhandledRejection", (res: Error, org: string) => void xcf(res, "Unhandled Rejection", org, false))
+process.on("uncaughtExceptionMonitor", (err: Error, org: string) => void xcf(err, "Uncaught Exception", org, false))
+void main()

@@ -9,6 +9,6 @@ export default async function ready(client: Client<true>) {
     console.log(`${client.user.tag} is online`)
     schedule("0 * * * *", CronJob)
     await command(client)
-    await status(client)
     await seed(client)
+    status(client)
 }

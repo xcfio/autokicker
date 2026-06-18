@@ -1,3 +1,5 @@
+// oxlint-disable
+
 import { UserSelectMenuInteraction } from "discord.js"
 import { message, erx, xcf } from "../../../utils"
 

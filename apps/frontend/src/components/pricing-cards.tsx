@@ -186,7 +186,7 @@ export const Pricing = ({
         }
 
         const ro = new ResizeObserver(onResize)
-        ro.observe(canvas.parentElement || document.body)
+        ro.observe(canvas.parentElement ?? document.body)
 
         init()
         raf = requestAnimationFrame(draw)

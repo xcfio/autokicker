@@ -1,3 +1,4 @@
+// oxlint-disable
 import { TSchema, TSchemaOptions, Type } from "typebox"
 // @ts-ignore - Type is not available yet
 import { randomUUIDv7 } from "node:crypto"

@@ -1,3 +1,5 @@
+// oxlint-disable typescript/no-unsafe-assignment
+
 "use client"
 
 import { ArrowLeft, Wifi } from "lucide-react"

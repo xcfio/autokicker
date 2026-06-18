@@ -22,7 +22,7 @@ export const data: RESTPostAPIChatInputApplicationCommandsJSONBody = {
 export async function run(interaction: ChatInputCommandInteraction) {
     try {
         await interaction.deferReply()
-        if (!interaction.inCachedGuild()) return xcf(interaction)
+        if (!interaction.inCachedGuild()) return void xcf(interaction)
 
         const { client, guild } = interaction
         const uptimeString = uptime()
@@ -57,7 +57,7 @@ export async function run(interaction: ChatInputCommandInteraction) {
         const stickerCount = guild.stickers.cache.size
 
         const boostLevel = guild.premiumTier
-        const boostCount = guild.premiumSubscriptionCount || 0
+        const boostCount = guild.premiumSubscriptionCount ?? 0
 
         const boostTierText = {
             [GuildPremiumTier.None]: "None",
@@ -213,6 +213,6 @@ export async function run(interaction: ChatInputCommandInteraction) {
         })
     } catch (error) {
         erx(error as any)
-        xcf(interaction)
+        void xcf(interaction)
     }
 }

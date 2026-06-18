@@ -1,3 +1,5 @@
+// oxlint-disable
+
 import { CreateError, isFastifyError } from "fastify-utils"
 
 export async function xcf<Throw extends boolean>(

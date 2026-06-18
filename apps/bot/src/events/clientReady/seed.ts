@@ -12,7 +12,7 @@ export async function seed(client: Client<true>) {
 
 async function SeedUser(user: User) {
     if (user.bot) return
-    return await db.insert(table.user).values({ id: user.id }).onConflictDoNothing()
+    await db.insert(table.user).values({ id: user.id }).onConflictDoNothing()
 }
 
 async function SeedGuild(guild: Guild) {
@@ -21,7 +21,7 @@ async function SeedGuild(guild: Guild) {
 
 async function SeedMember(member: GuildMember) {
     if (member.user.bot) return
-    return await db
+    await db
         .insert(table.activity)
         .values({
             guildId: member.guild.id,

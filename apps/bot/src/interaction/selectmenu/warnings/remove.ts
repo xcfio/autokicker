@@ -7,7 +7,7 @@ import { eq } from "drizzle-orm"
 export async function warning_remove(interaction: StringSelectMenuInteraction) {
     try {
         await interaction.deferUpdate()
-        if (!interaction.inCachedGuild()) return xcf(interaction)
+        if (!interaction.inCachedGuild()) return void xcf(interaction)
 
         const [guild] = await db.select().from(table.guild).where(eq(table.guild.id, interaction.guildId))
         const stages = (guild?.warningStages ?? [])
@@ -25,7 +25,9 @@ export async function warning_remove(interaction: StringSelectMenuInteraction) {
                         },
                         {
                             type: ComponentType.TextDisplay,
-                            content: `${stages.length ? `Select a warning stage to remove.` : `No warning stages configured.`}`
+                            content: stages.length
+                                ? `Select a warning stage to remove.`
+                                : `No warning stages configured.`
                         },
                         {
                             type: ComponentType.ActionRow,
@@ -55,6 +57,6 @@ export async function warning_remove(interaction: StringSelectMenuInteraction) {
         })
     } catch (error) {
         erx(error as Error)
-        xcf(interaction)
+        void xcf(interaction)
     }
 }

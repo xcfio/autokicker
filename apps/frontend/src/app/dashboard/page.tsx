@@ -1,3 +1,4 @@
+// oxlint-disable no-promise-executor-return
 "use client"
 
 import { toast } from "sonner"

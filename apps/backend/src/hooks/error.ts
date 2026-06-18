@@ -1,6 +1,6 @@
 import { isFastifyError, CreateError } from "fastify-utils"
 
-export default async function error(fastify: Fastify) {
+export default function error(fastify: Fastify) {
     fastify.addHook("onError", (_, __, error) => {
         if (isFastifyError(error)) {
             throw error

@@ -6,6 +6,6 @@ export async function return_handler(interaction: StringSelectMenuInteraction) {
         await interaction.update(cfg_message())
     } catch (error) {
         erx(error as Error)
-        xcf(interaction)
+        void xcf(interaction)
     }
 }

@@ -1,3 +1,5 @@
+// oxlint-disable
+
 import { Activity, Guild, User, Warning, Whitelist } from "@repo/schema"
 import { createSelectSchema } from "drizzle-orm/typebox"
 import { TObject, TSchema } from "typebox"

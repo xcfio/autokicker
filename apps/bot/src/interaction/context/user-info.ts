@@ -19,7 +19,7 @@ export async function run(interaction: UserContextMenuCommandInteraction) {
     // prettier-ignore
     const roles = interaction.targetMember?.roles.cache.filter((role) => role.id !== interaction.guildId).map((role) => `<@&${role.id}>`).sort().join(", ") ?? "This user does not have any roles."
 
-    interaction.reply({
+    await interaction.reply({
         flags: MessageFlags.Ephemeral,
         embeds: [
             {

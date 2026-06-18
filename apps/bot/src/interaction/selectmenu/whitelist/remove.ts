@@ -6,7 +6,7 @@ import { eq } from "drizzle-orm"
 export async function whitelist_remove(interaction: StringSelectMenuInteraction) {
     try {
         await interaction.deferUpdate()
-        if (!interaction.inCachedGuild()) return xcf(interaction)
+        if (!interaction.inCachedGuild()) return void xcf(interaction)
 
         const whitelist = await db
             .select()
@@ -24,7 +24,7 @@ export async function whitelist_remove(interaction: StringSelectMenuInteraction)
                         },
                         {
                             type: ComponentType.TextDisplay,
-                            content: `${whitelist.length ? `Select a whitelist to remove.` : `No whitelist configured.`}`
+                            content: whitelist.length ? `Select a whitelist to remove.` : `No whitelist configured.`
                         },
                         {
                             type: ComponentType.ActionRow,
@@ -78,6 +78,6 @@ export async function whitelist_remove(interaction: StringSelectMenuInteraction)
         })
     } catch (error) {
         erx(error as Error)
-        xcf(interaction)
+        void xcf(interaction)
     }
 }

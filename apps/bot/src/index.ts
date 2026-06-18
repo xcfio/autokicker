@@ -33,7 +33,7 @@ export const client = new Client({
     }
 })
 
-client.login(config.token)
+void client.login(config.token)
 process.on("uncaughtException", (err: Error, origin: string) => error("Uncaught Exception", err, origin))
 process.on("unhandledRejection", (reason: Error, origin: string) => error("Unhandled Rejection", reason, origin))
 process.on("uncaughtExceptionMonitor", (err: Error, origin: string) => error("Uncaught Exception", err, origin))

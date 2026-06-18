@@ -51,13 +51,14 @@ export default function RadialOrbitalTimeline({ timelineData, className }: Radia
 
         const newState = { ...expandedItems }
         Object.keys(newState).forEach((key) => {
-            if (parseInt(key) !== id) {
-                newState[parseInt(key)] = false
+            if (Number(key) !== id) {
+                newState[Number(key)] = false
             }
         })
         newState[id] = !isCurrentlyExpanded
         setExpandedItems(newState)
 
+        // oxlint-disable-next-line no-negated-condition
         if (!isCurrentlyExpanded) {
             setActiveNodeId(id)
             setAutoRotate(false)

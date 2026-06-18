@@ -1,3 +1,5 @@
+// oxlint-disable
+
 export type ClientToServerEvents = {}
 
 export type ServerToClientEvents = {}

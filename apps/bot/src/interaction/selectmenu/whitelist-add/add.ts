@@ -5,7 +5,7 @@ import { return_handler } from "../return"
 export async function whitelist_add(interaction: StringSelectMenuInteraction) {
     try {
         const value = interaction.values[0]
-        if (value === "return") return return_handler(interaction)
+        if (value === "return") return await return_handler(interaction)
 
         let componentType: ComponentType.UserSelect | ComponentType.RoleSelect | ComponentType.ChannelSelect
         let placeholder: string
@@ -38,7 +38,7 @@ export async function whitelist_add(interaction: StringSelectMenuInteraction) {
             }
 
             default: {
-                return xcf(interaction)
+                return void xcf(interaction)
             }
         }
 
@@ -74,6 +74,6 @@ export async function whitelist_add(interaction: StringSelectMenuInteraction) {
         })
     } catch (error) {
         erx(error as Error)
-        xcf(interaction)
+        void xcf(interaction)
     }
 }

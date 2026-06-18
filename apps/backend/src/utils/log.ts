@@ -9,7 +9,7 @@ export const logger: FastifyLoggerOptions<RawServerBase> & PinoLoggerOptions = {
     formatters: { level: (label) => ({ label }) },
     timestamp: () => {
         const base = Temporal.Now.zonedDateTimeISO("Asia/Dhaka").round("second")
-        const date = `"date":"${base.toPlainDate()}"`
+        const date = `"date":"${base.toPlainDate().toString()}"`
         const time = `"time":"${base.toPlainTime().toLocaleString("en-US", { hour12: true }).toUpperCase()}"`
         return ["", date, time].join(",")
     },

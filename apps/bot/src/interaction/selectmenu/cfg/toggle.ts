@@ -6,7 +6,7 @@ import { eq } from "drizzle-orm"
 export async function toggle(interaction: StringSelectMenuInteraction) {
     try {
         await interaction.deferUpdate()
-        if (!interaction.inCachedGuild()) return xcf(interaction)
+        if (!interaction.inCachedGuild()) return void xcf(interaction)
 
         const [guild] = await db.select().from(table.guild).where(eq(table.guild.id, interaction.guildId))
         const newState = !(guild?.enabled ?? false)
@@ -38,6 +38,6 @@ export async function toggle(interaction: StringSelectMenuInteraction) {
         })
     } catch (error) {
         erx(error as Error)
-        xcf(interaction)
+        void xcf(interaction)
     }
 }

@@ -32,6 +32,6 @@ export async function run(interaction: ChatInputCommandInteraction) {
         })
     } catch (error: any) {
         erx(error)
-        xcf(interaction)
+        void xcf(interaction)
     }
 }

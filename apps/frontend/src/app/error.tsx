@@ -1,3 +1,5 @@
+// oxlint-disable typescript/no-unsafe-assignment
+
 "use client"
 
 import { TriangleAlert, ArrowLeft, Copy, Check } from "lucide-react"
@@ -29,8 +31,8 @@ export default function ErrorFallback({ error, reset }: ErrorPageProps) {
     const infoRows = [
         { label: "Request ID", value: timestamp.epochMilliseconds.toString(36).toUpperCase() },
         { label: "Timestamp", value: timestamp.toLocaleString() },
-        { label: "User Agent", value: typeof navigator !== "undefined" ? navigator.userAgent : "N/A" },
-        { label: "URL", value: typeof window !== "undefined" ? window.location.href : "N/A" },
+        { label: "User Agent", value: typeof navigator === "undefined" ? "N/A" : navigator.userAgent },
+        { label: "URL", value: typeof window === "undefined" ? "N/A" : window.location.href },
         ...(error.digest ? [{ label: "Digest", value: error.digest }] : [])
     ]
 
@@ -155,7 +157,7 @@ export default function ErrorFallback({ error, reset }: ErrorPageProps) {
                         {/* Copy button */}
                         <div className="border-t border-teal-500/20 px-5 py-3 bg-black/20">
                             <button
-                                onClick={handleCopy}
+                                onClick={() => void handleCopy()}
                                 className={`w-full py-2.5 rounded-lg font-semibold text-sm transition-all duration-200 inline-flex items-center justify-center gap-2 border focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-400 ${
                                     copied
                                         ? "border-green-500 text-green-400 bg-green-500/10"

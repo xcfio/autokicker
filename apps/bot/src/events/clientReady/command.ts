@@ -26,7 +26,7 @@ function validator(query: RESTPostAPIChatInputApplicationCommandsJSONBody) {
     if (!query) return false
     if (typeof query.name !== "string") return false
     if (typeof query.description !== "string") return false
-    if (!/^[a-z\-_]{1,32}$/.test(query.name)) return false
+    if (!/^[a-z\-_]{1,32}$/u.test(query.name)) return false
 
     if (query.options) {
         for (const option of query.options) {

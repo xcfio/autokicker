@@ -40,11 +40,12 @@ export async function xcf(interaction: RepliableInteraction, error?: Error) {
         if (error instanceof DiscordAPIError && ignore.has(Number(error.code))) {
             if (isSendable(interaction.channel)) return await interaction.channel.send(msg)
         } else {
+            // oxlint-disable-next-line typescript/no-unsafe-assignment
             msg.flags = [...(msg.flags as Array<InteractionReplyOptions["flags"]>), MessageFlags.Ephemeral] as any
             return await (interaction.deferred ? interaction.followUp(msg) : interaction.reply(msg))
         }
     } catch (error) {
         erx(error as Error)
-        if (isSendable(interaction.channel)) return await interaction.channel.send(msg)
+        if (isSendable(interaction.channel)) return interaction.channel.send(msg)
     }
 }

@@ -42,7 +42,7 @@ export function Grid({ items }: GridProps) {
                     <div
                         className={cn(
                             "absolute inset-0 opacity-0 group-hover:opacity-[0.07] transition-opacity duration-500 bg-linear-to-br pointer-events-none",
-                            item.gradient || "from-blue-500 to-cyan-400"
+                            item.gradient ?? "from-blue-500 to-cyan-400"
                         )}
                     />
 
@@ -66,7 +66,7 @@ export function Grid({ items }: GridProps) {
                                 <div
                                     className={cn(
                                         "relative w-10 h-10 rounded-xl bg-linear-to-br p-0.5",
-                                        item.gradient || "from-blue-500 to-cyan-400"
+                                        item.gradient ?? "from-blue-500 to-cyan-400"
                                     )}
                                 >
                                     <div className="w-full h-full rounded-[12px] bg-[#030711] flex items-center justify-center text-blue-300">
@@ -79,7 +79,7 @@ export function Grid({ items }: GridProps) {
                                         "bg-blue-950/50 border-blue-500/20 text-blue-300/80 group-hover:text-blue-300 group-hover:border-blue-500/30"
                                     )}
                                 >
-                                    {item.status || "Active"}
+                                    {item.status ?? "Active"}
                                 </span>
                             </div>
 
@@ -106,7 +106,7 @@ export function Grid({ items }: GridProps) {
                                 ))}
                             </div>
                             <span className="text-xs text-blue-400 group-hover:text-blue-300 font-medium transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0">
-                                {item.cta || "Explore →"}
+                                {item.cta ?? "Explore →"}
                             </span>
                         </div>
                     </div>

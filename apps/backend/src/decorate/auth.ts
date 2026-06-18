@@ -3,7 +3,7 @@ import { CreateError, isFastifyError } from "fastify-utils"
 import { Payload } from "@repo/schema"
 import Value from "typebox/value"
 
-export default async function authentication(fastify: Fastify) {
+export default function authentication(fastify: Fastify) {
     fastify.decorate("authentication", async function (request: FastifyRequest, reply: FastifyReply) {
         try {
             const user = await request.jwtVerify()

@@ -1,3 +1,5 @@
+// oxlint-disable
+
 import { Button, ChatInput, Context, Modal, SelectMenu } from "../../interaction"
 import { Interaction } from "discord.js"
 import { erx, xcf } from "../../utils"

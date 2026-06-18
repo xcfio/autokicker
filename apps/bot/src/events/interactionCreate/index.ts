@@ -3,6 +3,6 @@ import { Interaction } from "discord.js"
 import { run } from "./run"
 
 export default async function InteractionCreate(interaction: Interaction) {
-    run(interaction)
+    await run(interaction)
     // log(interaction)
 }

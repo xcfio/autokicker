@@ -6,7 +6,7 @@ import { eq } from "drizzle-orm"
 export async function whitelist_list(interaction: StringSelectMenuInteraction) {
     try {
         await interaction.deferUpdate()
-        if (!interaction.inCachedGuild()) return xcf(interaction)
+        if (!interaction.inCachedGuild()) return void xcf(interaction)
 
         const entries = await db.select().from(table.whitelist).where(eq(table.whitelist.guildId, interaction.guildId))
 
@@ -41,6 +41,6 @@ export async function whitelist_list(interaction: StringSelectMenuInteraction) {
         })
     } catch (error) {
         erx(error as Error)
-        xcf(interaction)
+        void xcf(interaction)
     }
 }

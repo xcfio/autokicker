@@ -7,7 +7,7 @@ import { eq } from "drizzle-orm"
 export async function warning_list(interaction: StringSelectMenuInteraction) {
     try {
         await interaction.deferUpdate()
-        if (!interaction.inCachedGuild()) return xcf(interaction)
+        if (!interaction.inCachedGuild()) return void xcf(interaction)
 
         const [guild] = await db.select().from(table.guild).where(eq(table.guild.id, interaction.guildId))
         const stages = guild?.warningStages ?? []
@@ -15,7 +15,7 @@ export async function warning_list(interaction: StringSelectMenuInteraction) {
         const list = stages.length
             ? stages
                   .sort((a: number, b: number) => b - a)
-                  .map((minutes) => `${duration(Temporal.Duration.from({ minutes }))}`)
+                  .map((minutes) => duration(Temporal.Duration.from({ minutes })))
                   .join("\n")
             : "No warning stages configured."
 
@@ -41,6 +41,6 @@ export async function warning_list(interaction: StringSelectMenuInteraction) {
         })
     } catch (error) {
         erx(error as Error)
-        xcf(interaction)
+        void xcf(interaction)
     }
 }

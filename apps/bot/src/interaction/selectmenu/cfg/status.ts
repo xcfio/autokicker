@@ -8,7 +8,7 @@ import { duration } from "@repo/utils"
 export async function status(interaction: StringSelectMenuInteraction) {
     try {
         await interaction.deferUpdate()
-        if (!interaction.inCachedGuild()) return xcf(interaction)
+        if (!interaction.inCachedGuild()) return void xcf(interaction)
 
         const [guild] = await db.select().from(table.guild).where(eq(table.guild.id, interaction.guildId))
         const whitelistCount = (
@@ -84,6 +84,6 @@ export async function status(interaction: StringSelectMenuInteraction) {
         })
     } catch (error) {
         erx(error as Error)
-        xcf(interaction)
+        void xcf(interaction)
     }
 }
