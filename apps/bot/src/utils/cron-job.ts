@@ -1,11 +1,11 @@
 import { ComponentType, MessageFlags } from "discord.js"
 import { eq, and, lt } from "drizzle-orm"
 import { table } from "@repo/database"
+import { duration } from "@repo/utils"
 import { isSendable } from "./logic"
 import { client } from "../index"
 import { db } from "./database"
 import { Emoji } from "./emoji"
-import { duration } from "@repo/utils"
 
 export async function CronJob() {
     try {
@@ -21,11 +21,11 @@ export async function CronJob() {
 
             // Whitelisted roles
             const whitelisted = await db.select().from(table.whitelist).where(eq(table.whitelist.guildId, guildId))
-            const whitelistedIds = whitelisted.map((row) => ({ id: row.whitelistId, type: row.whitelistType }))
+            const whitelistedIds = whitelisted.map((row) => ({ id: row.entry, type: row.type }))
 
             // Guild's custom warning stages (sorted descending — largest minutes first)
             const [stages] = await db.select().from(table.guild).where(eq(table.guild.id, guildId))
-            const sortedStages = stages.warningStages.sort((a, b) => b - a)
+            const sortedStages = stages.stages.sort((a, b) => b - a)
 
             // Earliest cutoff: we care about members whose inactivity has entered the largest warning window
             const largestWarning = sortedStages.length > 0 ? sortedStages[0] : 0
@@ -60,7 +60,7 @@ export async function CronJob() {
                     try {
                         const actionVerb = config.action === "ban" ? "banned" : "kicked"
                         const dmText =
-                            config.kickMessage ??
+                            config.message ??
                             `You have been **${actionVerb}** from **${guild.name}** for being inactive for ${duration(inactiveDuration)}.`
 
                         await member
@@ -86,8 +86,8 @@ export async function CronJob() {
                         }
 
                         // Log
-                        if (config.logChannel.length) {
-                            for (const channel of config.logChannel) {
+                        if (config.log.length) {
+                            for (const channel of config.log) {
                                 const logCh = guild.channels.cache.get(channel)
                                 if (logCh && isSendable(logCh)) {
                                     await logCh.send({

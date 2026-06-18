@@ -6,10 +6,10 @@ export const guild = pgTable("guilds", {
     id: varchar("id", { length: 20 }).primaryKey().notNull().unique(),
     enabled: boolean("enabled").notNull().default(false),
     threshold: integer("threshold").notNull().default(43200),
+    log: varchar("log", { length: 20 }).array().notNull().default([]),
     action: action("action").notNull().default("kick"),
-    logChannel: varchar("log_channel", { length: 20 }).array().notNull().default([]),
-    kickMessage: text("kick_message"),
-    warningStages: integer("warning_stages").array().notNull().default([]),
+    stages: integer("stages").array().notNull().default([]),
+    message: text("message"),
     createdAt: timestamp("created_at", { mode: "string", withTimezone: false })
         .notNull()
         .$defaultFn(() => Temporal.Now.instant().toString()),

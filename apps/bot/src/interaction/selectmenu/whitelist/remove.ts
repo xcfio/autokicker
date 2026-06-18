@@ -35,31 +35,31 @@ export async function whitelist_remove(interaction: StringSelectMenuInteraction)
                                     type: ComponentType.StringSelect,
                                     options: [
                                         ...whitelist.slice(0, 24).map((entry) => {
-                                            let label = entry.whitelistId
-                                            switch (entry.whitelistType) {
+                                            let label = entry.entry
+                                            switch (entry.type) {
                                                 case "channel": {
                                                     label =
-                                                        interaction.guild.channels.cache.get(entry.whitelistId)?.name ??
-                                                        `#${entry.whitelistId}`
+                                                        interaction.guild.channels.cache.get(entry.entry)?.name ??
+                                                        `#${entry.entry}`
                                                     break
                                                 }
                                                 case "user": {
                                                     label =
-                                                        interaction.client.users.cache.get(entry.whitelistId)
-                                                            ?.username ?? `@${entry.whitelistId}`
+                                                        interaction.client.users.cache.get(entry.entry)?.username ??
+                                                        `@${entry.entry}`
                                                     break
                                                 }
                                                 case "role": {
                                                     label =
-                                                        interaction.guild.roles.cache.get(entry.whitelistId)?.name ??
-                                                        `&${entry.whitelistId}`
+                                                        interaction.guild.roles.cache.get(entry.entry)?.name ??
+                                                        `&${entry.entry}`
                                                     break
                                                 }
                                             }
 
                                             return {
                                                 label,
-                                                description: `${entry.whitelistType} - ${entry.whitelistId}`,
+                                                description: `${entry.type} - ${entry.entry}`,
                                                 value: entry.id
                                             }
                                         }),

@@ -8,8 +8,8 @@ export const WhitelistType = Type.Union([Type.Literal("user"), Type.Literal("rol
 export const Whitelist = Type.Object({
     id: UUID,
     guildId: Snowflake,
-    whitelistType: WhitelistType,
-    whitelistId: Snowflake,
+    type: WhitelistType,
+    entry: Snowflake,
     createdAt: Type.String({
         format: "date-time",
         description: "Record creation timestamp",

@@ -21,7 +21,7 @@ export async function whitelist_add(interaction: StringSelectMenuInteraction) {
                             type: ComponentType.ActionRow,
                             components: [
                                 {
-                                    custom_id: "whitelist-add-type",
+                                    custom_id: "whitelist-add",
                                     placeholder: "Select type",
                                     type: ComponentType.StringSelect,
                                     options: [

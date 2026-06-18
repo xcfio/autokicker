@@ -10,7 +10,7 @@ export async function warning_list(interaction: StringSelectMenuInteraction) {
         if (!interaction.inCachedGuild()) return void xcf(interaction)
 
         const [guild] = await db.select().from(table.guild).where(eq(table.guild.id, interaction.guildId))
-        const stages = guild?.warningStages ?? []
+        const stages = guild?.stages ?? []
 
         const list = stages.length
             ? stages

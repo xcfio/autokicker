@@ -22,13 +22,13 @@ export const Guild = Type.Object({
         })
     }),
     action: ActionType,
-    logChannel: Type.Array(Snowflake, {
+    log: Type.Array(Snowflake, {
         default: [],
         description: "Channel IDs to send log messages to",
         minItems: 0,
         maxItems: 3
     }),
-    kickMessage: Nullable(
+    message: Nullable(
         Type.String({
             description: "Custom message sent to kicked members",
             examples: [null],
@@ -36,7 +36,7 @@ export const Guild = Type.Object({
             maxLength: 2000
         })
     ),
-    warningStages: Type.Array(
+    stages: Type.Array(
         Type.Integer({
             description: "Minutes before threshold to send warning",
             minimum: Temporal.Duration.from({ minutes: 1 }).total("minutes"),

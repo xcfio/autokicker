@@ -13,8 +13,8 @@ export async function whitelist_list(interaction: StringSelectMenuInteraction) {
         const list = entries.length
             ? entries
                   .map((e) => {
-                      const prefix = e.whitelistType === "user" ? "@" : e.whitelistType === "role" ? "&" : "#"
-                      return `${e.whitelistType}: ${prefix}${e.whitelistId}`
+                      const prefix = e.type === "user" ? "@" : e.type === "role" ? "&" : "#"
+                      return `${e.type}: ${prefix}${e.entry}`
                   })
                   .join("\n")
             : "No whitelist entries found."

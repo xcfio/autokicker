@@ -11,8 +11,8 @@ export const whitelist = pgTable(
         guildId: varchar("guild_id", { length: 20 })
             .notNull()
             .references(() => guild.id, { onDelete: "cascade" }),
-        whitelistType: WhitelistType("whitelist_type").notNull(),
-        whitelistId: varchar("whitelist_id", { length: 20 }).notNull(),
+        type: WhitelistType("type").notNull(),
+        entry: varchar("id", { length: 20 }).notNull(),
         createdAt: timestamp("created_at", { mode: "string", withTimezone: false })
             .notNull()
             .$defaultFn(() => Temporal.Now.instant().toString()),
@@ -20,5 +20,5 @@ export const whitelist = pgTable(
             .notNull()
             .$onUpdateFn(() => Temporal.Now.instant().toString())
     },
-    (table) => [uniqueIndex("guild_whitelist_guild_role_index").on(table.guildId, table.whitelistId)]
+    (table) => [uniqueIndex("guild_whitelist_guild_role_index").on(table.guildId, table.entry)]
 )

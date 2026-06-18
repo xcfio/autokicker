@@ -18,9 +18,9 @@ export async function status(interaction: StringSelectMenuInteraction) {
         const enabled = guild?.enabled ?? false
         const threshold = Temporal.Duration.from({ minutes: guild?.threshold ?? 43200 })
         const action = guild?.action ?? "kick"
-        const logChannels = guild?.logChannel ?? []
-        const kickMessage = guild?.kickMessage ?? "Default"
-        const warningStages = guild?.warningStages ?? []
+        const logChannels = guild?.log ?? []
+        const kickMessage = guild?.message ?? "Default"
+        const warningStages = guild?.stages ?? []
 
         await interaction.editReply({
             flags: [MessageFlags.IsComponentsV2],

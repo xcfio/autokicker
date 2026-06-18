@@ -2,21 +2,19 @@ import { ComponentType, MessageFlags, StringSelectMenuInteraction } from "discor
 import { Emoji, erx, xcf } from "../../../utils"
 import { return_handler } from "../return"
 
-export async function whitelist_add(interaction: StringSelectMenuInteraction) {
+export async function whitelist_add_type(interaction: StringSelectMenuInteraction) {
     try {
         const value = interaction.values[0]
         if (value === "return") return await return_handler(interaction)
 
         let componentType: ComponentType.UserSelect | ComponentType.RoleSelect | ComponentType.ChannelSelect
         let placeholder: string
-        let customId: string
         let title: string
 
         switch (value) {
             case "user": {
                 componentType = ComponentType.UserSelect
                 placeholder = "Select a user to whitelist"
-                customId = "whitelist-add-user"
                 title = "Whitelist User"
                 break
             }
@@ -24,7 +22,6 @@ export async function whitelist_add(interaction: StringSelectMenuInteraction) {
             case "role": {
                 componentType = ComponentType.RoleSelect
                 placeholder = "Select a role to whitelist"
-                customId = "whitelist-add-role"
                 title = "Whitelist Role"
                 break
             }
@@ -32,7 +29,6 @@ export async function whitelist_add(interaction: StringSelectMenuInteraction) {
             case "channel": {
                 componentType = ComponentType.ChannelSelect
                 placeholder = "Select a channel to whitelist"
-                customId = "whitelist-add-channel"
                 title = "Whitelist Channel"
                 break
             }
@@ -60,7 +56,7 @@ export async function whitelist_add(interaction: StringSelectMenuInteraction) {
                             type: ComponentType.ActionRow,
                             components: [
                                 {
-                                    custom_id: customId,
+                                    custom_id: "whitelist-add",
                                     placeholder: placeholder,
                                     type: componentType,
                                     max_values: 25,

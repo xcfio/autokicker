@@ -15,7 +15,7 @@ export async function warning_remove(interaction: StringSelectMenuInteraction) {
             .select()
             .from(table.guild)
             .where(eq(table.guild.id, interaction.guildId ?? ""))
-        const stages = guild?.warningStages ?? []
+        const stages = guild?.stages ?? []
 
         if (!stages.includes(minutes)) {
             return await interaction.update(
@@ -23,10 +23,9 @@ export async function warning_remove(interaction: StringSelectMenuInteraction) {
             )
         }
 
-        const warningStages = stages.filter((t: number) => t !== minutes)
         await db
             .update(table.guild)
-            .set({ warningStages })
+            .set({ stages: stages.filter((t: number) => t !== minutes) })
             .where(eq(table.guild.id, interaction.guildId ?? ""))
 
         return await interaction.update(
