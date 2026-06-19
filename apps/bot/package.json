@@ -23,7 +23,7 @@
         "discord.js": "^14.26.4",
         "drizzle-orm": "1.0.0-rc.4-273829f",
         "fastify": "^5.8.5",
-        "node-cron": "^4.2.1",
+        "node-cron": "^4.4.1",
         "postgres": "^3.4.9",
         "typebox": "^1.2.16"
     },
