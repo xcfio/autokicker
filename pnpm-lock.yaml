@@ -143,8 +143,8 @@ importers:
         specifier: ^5.8.5
         version: 5.8.5
       node-cron:
-        specifier: ^4.2.1
-        version: 4.2.1
+        specifier: ^4.4.1
+        version: 4.4.1
       postgres:
         specifier: ^3.4.9
         version: 3.4.9
@@ -3662,9 +3662,9 @@ packages:
       sass:
         optional: true
 
-  node-cron@4.2.1:
-    resolution: {integrity: sha512-lgimEHPE/QDgFlywTd8yTR61ptugX3Qer29efeyWw2rv259HtGBNn1vZVmp8lB9uo9wC0t/AT4iGqXxia+CJFg==}
-    engines: {node: '>=6.0.0'}
+  node-cron@4.4.1:
+    resolution: {integrity: sha512-1e4Gku1qeKx1ywNnMoA0o5hiZ8iA4klH84TIszTHZAME68xVIjLkiBo5KrtowbcOJn8MQqJG/yWHjC/dFdMWyQ==}
+    engines: {node: '>=20'}
 
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
@@ -7449,7 +7449,7 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  node-cron@4.2.1: {}
+  node-cron@4.4.1: {}
 
   node-domexception@1.0.0: {}
 
