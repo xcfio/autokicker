@@ -78,16 +78,18 @@ export const component = {
                         },
                         {
                             label: "Set log channel",
-                            value: "log-channel",
+                            value: "log",
                             emoji: { id: EmojiID.history },
                             description: "Channel for autokick logs"
                         },
+                        /*
                         {
                             label: "Set kick message",
-                            value: "kick-message",
+                            value: "message",
                             emoji: { id: EmojiID.hammer },
                             description: "Custom message sent to kicked users"
                         },
+                        */
                         {
                             label: "Return to main menu",
                             value: "return",
@@ -258,9 +260,9 @@ export const message = {
 export function isInvalid(interaction: Interaction): false | string {
     if (!interaction.inCachedGuild()) return "Unknown guild"
     const isAdmin = interaction.memberPermissions.has(PermissionFlagsBits.Administrator)
-    const canManage = interaction.memberPermissions.has(PermissionFlagsBits.ManageGuild)
-    if (!isAdmin || !canManage) {
-        return "403 - You don't have permission to use this command. Permission required: Administrator"
+    // const canManage = interaction.memberPermissions.has(PermissionFlagsBits.ManageGuild)
+    if (!isAdmin) {
+        return "You don't have permission to use this command. Permission required: Administrator"
     }
     return false
 }
