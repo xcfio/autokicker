@@ -1,6 +1,8 @@
 import Scalar from "@scalar/fastify-api-reference"
 
 export default async function scalar(fastify: Fastify) {
+    // oxlint-disable-next-line
+    // @ts-ignore
     await fastify.register(Scalar, {
         routePrefix: "/",
         configuration: {

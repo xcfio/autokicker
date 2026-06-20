@@ -20,6 +20,6 @@
         "fmt:test": "prettier --config=.prettierrc --check src"
     },
     "devDependencies": {
-        "@types/node": "^25.9.3"
+        "@types/node": "^26.0.0"
     }
 }

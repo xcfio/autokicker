@@ -8,14 +8,14 @@ import { useEffect } from "react"
 import { toast } from "sonner"
 
 if (typeof globalThis.Temporal === "undefined") {
-    // @ts-expect-error - Polyfill Temporal
+    // @ts-ignore - Polyfill Temporal
     globalThis.Temporal = Temporal
-    // @ts-expect-error - Polyfill Temporal
+    // @ts-ignore - Polyfill Temporal
     globalThis.Temporal.polyfilled = true
 }
 
 if (typeof Date.prototype.toTemporalInstant !== "function") {
-    // @ts-expect-error - Polyfill Temporal
+    // @ts-ignore - Polyfill Temporal
     Date.prototype.toTemporalInstant = toTemporalInstant
 }
 

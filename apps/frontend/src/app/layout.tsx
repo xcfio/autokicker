@@ -15,9 +15,9 @@ const comfortaa = Comfortaa({ subsets: ["latin"], variable: "--font-comfortaa" }
 const firaCode = Fira_Code({ subsets: ["latin"], variable: "--font-mono" })
 
 if (typeof globalThis.Temporal === "undefined") {
-    // @ts-expect-error - Polyfill Temporal
+    // @ts-ignore - Polyfill Temporal
     globalThis.Temporal = Temporal
-    // @ts-expect-error - Polyfill Temporal
+    // @ts-ignore - Polyfill Temporal
     globalThis.Temporal.polyfilled = true
 
     console.info("Server -> Temporal not defined - polyfilled")
@@ -26,7 +26,7 @@ if (typeof globalThis.Temporal === "undefined") {
 }
 
 if (typeof Date.prototype.toTemporalInstant !== "function") {
-    // @ts-expect-error - Polyfill Temporal
+    // @ts-ignore - Polyfill Temporal
     Date.prototype.toTemporalInstant = toTemporalInstant
     console.info("Server -> Date.prototype.toTemporalInstant not defined - polyfilling")
 } else {
