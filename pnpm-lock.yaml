@@ -68,7 +68,7 @@ importers:
         version: 9.7.0
       '@fastify/type-provider-typebox':
         specifier: ^6.1.0
-        version: 6.1.0(typebox@1.2.17)
+        version: 6.1.0(typebox@1.2.19)
       '@repo/database':
         specifier: workspace:*
         version: link:../../lib/database
@@ -89,7 +89,7 @@ importers:
         version: 0.38.49
       drizzle-orm:
         specifier: 1.0.0-rc.4-273829f
-        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.17)(zod@4.4.3)
+        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.19)(zod@4.4.3)
       fastify:
         specifier: ^5.8.5
         version: 5.8.5
@@ -106,8 +106,8 @@ importers:
         specifier: ^4.8.3
         version: 4.8.3
       typebox:
-        specifier: ^1.2.17
-        version: 1.2.17
+        specifier: ^1.2.19
+        version: 1.2.19
     devDependencies:
       '@types/node':
         specifier: ^26.0.0
@@ -138,7 +138,7 @@ importers:
         version: 14.26.4
       drizzle-orm:
         specifier: 1.0.0-rc.4-273829f
-        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.17)(zod@4.4.3)
+        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.19)(zod@4.4.3)
       fastify:
         specifier: ^5.8.5
         version: 5.8.5
@@ -149,8 +149,8 @@ importers:
         specifier: ^3.4.9
         version: 3.4.9
       typebox:
-        specifier: ^1.2.17
-        version: 1.2.17
+        specifier: ^1.2.19
+        version: 1.2.19
     devDependencies:
       '@types/node':
         specifier: ^26.0.0
@@ -219,8 +219,8 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       typebox:
-        specifier: ^1.2.17
-        version: 1.2.17
+        specifier: ^1.2.19
+        version: 1.2.19
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -251,13 +251,13 @@ importers:
     dependencies:
       drizzle-orm:
         specifier: 1.0.0-rc.4-273829f
-        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.17)(zod@4.4.3)
+        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.19)(zod@4.4.3)
       postgres:
         specifier: ^3.4.9
         version: 3.4.9
       typebox:
-        specifier: ^1.2.17
-        version: 1.2.17
+        specifier: ^1.2.19
+        version: 1.2.19
     devDependencies:
       '@types/node':
         specifier: ^26.0.0
@@ -272,8 +272,8 @@ importers:
         specifier: ^3.4.9
         version: 3.4.9
       typebox:
-        specifier: ^1.2.17
-        version: 1.2.17
+        specifier: ^1.2.19
+        version: 1.2.19
     devDependencies:
       '@types/node':
         specifier: ^26.0.0
@@ -289,10 +289,10 @@ importers:
         version: link:../schema
       drizzle-orm:
         specifier: 1.0.0-rc.4-273829f
-        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.17)(zod@4.4.3)
+        version: 1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.19)(zod@4.4.3)
       typebox:
-        specifier: ^1.2.17
-        version: 1.2.17
+        specifier: ^1.2.19
+        version: 1.2.19
     devDependencies:
       '@types/node':
         specifier: ^26.0.0
@@ -4422,11 +4422,11 @@ packages:
     resolution: {integrity: sha512-faYHw0anBbc/kWF3zFTEnxSFOAGUX9GFbOBthvDdLsIlEoWOFOtS0zgCiQYwIskL9iGXZL3kAXD8OoZ4GmMATA==}
     engines: {node: '>= 18'}
 
-  typebox@1.2.16:
-    resolution: {integrity: sha512-p85YWtR1RznP2kt/sftmj1leGiObfHVJwkK2hkDdEKhbtQONeUeBtbYdK0x9tLPh+5AaEPD62APv189Cy+/C2g==}
+  typebox@1.2.18:
+    resolution: {integrity: sha512-f4MtqlWxawJjxsuT1onX3F/5fas45PXQFQ1jRDTRia2IpBirlj/Xs9PvSAsw9Mz3DADIDU1mXbzfJWSg21JbRg==}
 
-  typebox@1.2.17:
-    resolution: {integrity: sha512-FHB10V5OI+MBKQ9N4CS4FTpdTiPwjAwkS9cjXt4uBULFE2zNOYu4A6iAR4GZVPcujSD6uCQjY1fqnOsjn/SLPQ==}
+  typebox@1.2.19:
+    resolution: {integrity: sha512-9stLVZhos9aUXJzu0Yf717xbcv3vFsE5APzsQ7j/honIUFtern451IdTlqmVzPzuGxHkeWwWc2cerw6m2lqKOQ==}
 
   typescript@6.0.3:
     resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
@@ -5238,9 +5238,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@fastify/type-provider-typebox@6.1.0(typebox@1.2.17)':
+  '@fastify/type-provider-typebox@6.1.0(typebox@1.2.19)':
     dependencies:
-      typebox: 1.2.17
+      typebox: 1.2.19
 
   '@floating-ui/core@1.7.5':
     dependencies:
@@ -6975,10 +6975,10 @@ snapshots:
       get-tsconfig: 4.14.0
       jiti: 2.7.0
 
-  drizzle-orm@1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.17)(zod@4.4.3):
+  drizzle-orm@1.0.0-rc.4-273829f(postgres@3.4.9)(typebox@1.2.19)(zod@4.4.3):
     optionalDependencies:
       postgres: 3.4.9
-      typebox: 1.2.17
+      typebox: 1.2.19
       zod: 4.4.3
 
   dunder-proto@1.0.1:
@@ -7237,7 +7237,7 @@ snapshots:
     dependencies:
       '@fastify/error': 4.2.0
       fastify: 5.8.5
-      typebox: 1.2.16
+      typebox: 1.2.18
 
   fastify@5.8.5:
     dependencies:
@@ -8483,9 +8483,9 @@ snapshots:
       media-typer: 1.1.0
       mime-types: 3.0.2
 
-  typebox@1.2.16: {}
+  typebox@1.2.18: {}
 
-  typebox@1.2.17: {}
+  typebox@1.2.19: {}
 
   typescript@6.0.3: {}
 
