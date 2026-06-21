@@ -11,4 +11,4 @@ allowBuilds:
   sharp: true
 
 minimumReleaseAgeExclude:
-  - typebox@1.2.17
+  - typebox@1.2.19
