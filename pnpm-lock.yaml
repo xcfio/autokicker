@@ -202,7 +202,7 @@ importers:
         version: 7.80.0(react@19.2.7)
       shadcn:
         specifier: ^4.11.0
-        version: 4.11.0(typescript@6.0.3)
+        version: 4.11.0(typescript@7.0.1-rc)
       sonner:
         specifier: ^2.0.7
         version: 2.0.7(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
@@ -222,8 +222,8 @@ importers:
         specifier: ^1.2.17
         version: 1.2.17
       typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
+        specifier: ^7.0.1-rc
+        version: 7.0.1-rc
       zustand:
         specifier: ^5.0.14
         version: 5.0.14(@types/react@19.2.17)(react@19.2.7)(use-sync-external-store@1.6.0(react@19.2.7))
@@ -4422,16 +4422,8 @@ packages:
     resolution: {integrity: sha512-faYHw0anBbc/kWF3zFTEnxSFOAGUX9GFbOBthvDdLsIlEoWOFOtS0zgCiQYwIskL9iGXZL3kAXD8OoZ4GmMATA==}
     engines: {node: '>= 18'}
 
-  typebox@1.2.16:
-    resolution: {integrity: sha512-p85YWtR1RznP2kt/sftmj1leGiObfHVJwkK2hkDdEKhbtQONeUeBtbYdK0x9tLPh+5AaEPD62APv189Cy+/C2g==}
-
   typebox@1.2.17:
     resolution: {integrity: sha512-FHB10V5OI+MBKQ9N4CS4FTpdTiPwjAwkS9cjXt4uBULFE2zNOYu4A6iAR4GZVPcujSD6uCQjY1fqnOsjn/SLPQ==}
-
-  typescript@6.0.3:
-    resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
 
   typescript@7.0.1-rc:
     resolution: {integrity: sha512-drEP77wK7CCDlPfXZH4e008UUQOsw1DFmHmZOZjuNA+yoDLLnSNMZRXi90NbV/1LVo7SbNLq1bs3jjvk49TEqQ==}
@@ -6877,15 +6869,6 @@ snapshots:
       jiti: 2.6.1
       typescript: 7.0.1-rc
 
-  cosmiconfig@9.0.2(typescript@6.0.3):
-    dependencies:
-      env-paths: 2.2.1
-      import-fresh: 3.3.1
-      js-yaml: 4.2.0
-      parse-json: 5.2.0
-    optionalDependencies:
-      typescript: 6.0.3
-
   cosmiconfig@9.0.2(typescript@7.0.1-rc):
     dependencies:
       env-paths: 2.2.1
@@ -7237,7 +7220,7 @@ snapshots:
     dependencies:
       '@fastify/error': 4.2.0
       fastify: 5.8.5
-      typebox: 1.2.16
+      typebox: 1.2.17
 
   fastify@5.8.5:
     dependencies:
@@ -8190,7 +8173,7 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  shadcn@4.11.0(typescript@6.0.3):
+  shadcn@4.11.0(typescript@7.0.1-rc):
     dependencies:
       '@babel/core': 7.29.7
       '@babel/parser': 7.29.7
@@ -8201,7 +8184,7 @@ snapshots:
       '@types/validate-npm-package-name': 4.0.2
       browserslist: 4.28.2
       commander: 14.0.3
-      cosmiconfig: 9.0.2(typescript@6.0.3)
+      cosmiconfig: 9.0.2(typescript@7.0.1-rc)
       dedent: 1.7.2
       deepmerge: 4.3.1
       diff: 8.0.4
@@ -8483,11 +8466,7 @@ snapshots:
       media-typer: 1.1.0
       mime-types: 3.0.2
 
-  typebox@1.2.16: {}
-
   typebox@1.2.17: {}
-
-  typescript@6.0.3: {}
 
   typescript@7.0.1-rc:
     optionalDependencies:
