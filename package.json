@@ -3,6 +3,7 @@
     "author": "Omar Faruk (Aka. xcfio)",
     "homepage": "https://github.com/xcfio/autokicker#readme",
     "license": "Proprietary",
+    "version": "0.0.1",
     "scripts": {
         "build": "turbo run build",
         "clean": "powershell -Command \"Get-ChildItem -Path . -Filter node_modules -Recurse -Directory | Remove-Item -Recurse -Force\"",
