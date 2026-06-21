@@ -21,28 +21,28 @@ jobs:
               run: |
                   RAW_TAG="${GITHUB_REF_NAME}"
                   TAG_VERSION="${RAW_TAG#v}"
-                  echo "RAW_TAG=[$RAW_TAG]"
-                  echo "TAG_VERSION=[$TAG_VERSION]"
-
-                  if [ -z "$TAG_VERSION" ]; then
-                      echo "::error::TAG_VERSION is empty — GITHUB_REF_NAME was '$RAW_TAG'"
-                      exit 1
-                  fi
-
                   PKG_VERSION=$(node -p "require('./package.json').version")
                   if [ "$PKG_VERSION" != "$TAG_VERSION" ]; then
-                      npm version "$TAG_VERSION" --no-git-tag-version --allow-same-version
-                      git config user.name "github-actions[bot]"
-                      git config user.email "github-actions[bot]@users.noreply.github.com"
-                      git add package.json package-lock.json
-                      git commit -m "chore: bump version to $TAG_VERSION"
-                      git push origin HEAD:main
+                    npm version "$TAG_VERSION" --no-git-tag-version --allow-same-version
+                    git config user.name "github-actions[bot]"
+                    git config user.email "github-actions[bot]@users.noreply.github.com"
+                    git add package.json package-lock.json
+                    git commit -m "chore: bump version to $TAG_VERSION"
+                    git push origin HEAD:main
                   fi
 
+            - name: Create release branch
+              run: |
+                  git push origin HEAD:refs/heads/release/${{ github.event.release.tag_name }} --force
+
             - name: Open PR to production
-              uses: peter-evans/create-pull-request@v7
-              with:
-                  base: production
-                  branch: release/${{ github.event.release.tag_name }}
-                  title: "Release ${{ github.event.release.tag_name }} → production"
-                  body: "Auto PR for release ${{ github.event.release.tag_name }}"
+              env:
+                  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  gh pr create \
+                    --repo ${{ github.repository }} \
+                    --base production \
+                    --head release/${{ github.event.release.tag_name }} \
+                    --title "Release ${{ github.event.release.tag_name }} → production" \
+                    --body "Auto PR for release ${{ github.event.release.tag_name }}" \
+                  || echo "PR already exists for this branch — skipping"
