@@ -1,16 +1,25 @@
 {
-    "$schema": "https://v2-9-8.turborepo.dev/schema.json",
-    "ui": "stream",
+    "$schema": "https://v2-9-14.turborepo.dev/schema.json",
+    "envMode": "loose",
+    "ui": "tui",
     "tasks": {
         "build": {
             "dependsOn": ["^build"],
             "inputs": ["$TURBO_DEFAULT$", ".env*"],
-            "outputs": [".next/**", "!.next/cache/**", "out/"]
+            "outputs": [".next/**", "!.next/cache/**", "out/", "ios/", "android/"]
         },
         "test": {
             "dependsOn": ["^test"]
         },
         "dev": {
+            "cache": false,
+            "persistent": true
+        },
+        "studio": {
+            "cache": false,
+            "persistent": true
+        },
+        "start": {
             "cache": false,
             "persistent": true
         }

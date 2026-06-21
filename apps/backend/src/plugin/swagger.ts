@@ -1,15 +1,13 @@
 import Swagger from "@fastify/swagger"
-import { version } from "../../package.json"
-import { main } from "../"
 
-export default async function swagger(fastify: Awaited<ReturnType<typeof main>>) {
+export default async function swagger(fastify: Fastify) {
     await fastify.register(Swagger, {
         hideUntagged: true,
         openapi: {
             openapi: "3.1.1",
             info: {
                 title: "API Documentation",
-                version: version
+                version: "0.0.1"
             }
         }
     })

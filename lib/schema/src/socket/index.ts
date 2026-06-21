@@ -1,8 +1,7 @@
-import { Socket } from "socket.io"
-import { Static } from "typebox"
+// oxlint-disable
 
-export interface ClientToServerEvents {}
+export type ClientToServerEvents = {}
 
-export interface ServerToClientEvents {}
+export type ServerToClientEvents = {}
 
-export interface AuthenticatedSocket extends Socket<ClientToServerEvents, ServerToClientEvents> {}
+export type InterServerEvents = {}

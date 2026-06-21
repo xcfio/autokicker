@@ -1,12 +1,7 @@
-import { Message, OmitPartialGroupDMChannel } from "discord.js"
-import { automod } from "./automod"
-import { crosspost } from "./crosspost"
-import { level } from "./level"
-import { msg_create_log as log } from "./log"
+import { trackActivity } from "../../utils"
+import { Message } from "discord.js"
 
-export default async function MessageCreate(message: OmitPartialGroupDMChannel<Message>) {
-    automod(message)
-    crosspost(message)
-    level(message)
-    log(message)
+export default async function messageCreate(message: Message) {
+    if (message.author.bot || !message.guild) return
+    await trackActivity(message.guild.id, message.author.id, "message")
 }

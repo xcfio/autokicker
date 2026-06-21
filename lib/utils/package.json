@@ -1,0 +1,25 @@
+{
+    "name": "@repo/utils",
+    "author": "xcfio",
+    "license": "Proprietary",
+    "exports": {
+        ".": {
+            "import": "./src/index.ts",
+            "require": "./src/index.ts"
+        }
+    },
+    "bugs": {
+        "email": "xcfio@proton.me",
+        "url": "https://github.com/xcfio/template"
+    },
+    "scripts": {
+        "db": "drizzle-kit studio --port=4000 --config=drizzle.config.ts",
+        "gen": "drizzle-kit generate",
+        "test": "tsc --noEmit",
+        "fmt": "prettier --config=.prettierrc --write src",
+        "fmt:test": "prettier --config=.prettierrc --check src"
+    },
+    "devDependencies": {
+        "@types/node": "^26.0.0"
+    }
+}

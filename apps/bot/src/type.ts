@@ -6,9 +6,6 @@ import {
     RESTPostAPIContextMenuApplicationCommandsJSONBody
 } from "discord.js"
 
-export const path = ["api-error", "error", "debug", "command", "msg-create", "msg-edit", "msg-delete"] as const
-export const pathdir = "log"
-
 export type ChatInputCommandObject = {
     autocomplete?: (interaction: AutocompleteInteraction) => any
     data: RESTPostAPIChatInputApplicationCommandsJSONBody
@@ -18,4 +15,21 @@ export type ChatInputCommandObject = {
 export type ContextCommandObject = {
     data: RESTPostAPIContextMenuApplicationCommandsJSONBody
     run: (arg: ContextMenuCommandInteraction) => any
+}
+
+declare global {
+    namespace NodeJS {
+        interface ProcessEnv extends Env {}
+    }
+}
+
+export type Env = {
+    NODE_ENV: "development" | "production" | "test"
+    DATABASE_URL: string
+    FRONTEND_URL: string
+    API_URL: string
+    PORT: string
+
+    SECRET: string
+    TOKEN: string
 }

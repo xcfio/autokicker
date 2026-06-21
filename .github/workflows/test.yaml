@@ -3,10 +3,10 @@ name: Code Test
 on:
     push:
         branches:
-            - cool
+            - main
     pull_request:
         branches:
-            - cool
+            - main
 
 jobs:
     test:
@@ -16,23 +16,24 @@ jobs:
             - name: Setup Action
               uses: actions/checkout@v4
 
+            # Setup PNPM
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v4
+
             # Setup Node.js
             - name: Setup Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: "latest"
-
-            # Setup PNPM
-            - name: Setup PNPM
-              uses: pnpm/action-setup@v4
-
-            # Create blank config
-            - name: Create blank config
-              run: node --eval "require('node:fs').writeFileSync('apps/bot/src/config.ts', 'export default {} as any')"
+                  cache: "pnpm"
 
             # Install dependencies
             - name: Install dependencies
-              run: pnpm install --no-frozen-lockfile
+              run: (pnpm install --no-frozen-lockfile) || true
+
+            # Disable Turbo Telemetry to prevent potential issues in CI environment
+            - name: Disable Turbo Telemetry
+              run: pnpm exec turbo telemetry disable > /dev/null 2>&1 && echo "Turbo Telemetry disabled"
 
             # Run test
             - name: Run test

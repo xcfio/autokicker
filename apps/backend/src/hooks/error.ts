@@ -1,9 +1,8 @@
-import { isFastifyError, CreateError } from "../function"
-import { main } from "../"
+import { isFastifyError, CreateError } from "fastify-utils"
 
-export default async function error(fastify: Awaited<ReturnType<typeof main>>) {
+export default function error(fastify: Fastify) {
     fastify.addHook("onError", (_, __, error) => {
-        if ((Error.isError(error) && error.message.startsWith("Rate limit exceeded")) || isFastifyError(error)) {
+        if (isFastifyError(error)) {
             throw error
         } else {
             console.trace(error)

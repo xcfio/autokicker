@@ -6,7 +6,9 @@ allowBuilds:
   "@parcel/watcher": true
   "@swc/core": true
   esbuild: true
-  fastify-socket.io: true
   lefthook: true
   msw: true
   sharp: true
+
+minimumReleaseAgeExclude:
+  - typebox@1.2.19

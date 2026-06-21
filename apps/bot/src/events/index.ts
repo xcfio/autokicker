@@ -1,24 +1,14 @@
-import { ClientEvents } from "discord.js"
-import guildMemberRemove from "./guildMemberRemove"
+import messageReactionAdd from "./messageReactionAdd"
 import interactionCreate from "./interactionCreate"
-import guildMemberAdd from "./guildMemberAdd"
-import messageUpdate from "./messageUpdate"
+import voiceStateUpdate from "./voiceStateUpdate"
 import messageCreate from "./messageCreate"
-import messageDelete from "./messageDelete"
-import threadCreate from "./threadCreate"
-import guildCreate from "./guildCreate"
-import debug from "./debug"
-import ready from "./ready"
+import ready from "./clientReady"
+import { ClientEvents } from "discord.js"
 
 export default new Map<keyof ClientEvents, (...arg: any) => any>([
-    ["debug", debug],
-    ["guildCreate", guildCreate],
-    ["guildMemberAdd", guildMemberAdd],
-    ["guildMemberRemove", guildMemberRemove],
+    ["clientReady", ready],
     ["interactionCreate", interactionCreate],
     ["messageCreate", messageCreate],
-    ["messageDelete", messageDelete],
-    ["messageUpdate", messageUpdate],
-    ["ready", ready],
-    ["threadCreate", threadCreate]
+    ["voiceStateUpdate", voiceStateUpdate],
+    ["messageReactionAdd", messageReactionAdd]
 ])

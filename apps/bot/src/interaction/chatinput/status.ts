@@ -9,8 +9,8 @@ import {
     version
 } from "discord.js"
 import { arch, cpus, freemem, loadavg, release, totalmem, type } from "node:os"
-import { Errors, xcf } from "../../function"
-import * as colorette from "colorette"
+import { erx, xcf } from "../../utils"
+import { blue } from "colorette"
 import { uptime } from "coolcake"
 
 export const data: RESTPostAPIChatInputApplicationCommandsJSONBody = {
@@ -22,7 +22,7 @@ export const data: RESTPostAPIChatInputApplicationCommandsJSONBody = {
 export async function run(interaction: ChatInputCommandInteraction) {
     try {
         await interaction.deferReply()
-        if (!interaction.inCachedGuild()) return xcf(interaction)
+        if (!interaction.inCachedGuild()) return void xcf(interaction)
 
         const { client, guild } = interaction
         const uptimeString = uptime()
@@ -57,7 +57,7 @@ export async function run(interaction: ChatInputCommandInteraction) {
         const stickerCount = guild.stickers.cache.size
 
         const boostLevel = guild.premiumTier
-        const boostCount = guild.premiumSubscriptionCount || 0
+        const boostCount = guild.premiumSubscriptionCount ?? 0
 
         const boostTierText = {
             [GuildPremiumTier.None]: "None",
@@ -67,7 +67,7 @@ export async function run(interaction: ChatInputCommandInteraction) {
         }[boostLevel]
 
         const ping = client.ws.ping
-        const apiLatency = Date.now() - interaction.createdTimestamp
+        const apiLatency = Temporal.Now.instant().epochMilliseconds - interaction.createdTimestamp
 
         const memoryUsage = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)
         const totalMemory = (totalmem() / 1024 / 1024 / 1024).toFixed(2)
@@ -81,9 +81,6 @@ export async function run(interaction: ChatInputCommandInteraction) {
         const totalGuilds = client.guilds.cache.size
         const totalUsers = client.users.cache.size
 
-        // prettier-ignore
-        const color = colorette[["black", "blue", "cyan", "green", "magenta"][Math.floor(Math.random() * 5)] as keyof typeof colorette] as (str: string) => string
-
         await interaction.editReply({
             flags: [MessageFlags.IsComponentsV2],
             components: [
@@ -92,14 +89,14 @@ export async function run(interaction: ChatInputCommandInteraction) {
                     components: [
                         {
                             type: ComponentType.TextDisplay,
-                            content: "## 📊 Status Information"
+                            content: "## Status Information"
                         },
                         {
                             type: ComponentType.Separator
                         },
                         {
                             type: ComponentType.TextDisplay,
-                            content: "### 🤖 Bot Status"
+                            content: "### Bot Status"
                         },
                         {
                             type: ComponentType.Separator
@@ -108,18 +105,18 @@ export async function run(interaction: ChatInputCommandInteraction) {
                             type: ComponentType.TextDisplay,
                             content:
                                 "```ansi\n" +
-                                `${color("Ping")}: ${ping}ms\n` +
-                                `${color("API Latency")}: ${apiLatency}ms\n` +
-                                `${color("Uptime")}: ${uptimeString}\n` +
-                                `${color("Memory")}: ${memoryUsage} MB\n` +
-                                `${color("Servers")}: ${totalGuilds}\n` +
-                                `${color("Users Cached")}: ${totalUsers}\n` +
-                                `${color("Discord.js")}: v${version}\n` +
+                                `${blue("Ping")}: ${ping}ms\n` +
+                                `${blue("API Latency")}: ${apiLatency}ms\n` +
+                                `${blue("Uptime")}: ${uptimeString}\n` +
+                                `${blue("Memory")}: ${memoryUsage} MB\n` +
+                                `${blue("Servers")}: ${totalGuilds}\n` +
+                                `${blue("Users Cached")}: ${totalUsers}\n` +
+                                `${blue("Discord.js")}: v${version}\n` +
                                 "```"
                         },
                         {
                             type: ComponentType.TextDisplay,
-                            content: "\n### 🏠 Server Information"
+                            content: "\n### Server Information"
                         },
                         {
                             type: ComponentType.Separator
@@ -128,17 +125,17 @@ export async function run(interaction: ChatInputCommandInteraction) {
                             type: ComponentType.TextDisplay,
                             content:
                                 "```ansi\n" +
-                                `${color("Guild")}: ${guild.name} (${guild.id})\n` +
-                                `${color("Owner")}: ${owner?.user.username} (${owner?.id})\n` +
-                                `${color("Created")}: ${guild.createdAt.toLocaleDateString()}\n` +
-                                `${color("Region")}: ${guild.preferredLocale}\n` +
-                                `${color("Verification")}: ${guild.verificationLevel}\n` +
-                                `${color("Boost")}: ${boostTierText} (${boostCount} boosts)\n` +
+                                `${blue("Guild")}: ${guild.name} (${guild.id})\n` +
+                                `${blue("Owner")}: ${owner?.user.username} (${owner?.id})\n` +
+                                `${blue("Created")}: ${Temporal.Instant.fromEpochMilliseconds(guild.createdTimestamp).toLocaleString()}\n` +
+                                `${blue("Region")}: ${guild.preferredLocale}\n` +
+                                `${blue("Verification")}: ${guild.verificationLevel}\n` +
+                                `${blue("Boost")}: ${boostTierText} (${boostCount} boosts)\n` +
                                 "```"
                         },
                         {
                             type: ComponentType.TextDisplay,
-                            content: "### 👥 Member Stats"
+                            content: "### Member Stats"
                         },
                         {
                             type: ComponentType.Separator
@@ -147,19 +144,19 @@ export async function run(interaction: ChatInputCommandInteraction) {
                             type: ComponentType.TextDisplay,
                             content:
                                 "```ansi\n" +
-                                `${color("Total")}: ${memberCount}\n` +
-                                `${color("Humans")}: ${humanCount}\n` +
-                                `${color("Bots")}: ${botCount}\n` +
-                                `${color("Online")}: ${member.online}\n` +
-                                `${color("Idle")}: ${member.idle}\n` +
-                                `${color("DND")}: ${member.dnd}\n` +
-                                `${color("Total Online")}: ${member.total}\n` +
-                                `${color("Offline")}: ${member.offline}\n` +
+                                `${blue("Total")}: ${memberCount}\n` +
+                                `${blue("Humans")}: ${humanCount}\n` +
+                                `${blue("Bots")}: ${botCount}\n` +
+                                `${blue("Online")}: ${member.online}\n` +
+                                `${blue("Idle")}: ${member.idle}\n` +
+                                `${blue("DND")}: ${member.dnd}\n` +
+                                `${blue("Total Online")}: ${member.total}\n` +
+                                `${blue("Offline")}: ${member.offline}\n` +
                                 "```"
                         },
                         {
                             type: ComponentType.TextDisplay,
-                            content: "### 📂 Channel Stats"
+                            content: "### Channel Stats"
                         },
                         {
                             type: ComponentType.Separator
@@ -168,16 +165,16 @@ export async function run(interaction: ChatInputCommandInteraction) {
                             type: ComponentType.TextDisplay,
                             content:
                                 "```ansi\n" +
-                                `${color("Total")}: ${totalChannels}\n` +
-                                `${color("Text")}: ${textChannels}\n` +
-                                `${color("Voice")}: ${voiceChannels}\n` +
-                                `${color("Categories")}: ${categoryChannels}\n` +
-                                `${color("Forums")}: ${forumChannels}\n` +
+                                `${blue("Total")}: ${totalChannels}\n` +
+                                `${blue("Text")}: ${textChannels}\n` +
+                                `${blue("Voice")}: ${voiceChannels}\n` +
+                                `${blue("Categories")}: ${categoryChannels}\n` +
+                                `${blue("Forums")}: ${forumChannels}\n` +
                                 "```"
                         },
                         {
                             type: ComponentType.TextDisplay,
-                            content: "### 🎮 Server Assets"
+                            content: "### Server Assets"
                         },
                         {
                             type: ComponentType.Separator
@@ -186,14 +183,14 @@ export async function run(interaction: ChatInputCommandInteraction) {
                             type: ComponentType.TextDisplay,
                             content:
                                 "```ansi\n" +
-                                `${color("Roles")}: ${roleCount}\n` +
-                                `${color("Emojis")}: ${emojiCount}\n` +
-                                `${color("Stickers")}: ${stickerCount}\n` +
+                                `${blue("Roles")}: ${roleCount}\n` +
+                                `${blue("Emojis")}: ${emojiCount}\n` +
+                                `${blue("Stickers")}: ${stickerCount}\n` +
                                 "```"
                         },
                         {
                             type: ComponentType.TextDisplay,
-                            content: "### 💻 System Info"
+                            content: "### System Info"
                         },
                         {
                             type: ComponentType.Separator
@@ -202,12 +199,12 @@ export async function run(interaction: ChatInputCommandInteraction) {
                             type: ComponentType.TextDisplay,
                             content:
                                 "```ansi\n" +
-                                `${color("OS")}: ${osInfo}\n` +
-                                `${color("CPU")}: ${cpuModel}\n` +
-                                `${color("Cores")}: ${cpuCores}\n` +
-                                `${color("Load")}: ${loadAvg}\n` +
-                                `${color("Memory")}: ${freeMemory}/${totalMemory} GB free\n` +
-                                `${color("Node.js")}: ${nodeVersion}\n` +
+                                `${blue("OS")}: ${osInfo}\n` +
+                                `${blue("CPU")}: ${cpuModel}\n` +
+                                `${blue("Cores")}: ${cpuCores}\n` +
+                                `${blue("Load")}: ${loadAvg}\n` +
+                                `${blue("Memory")}: ${freeMemory}/${totalMemory} GB free\n` +
+                                `${blue("Node.js")}: ${nodeVersion}\n` +
                                 "```"
                         }
                     ]
@@ -215,7 +212,7 @@ export async function run(interaction: ChatInputCommandInteraction) {
             ]
         })
     } catch (error) {
-        Errors(error as any)
-        xcf(interaction)
+        erx(error as any)
+        void xcf(interaction)
     }
 }

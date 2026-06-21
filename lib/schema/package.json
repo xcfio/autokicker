@@ -1,8 +1,7 @@
 {
     "name": "@repo/schema",
-    "version": "0.0.1",
     "author": "xcfio",
-    "license": "MIT",
+    "license": "Proprietary",
     "exports": {
         ".": {
             "import": "./src/index.ts",
@@ -21,15 +20,10 @@
         "fmt:test": "prettier --config=.prettierrc --check src"
     },
     "dependencies": {
-        "drizzle-orm": "1.0.0-rc.1",
         "postgres": "^3.4.9",
-        "socket.io": "^4.8.3",
-        "typebox": "^1.1.35",
-        "typescript": "^6.0.3",
-        "uuid": "^14.0.0"
+        "typebox": "^1.2.19"
     },
     "devDependencies": {
-        "@types/node": "^25.6.0",
-        "drizzle-kit": "1.0.0-rc.1"
+        "@types/node": "^26.0.0"
     }
 }

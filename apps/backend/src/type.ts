@@ -1,48 +1,43 @@
-import { AuthenticatedSocket, Payload } from "@repo/schema"
-
-declare global {
-    namespace NodeJS {
-        interface ProcessEnv {
-            NODE_ENV: "development" | "production" | "test"
-            DATABASE_URI: string
-
-            TOKEN: string
-            ERROR_LOG_CHANNEL: string
-
-            COOKIE_SECRET: string
-            JWT_SECRET: string
-            HMAC_SECRET: string
-        }
-    }
-}
+import { Payload } from "@repo/schema"
+import { OAuth2Namespace } from "@fastify/oauth2"
+import { fastify, io } from "./"
 
 declare module "fastify" {
     interface FastifyInstance {
-        auth: (request: FastifyRequest, reply: FastifyReply) => void
-        io: AuthenticatedSocket
+        io: SocketIO
+        discord: OAuth2Namespace
+        authentication: (request: FastifyRequest, reply: FastifyReply) => void
     }
     interface FastifyRequest {
         payload: Payload
     }
 }
 
-export class FrontendError extends Error {
-    constructor({ name, message, stack, cause }: { name: string; message: string; stack?: string; cause?: unknown }) {
-        super()
-        this.name = name
-        this.message = message
-        this.stack = stack
-        this.cause = cause
-    }
+declare global {
+    type Fastify = typeof fastify
+    type SocketIO = typeof io
 
-    toJSON() {
-        const stack = this.stack?.split("\n") ?? []
-        if (stack.length > 20) stack.length = 20
-        return {
-            name: this.name,
-            messages: this.message,
-            stack: stack,
-            cause: this.cause
-        }
+    namespace NodeJS {
+        interface ProcessEnv extends Env {}
     }
+}
+
+export type Env = {
+    NODE_ENV: "development" | "production" | "test"
+    DATABASE_URL: string
+    FRONTEND_URL: string
+    DISCORD_URL: string
+    PORT: string
+
+    CLIENT_ID: string
+    CLIENT_SECRET: string
+    CLIENT_TOKEN: string
+    ERROR_LOG_CHANNEL: string
+
+    COOKIE_SECRET: string
+    JWT_SECRET: string
+    HMAC_SECRET: string
+
+    IO_USERNAME: string
+    IO_PASSWORD: string
 }

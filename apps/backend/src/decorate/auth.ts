@@ -1,11 +1,10 @@
-import { CreateError, isFastifyError } from "../function"
 import { FastifyRequest, FastifyReply } from "fastify"
+import { CreateError, isFastifyError } from "fastify-utils"
 import { Payload } from "@repo/schema"
 import Value from "typebox/value"
-import { main } from "../"
 
-export default async function auth(fastify: Awaited<ReturnType<typeof main>>) {
-    fastify.decorate("auth", async function (request: FastifyRequest, reply: FastifyReply) {
+export default function authentication(fastify: Fastify) {
+    fastify.decorate("authentication", async function (request: FastifyRequest, reply: FastifyReply) {
         try {
             const user = await request.jwtVerify()
 
