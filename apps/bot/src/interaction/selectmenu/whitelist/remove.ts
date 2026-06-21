@@ -1,4 +1,4 @@
-import { ComponentType, StringSelectMenuInteraction } from "discord.js"
+import { ComponentType, MessageFlags, StringSelectMenuInteraction } from "discord.js"
 import { db, Emoji, erx, xcf } from "../../../utils"
 import { table } from "@repo/database"
 import { eq } from "drizzle-orm"
@@ -14,13 +14,14 @@ export async function whitelist_remove(interaction: StringSelectMenuInteraction)
             .where(eq(table.whitelist.guildId, interaction.guildId))
 
         await interaction.update({
+            flags: [MessageFlags.IsComponentsV2],
             components: [
                 {
                     type: ComponentType.Container,
                     components: [
                         {
                             type: ComponentType.TextDisplay,
-                            content: `## ${Emoji("exclamation")} Whitelist Stages - Remove`
+                            content: `## ${Emoji("exclamation")} Whitelist - Remove`
                         },
                         {
                             type: ComponentType.TextDisplay,

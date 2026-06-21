@@ -100,10 +100,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <html
             lang="en"
             suppressHydrationWarning
+            data-scroll-behavior="smooth"
             className={cn("font-sans scroll-smooth", figtree.variable, firaCode.variable, comfortaa.variable)}
         >
-            <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
             <head>
+                <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
                 {process.env.NODE_ENV !== "development" && (
                     <script
                         defer

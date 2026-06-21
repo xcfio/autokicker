@@ -3,7 +3,6 @@
 "use client"
 
 import { Temporal, toTemporalInstant } from "temporal-polyfill"
-import { useRouter } from "next/navigation"
 import { useEffect } from "react"
 import { toast } from "sonner"
 
@@ -20,8 +19,6 @@ if (typeof Date.prototype.toTemporalInstant !== "function") {
 }
 
 export function TemporalPolyfill() {
-    const router = useRouter()
-
     useEffect(() => {
         if ("polyfilled" in globalThis.Temporal) {
             console.warn("[Temporal] Native support not detected. Polyfill loaded via temporal-polyfill.")
@@ -32,8 +29,10 @@ export function TemporalPolyfill() {
                 action: {
                     label: "See Compatible Browsers",
                     onClick: () => {
-                        router.push(
-                            "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal#browser_compatibility"
+                        window.open(
+                            "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal#browser_compatibility",
+                            "_blank",
+                            "noopener,noreferrer"
                         )
                     }
                 }

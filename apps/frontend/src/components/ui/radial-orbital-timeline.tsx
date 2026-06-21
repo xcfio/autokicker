@@ -1,6 +1,6 @@
 "use client"
 import { useState, useEffect, useRef } from "react"
-import { ArrowRight, Link } from "lucide-react"
+import { ArrowRight, LinkIcon } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -279,7 +279,7 @@ export default function RadialOrbitalTimeline({ timelineData, className }: Radia
                                             {item.relatedIds.length > 0 && (
                                                 <div className="mt-4 pt-3 border-t border-white/10">
                                                     <div className="flex items-center mb-2">
-                                                        <Link size={10} className="text-white/70 mr-1" />
+                                                        <LinkIcon size={10} className="text-white/70 mr-1" />
                                                         <h4 className="text-xs uppercase tracking-wider font-medium text-white/70">
                                                             Connected Nodes
                                                         </h4>

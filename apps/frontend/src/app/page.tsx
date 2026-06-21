@@ -141,7 +141,7 @@ const Features: Array<GridItem> = [
         title: "Ironclad Whitelists",
         meta: "Exemptions",
         description:
-            "Protect your impotent members. Easily whitelist specific roles or users so your moderators, bots, and special guests are completely exempt from the inactivity sweeps.",
+            "Protect your important members. Easily whitelist specific roles or users so your moderators, bots, and special guests are completely exempt from the inactivity sweeps.",
         icon: <Shield className="w-4.5 h-4.5" />,
         status: "Secure",
         tags: ["Roles", "Bots"],

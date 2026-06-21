@@ -1,4 +1,4 @@
-import { ComponentType, StringSelectMenuInteraction } from "discord.js"
+import { ComponentType, MessageFlags, StringSelectMenuInteraction } from "discord.js"
 import { db, Emoji, erx, xcf } from "../../../utils"
 import { duration } from "@repo/utils"
 import { table } from "@repo/database"
@@ -15,6 +15,7 @@ export async function warning_remove(interaction: StringSelectMenuInteraction) {
             .map((minutes) => Temporal.Duration.from({ minutes }))
 
         await interaction.update({
+            flags: [MessageFlags.IsComponentsV2],
             components: [
                 {
                     type: ComponentType.Container,
