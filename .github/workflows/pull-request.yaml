@@ -18,6 +18,7 @@ jobs:
                   fetch-depth: 0
 
             - name: Sync package.json version with tag
+              continue-on-error: true
               run: |
                   RAW_TAG="${GITHUB_REF_NAME}"
                   TAG_VERSION="${RAW_TAG#v}"
