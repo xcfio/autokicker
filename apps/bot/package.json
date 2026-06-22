@@ -6,8 +6,8 @@
     "scripts": {
         "build": "rolldown -c",
         "dev": "tsx watch --include src/**/* --no-warnings --env-file-if-exists=.env src/index.ts",
-        "docker:build": "docker build --tag api .",
-        "docker:start": "docker run --detach --rm --publish 7200:7200 api",
+        "docker:build": "docker build --tag bot .",
+        "docker:start": "docker run --detach --env-file=.env --rm --publish 7200:7200 bot",
         "fmt": "prettier --config=.prettierrc --write src",
         "fmt:test": "prettier --config=.prettierrc --check src",
         "gen": "drizzle-kit generate",

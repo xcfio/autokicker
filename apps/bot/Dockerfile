@@ -16,7 +16,7 @@ RUN pnpm install --frozen-lockfile
 COPY . .
 
 # Expose port (adjust if needed)
-EXPOSE 7200
+EXPOSE 7000
 
 # Start the app
 CMD ["node", "--run", "start"]
