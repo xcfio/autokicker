@@ -358,11 +358,6 @@ export default () => {
                 <div className="relative z-10 max-w-7xl mx-auto px-6 pt-24 pb-16 grid lg:grid-cols-2 gap-16 items-center w-full">
                     {/* LEFT: text */}
                     <div className="flex flex-col gap-8">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-medium w-fit">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
-                            Automated 24/7 enforcement
-                        </div>
-
                         <div className="space-y-4">
                             <h1 className="font-comfortaa text-5xl sm:text-6xl lg:text-7xl font-black leading-[0.9] tracking-tight text-white">
                                 Dead Chat?
@@ -439,10 +434,6 @@ export default () => {
                 <div className="relative max-w-7xl mx-auto px-6">
                     {/* section header */}
                     <div className="text-center mb-20">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-medium mb-6">
-                            <Zap size={10} />
-                            Feature-packed, zero complexity
-                        </div>
                         <h2 className="font-comfortaa text-4xl sm:text-5xl font-black text-white mb-4 tracking-tight">
                             Everything you need to run a{" "}
                             <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
@@ -463,9 +454,6 @@ export default () => {
             <section id="how-it-works" className="relative bg-[#030711] py-24 pb-16 overflow-hidden">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="text-center mb-20">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-medium mb-6">
-                            <Clock size={10} />3 steps to a cleaner server
-                        </div>
                         <h2 className="font-comfortaa text-4xl sm:text-5xl font-black text-white tracking-tight">
                             Simple as{" "}
                             <span className="bg-linear-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
@@ -498,7 +486,6 @@ export default () => {
                                                 <span className="text-[9px] font-bold text-white">{step.num}</span>
                                             </div>
                                         </div>
-
                                         <h3 className="font-comfortaa text-xl font-bold text-white mb-3">
                                             {step.title}
                                         </h3>
