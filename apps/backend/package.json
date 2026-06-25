@@ -4,7 +4,7 @@
     "author": "xcfio",
     "license": "Proprietary",
     "scripts": {
-        "build": "rolldown --config=rolldown.config.cts",
+        "build": "node --experimental-strip-types build.cts",
         "dev": "tsx watch --include src/**/* --no-warnings --env-file-if-exists=.env src/index.ts",
         "docker:build": "docker build --tag api .",
         "docker:start": "docker run --detach --rm --publish 7200:7200 api",
