@@ -1,3 +1,5 @@
+// oxlint-disable typescript/no-unsafe-return
+
 import { Client, GatewayIntentBits, Partials } from "discord.js"
 import Fastify from "fastify"
 import events from "./events"

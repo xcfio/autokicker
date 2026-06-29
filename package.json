@@ -30,6 +30,7 @@
         "@commitlint/format": "^21.0.1",
         "@commitlint/types": "^21.0.1",
         "commitlint": "^21.0.2",
+        "lefthook": "^2.1.9",
         "oxlint": "^1.70.0",
         "oxlint-plugin-eslint": "^1.70.0",
         "oxlint-tsgolint": "^0.23.0",
@@ -41,7 +42,5 @@
     "engines": {
         "node": ">=26.1"
     },
-    "dependencies": {
-        "lefthook": "^2.1.9"
-    }
+    "dependencies": {}
 }

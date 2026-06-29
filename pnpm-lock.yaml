@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      lefthook:
-        specifier: ^2.1.9
-        version: 2.1.9
     devDependencies:
       '@commitlint/config-conventional':
         specifier: ^21.0.2
@@ -24,6 +20,9 @@ importers:
       commitlint:
         specifier: ^21.0.2
         version: 21.0.2(@types/node@26.0.0)(conventional-commits-parser@6.4.0)(typescript@7.0.1-rc)
+      lefthook:
+        specifier: ^2.1.9
+        version: 2.1.9
       oxlint:
         specifier: ^1.70.0
         version: 1.70.0(oxlint-tsgolint@0.23.0)
