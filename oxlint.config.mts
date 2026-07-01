@@ -2,12 +2,13 @@ import { defineConfig } from "oxlint"
 
 export default defineConfig({
     options: { typeAware: true },
-    plugins: ["typescript"],
+    plugins: ["node", "nextjs", "eslint", "typescript"],
     jsPlugins: [{ name: "eslint-js", specifier: "oxlint-plugin-eslint" }],
     categories: {
         correctness: "error",
         suspicious: "error",
-        pedantic: "error"
+        pedantic: "error",
+        perf: "error"
     },
     ignorePatterns: [
         "**/node_modules",
@@ -34,6 +35,7 @@ export default defineConfig({
         "typescript/no-explicit-any": "off",
         "eslint/no-useless-concat": "off",
         "typescript/no-namespace": "off",
+        "eslint/no-await-in-loop": "off",
         "eslint/no-shadow": "off",
         "eslint/max-depth": "off",
         "eslint/max-lines": "off",
