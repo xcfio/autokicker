@@ -38,9 +38,8 @@
         "turbo": "^2.10.0",
         "typescript": "7.0.1-rc"
     },
-    "packageManager": "pnpm@11.8.0",
+    "packageManager": "pnpm@11.9.0",
     "engines": {
         "node": ">=26.1"
-    },
-    "dependencies": {}
+    }
 }

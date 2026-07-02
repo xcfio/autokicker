@@ -20,7 +20,7 @@
     "dependencies": {
         "@repo/database": "workspace:*",
         "@repo/schema": "workspace:*",
-        "drizzle-orm": "1.0.0-rc.4-273829f",
+        "drizzle-orm": "1.0.0-rc.4",
         "typebox": "^1.2.19"
     },
     "devDependencies": {

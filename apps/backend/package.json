@@ -29,7 +29,7 @@
         "@scalar/fastify-api-reference": "^1.60.0",
         "@socket.io/admin-ui": "^0.5.1",
         "discord-api-types": "^0.38.49",
-        "drizzle-orm": "1.0.0-rc.4-273829f",
+        "drizzle-orm": "1.0.0-rc.4",
         "fastify": "^5.8.5",
         "fastify-utils": "^0.0.2",
         "postgres": "^3.4.9",
