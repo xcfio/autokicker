@@ -27,8 +27,8 @@ importers:
         specifier: ^1.70.0
         version: 1.70.0(oxlint-tsgolint@0.23.0)
       oxlint-plugin-eslint:
-        specifier: ^1.70.0
-        version: 1.70.0
+        specifier: ^1.72.0
+        version: 1.72.0
       oxlint-tsgolint:
         specifier: ^0.23.0
         version: 0.23.0
@@ -3937,8 +3937,8 @@ packages:
     resolution: {integrity: sha512-weP+BZ8MVNnlCm8c0Qdc1WSWq4Qn7I+9CJGm7Qali6g44e/PUzbjNqJX5NJ9ljlNMosfJvg1fKEGILklK9cwnw==}
     engines: {node: '>=18'}
 
-  oxlint-plugin-eslint@1.70.0:
-    resolution: {integrity: sha512-UOtXPC+t3b/RPJ4bWP3jKA38/6lXJI65HTPxcHAYSvnB2vOCFLYe1umucZQrySUf8N+dYmCvPYI4xZ4L1LQUGg==}
+  oxlint-plugin-eslint@1.72.0:
+    resolution: {integrity: sha512-Qm/wmSChJcvk7CNcRoU3QYPUazRwZDnldBbcWeXm0+hVaHPl9Wfe0DdQ380Ntr8teBNVi/N/TOQ24Iw1j3tqYw==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
   oxlint-tsgolint@0.23.0:
@@ -4451,9 +4451,6 @@ packages:
   type-is@2.1.0:
     resolution: {integrity: sha512-faYHw0anBbc/kWF3zFTEnxSFOAGUX9GFbOBthvDdLsIlEoWOFOtS0zgCiQYwIskL9iGXZL3kAXD8OoZ4GmMATA==}
     engines: {node: '>= 18'}
-
-  typebox@1.2.18:
-    resolution: {integrity: sha512-f4MtqlWxawJjxsuT1onX3F/5fas45PXQFQ1jRDTRia2IpBirlj/Xs9PvSAsw9Mz3DADIDU1mXbzfJWSg21JbRg==}
 
   typebox@1.2.19:
     resolution: {integrity: sha512-9stLVZhos9aUXJzu0Yf717xbcv3vFsE5APzsQ7j/honIUFtern451IdTlqmVzPzuGxHkeWwWc2cerw6m2lqKOQ==}
@@ -7267,7 +7264,7 @@ snapshots:
     dependencies:
       '@fastify/error': 4.2.0
       fastify: 5.8.5
-      typebox: 1.2.18
+      typebox: 1.2.19
 
   fastify@5.8.5:
     dependencies:
@@ -7857,7 +7854,7 @@ snapshots:
       string-width: 7.2.0
       strip-ansi: 7.2.0
 
-  oxlint-plugin-eslint@1.70.0: {}
+  oxlint-plugin-eslint@1.72.0: {}
 
   oxlint-tsgolint@0.23.0:
     optionalDependencies:
@@ -8512,8 +8509,6 @@ snapshots:
       content-type: 2.0.0
       media-typer: 1.1.0
       mime-types: 3.0.2
-
-  typebox@1.2.18: {}
 
   typebox@1.2.19: {}
 
