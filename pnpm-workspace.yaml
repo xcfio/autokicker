@@ -11,4 +11,6 @@ allowBuilds:
   sharp: true
 
 minimumReleaseAgeExclude:
-  - typebox@1.2.19
+  - '@scalar/fastify-api-reference@1.62.3'
+  - shadcn@4.13.0
+  - tsx@4.23.0

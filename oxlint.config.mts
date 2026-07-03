@@ -33,6 +33,7 @@ export default defineConfig({
         "typescript/consistent-return": "off",
         "eslint/no-warning-comments": "off",
         "typescript/no-explicit-any": "off",
+        "eslint/no-inline-comments": "off",
         "eslint/no-useless-concat": "off",
         "typescript/no-namespace": "off",
         "eslint/no-await-in-loop": "off",

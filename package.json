@@ -6,7 +6,8 @@
     "version": "0.0.1",
     "scripts": {
         "build": "turbo run build",
-        "clean": "powershell -Command \"Get-ChildItem -Path . -Filter node_modules -Recurse -Directory | Remove-Item -Recurse -Force\"",
+        "clean": "node --eval \"const fs=require('node:fs');const path=require('node:path');function walk(d){for(const f of fs.readdirSync(d)){const p=path.join(d,f);if(fs.statSync(p).isDirectory()){if(f==='node_modules'){console.log('Removing',p);fs.rmSync(p,{recursive:true,force:true});console.log('Removed',p)}else{walk(p)}}}}console.log('Scanning...');walk('.');console.log('Clean done')\"",
+        "clean:no-out": "node --eval \"const fs=require('node:fs');function walk(d){for(const f of fs.readdirSync(d)){const p=require('node:path').join(d,f);if(fs.statSync(p).isDirectory()){if(f==='node_modules'){fs.rmSync(p,{recursive:true,force:true})}else{walk(p)}}}}walk('.')\"",
         "dev": "turbo watch dev",
         "fmt": "prettier --config=.prettierrc --write .",
         "fmt:test": "prettier --config=.prettierrc --check src",
@@ -26,15 +27,15 @@
         "email": "xcfio@proton.me"
     },
     "devDependencies": {
-        "@commitlint/config-conventional": "^21.0.2",
+        "@commitlint/config-conventional": "^21.2.0",
         "@commitlint/format": "^21.2.0",
         "@commitlint/types": "^21.2.0",
         "commitlint": "^21.2.0",
         "lefthook": "^2.1.9",
         "oxlint": "^1.72.0",
         "oxlint-plugin-eslint": "^1.72.0",
-        "oxlint-tsgolint": "^0.23.0",
-        "prettier": "^3.8.4",
+        "oxlint-tsgolint": "^0.24.0",
+        "prettier": "^3.9.4",
         "turbo": "^2.10.2",
         "typescript": "7.0.1-rc"
     },

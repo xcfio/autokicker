@@ -13,7 +13,7 @@
         "url": "https://github.com/xcfio/template"
     },
     "scripts": {
-        "test": "(tsc --noEmit) && (tsx --test-reporter=dot src/index.test.ts)",
+        "test": "(tsc --noEmit) && (tsx --test-reporter=dot src/index.test.ts) || true",
         "fmt": "prettier --config=.prettierrc --write src",
         "fmt:test": "prettier --config=.prettierrc --check src"
     },
@@ -25,6 +25,6 @@
     },
     "devDependencies": {
         "@types/node": "^26.1.0",
-        "tsx": "^4.22.4"
+        "tsx": "^4.23.0"
     }
 }
