@@ -1,8 +1,8 @@
 {
     "name": "autokicker",
-    "author": "Omar Faruk (Aka. xcfio)",
+    "author": "xcfio",
     "homepage": "https://github.com/xcfio/autokicker#readme",
-    "license": "Proprietary",
+    "license": "MIT",
     "version": "0.0.1",
     "scripts": {
         "build": "turbo run build",

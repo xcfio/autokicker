@@ -1,7 +1,7 @@
 {
     "name": "@repo/schema",
     "author": "xcfio",
-    "license": "Proprietary",
+    "license": "MIT",
     "exports": {
         ".": {
             "import": "./src/index.ts",

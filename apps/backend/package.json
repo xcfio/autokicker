@@ -2,7 +2,7 @@
     "name": "backend",
     "type": "commonjs",
     "author": "xcfio",
-    "license": "Proprietary",
+    "license": "MIT",
     "scripts": {
         "build": "node --experimental-strip-types build.cts",
         "dev": "tsx watch --include src/**/* --no-warnings --env-file-if-exists=.env src/index.ts",
