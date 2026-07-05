@@ -3,6 +3,7 @@
 import { TemporalPolyfill } from "@/components/temporal-polyfill"
 import { Figtree, Fira_Code, Comfortaa } from "next/font/google"
 import { Temporal, toTemporalInstant } from "temporal-polyfill"
+import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "@/components/ui/sonner"
 import { ThemeProvider } from "next-themes"
 import { Metadata } from "next"
@@ -131,9 +132,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
             <body className={`antialiased`}>
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-                    <Toaster richColors position="top-right" />
-                    <TemporalPolyfill />
-                    <Suspense>{children}</Suspense>
+                    <TooltipProvider>
+                        <Toaster richColors position="top-right" />
+                        <Suspense>{children}</Suspense>
+                        <TemporalPolyfill />
+                    </TooltipProvider>
                 </ThemeProvider>
             </body>
         </html>
