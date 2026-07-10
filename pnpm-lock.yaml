@@ -99,8 +99,8 @@ importers:
         specifier: ^3.4.9
         version: 3.4.9
       snowtransfer:
-        specifier: ^0.18.0
-        version: 0.18.0
+        specifier: ^0.19.0
+        version: 0.19.0
       socket.io:
         specifier: ^4.8.3
         version: 4.8.3
@@ -4315,8 +4315,8 @@ packages:
   sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
 
-  snowtransfer@0.18.0:
-    resolution: {integrity: sha512-IwsnJZywBuVHuPzhtHDh+Ow6+O/lzsAbp5yWUACurwmtkbCCzECs6u56BVYMGc9mEC0FyEF55+2p15pjH0xoLg==}
+  snowtransfer@0.19.0:
+    resolution: {integrity: sha512-Vebj4FCdpUsEKAzqC1p50ol5o09CLnrffvBCpTv0FNFefvXPXwogxR8kr4zJApIRt7oWQVZZVkxAq4XnGlICjQ==}
     engines: {node: '>=22.0.0'}
 
   socket.io-adapter@2.5.7:
@@ -8388,7 +8388,7 @@ snapshots:
 
   sisteransi@1.0.5: {}
 
-  snowtransfer@0.18.0:
+  snowtransfer@0.19.0:
     dependencies:
       discord-api-types: 0.38.49
 
