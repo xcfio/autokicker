@@ -11,7 +11,7 @@
         "dev": "turbo watch dev",
         "fmt": "prettier --config=.prettierrc --write .",
         "fmt:test": "prettier --config=.prettierrc --check src",
-        "lint": "oxlint  --config=oxlint.config.mts .",
+        "lint": "oxlint --config=oxlint.config.mts .",
         "lint:fix": "oxlint --config=oxlint.config.mts --fix .",
         "preinstall": "npx only-allow pnpm",
         "start": "turbo run start",
