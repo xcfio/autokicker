@@ -1,6 +1,4 @@
-// oxlint-disable
 import { TSchema, TSchemaOptions, Type } from "typebox"
-// @ts-ignore - Type is not available yet
 import { randomUUIDv7 } from "node:crypto"
 
 const num = "\\d+(?:[.,]\\d+)?"
@@ -36,6 +34,6 @@ export const Snowflake = Type.String({
 })
 
 export const UUID = Type.String({
-    examples: [randomUUIDv7()],
+    examples: [typeof randomUUIDv7 === "function" ? randomUUIDv7() : "00000000-0000-7000-8000-000000000000"],
     pattern: "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
 })

@@ -11,20 +11,4 @@ allowBuilds:
   sharp: true
 
 minimumReleaseAgeExclude:
-  - '@oxlint-tsgolint/darwin-arm64@0.25.0'
-  - '@oxlint-tsgolint/darwin-x64@0.25.0'
-  - '@oxlint-tsgolint/linux-arm64@0.25.0'
-  - '@oxlint-tsgolint/linux-x64@0.25.0'
-  - '@oxlint-tsgolint/win32-arm64@0.25.0'
-  - '@oxlint-tsgolint/win32-x64@0.25.0'
-  - '@scalar/client-side-rendering@0.3.4'
-  - '@scalar/fastify-api-reference@1.62.9'
-  - '@scalar/helpers@0.9.2'
-  - '@scalar/json-magic@0.12.19'
-  - '@scalar/openapi-parser@0.28.10'
-  - '@scalar/openapi-types@0.9.3'
-  - '@scalar/openapi-upgrader@0.2.11'
-  - '@scalar/schemas@0.7.4'
-  - '@scalar/types@0.16.4'
-  - '@scalar/validation@0.6.2'
-  - oxlint-tsgolint@0.25.0
+  - nuqs@2.9.1
