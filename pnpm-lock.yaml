@@ -36,8 +36,8 @@ importers:
         specifier: ^3.9.6
         version: 3.9.6
       turbo:
-        specifier: ^2.10.7
-        version: 2.10.7
+        specifier: ^2.10.8
+        version: 2.10.8
       typescript:
         specifier: 7.0.2
         version: 7.0.2
@@ -67,7 +67,7 @@ importers:
         version: 9.8.1
       '@fastify/type-provider-typebox':
         specifier: ^6.1.0
-        version: 6.1.0(typebox@1.3.8)
+        version: 6.1.0(typebox@1.3.9)
       '@repo/database':
         specifier: workspace:*
         version: link:../../lib/database
@@ -78,8 +78,8 @@ importers:
         specifier: workspace:*
         version: link:../../lib/utils
       '@scalar/fastify-api-reference':
-        specifier: ^1.63.0
-        version: 1.63.0
+        specifier: ^1.64.0
+        version: 1.64.0
       '@socket.io/admin-ui':
         specifier: ^0.5.1
         version: 0.5.1(socket.io@4.8.3)
@@ -88,7 +88,7 @@ importers:
         version: 0.38.52
       drizzle-orm:
         specifier: 1.0.0-rc.4
-        version: 1.0.0-rc.4(postgres@3.4.9)(typebox@1.3.8)(zod@4.4.3)
+        version: 1.0.0-rc.4(postgres@3.4.9)(typebox@1.3.9)(zod@4.4.3)
       fastify:
         specifier: ^5.11.0
         version: 5.11.0
@@ -105,8 +105,8 @@ importers:
         specifier: ^4.8.3
         version: 4.8.3
       typebox:
-        specifier: ^1.3.8
-        version: 1.3.8
+        specifier: ^1.3.9
+        version: 1.3.9
     devDependencies:
       '@types/node':
         specifier: ^26.1.2
@@ -137,7 +137,7 @@ importers:
         version: 14.27.0
       drizzle-orm:
         specifier: 1.0.0-rc.4
-        version: 1.0.0-rc.4(postgres@3.4.9)(typebox@1.3.8)(zod@4.4.3)
+        version: 1.0.0-rc.4(postgres@3.4.9)(typebox@1.3.9)(zod@4.4.3)
       fastify:
         specifier: ^5.11.0
         version: 5.11.0
@@ -148,8 +148,8 @@ importers:
         specifier: ^3.4.9
         version: 3.4.9
       typebox:
-        specifier: ^1.3.8
-        version: 1.3.8
+        specifier: ^1.3.9
+        version: 1.3.9
     devDependencies:
       '@types/node':
         specifier: ^26.1.2
@@ -162,7 +162,7 @@ importers:
     dependencies:
       '@hookform/resolvers':
         specifier: ^5.5.7
-        version: 5.5.7(@standard-schema/spec@1.1.0)(ajv-formats@2.1.1(ajv@8.20.0))(ajv@8.20.0)(joi@17.13.4)(react-hook-form@7.83.0(react@19.2.8))(zod@3.25.76)
+        version: 5.5.7(@standard-schema/spec@1.1.0)(ajv-formats@2.1.1(ajv@8.20.0))(ajv@8.20.0)(joi@17.13.4)(react-hook-form@7.84.0(react@19.2.8))(zod@3.25.76)
       '@tanstack/react-query':
         specifier: ^5.101.4
         version: 5.101.4(react@19.2.8)
@@ -182,8 +182,8 @@ importers:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       nuqs:
-        specifier: ^2.9.3
-        version: 2.9.3(next@16.3.0-preview.10(@babel/core@7.29.7)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
+        specifier: ^2.9.4
+        version: 2.9.4(next@16.3.0-preview.10(@babel/core@7.29.7)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8)
       radix-ui:
         specifier: ^1.6.7
         version: 1.6.7(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -197,11 +197,11 @@ importers:
         specifier: ^6.1.2
         version: 6.1.2(react@19.2.8)
       react-hook-form:
-        specifier: ^7.83.0
-        version: 7.83.0(react@19.2.8)
+        specifier: ^7.84.0
+        version: 7.84.0(react@19.2.8)
       shadcn:
-        specifier: ^4.16.0
-        version: 4.16.0(typescript@7.0.2)
+        specifier: ^4.16.1
+        version: 4.16.1(typescript@7.0.2)
       sonner:
         specifier: ^2.0.7
         version: 2.0.7(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
@@ -218,8 +218,8 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       typebox:
-        specifier: ^1.3.8
-        version: 1.3.8
+        specifier: ^1.3.9
+        version: 1.3.9
       typescript:
         specifier: ^7.0.2
         version: 7.0.2
@@ -240,8 +240,8 @@ importers:
         specifier: ^19.2.4
         version: 19.2.4(@types/react@19.2.18)
       '@types/three':
-        specifier: ^0.185.1
-        version: 0.185.1
+        specifier: ^0.185.3
+        version: 0.185.3
       tailwindcss:
         specifier: ^4.3.3
         version: 4.3.3
@@ -250,13 +250,13 @@ importers:
     dependencies:
       drizzle-orm:
         specifier: 1.0.0-rc.4
-        version: 1.0.0-rc.4(postgres@3.4.9)(typebox@1.3.8)(zod@4.4.3)
+        version: 1.0.0-rc.4(postgres@3.4.9)(typebox@1.3.9)(zod@4.4.3)
       postgres:
         specifier: ^3.4.9
         version: 3.4.9
       typebox:
-        specifier: ^1.3.8
-        version: 1.3.8
+        specifier: ^1.3.9
+        version: 1.3.9
     devDependencies:
       '@types/node':
         specifier: ^26.1.2
@@ -268,8 +268,8 @@ importers:
   lib/schema:
     dependencies:
       typebox:
-        specifier: ^1.3.8
-        version: 1.3.8
+        specifier: ^1.3.9
+        version: 1.3.9
     devDependencies:
       '@types/node':
         specifier: ^26.1.2
@@ -285,10 +285,10 @@ importers:
         version: link:../schema
       drizzle-orm:
         specifier: 1.0.0-rc.4
-        version: 1.0.0-rc.4(postgres@3.4.9)(typebox@1.3.8)(zod@4.4.3)
+        version: 1.0.0-rc.4(postgres@3.4.9)(typebox@1.3.9)(zod@4.4.3)
       typebox:
-        specifier: ^1.3.8
-        version: 1.3.8
+        specifier: ^1.3.9
+        version: 1.3.9
     devDependencies:
       '@types/node':
         specifier: ^26.1.2
@@ -2276,12 +2276,12 @@ packages:
     resolution: {integrity: sha512-xzvBr1Q1c4lCe7i6sRnrofxeO1QTP/LKQ6A6qy0iB4x5yfiSfARMEQEghojzTNALDTcv8En04qYNIco9/K9eZQ==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
-  '@scalar/client-side-rendering@0.3.4':
-    resolution: {integrity: sha512-kb3B+FGjvAUr2DU0fe9dVKBLwot1TjOO+iHCTmY8r8FUJySmYKGQYCicRzzilOyTjvKspiZBCEr03PWaWW+1gw==}
+  '@scalar/client-side-rendering@0.3.5':
+    resolution: {integrity: sha512-0MX6HN4hNhMlBTqm+PJ1Rgi5yQy7NkMEPMa6QXdyKAO59pQVzWlBGT+MlAnyXCeVrqFULzZh90v81t5UQ/uYEw==}
     engines: {node: '>=22'}
 
-  '@scalar/fastify-api-reference@1.63.0':
-    resolution: {integrity: sha512-qsrINr0/Aoa+G7yoiI+pl5mwiMjP8J195tJspbBtH+Nd08A28G/SHLOK3VhEWmhdvTOk88gZHZNxcaeXcsioYA==}
+  '@scalar/fastify-api-reference@1.64.0':
+    resolution: {integrity: sha512-RdqhkrJiAaLF4mkW5g1/Hd7pyyjEJPPHqQYa41CLAwoauWMp1JQGg2XDTE8zsmg3rcmyMTx0fzXXLnh7K8Ix+A==}
     engines: {node: '>=22'}
 
   '@scalar/helpers@0.9.2':
@@ -2292,24 +2292,24 @@ packages:
     resolution: {integrity: sha512-1T4QoFYZ1nKt25xFeHtghAuZzaLq2X4CpCSLFXG0Fjcz6K2HIZqo+RtywfI0WD8RRRRgS34keo7X4Gv1BQUNoQ==}
     engines: {node: '>=22'}
 
-  '@scalar/openapi-parser@0.28.10':
-    resolution: {integrity: sha512-jn3ftvtNTcWOgxf7XVn9CvJGMjFS7QU1b6FiGmibzAlR/6pOP3Ei7sBBnfIY4PBwHjHgMAGBoGApfOV8h75gPQ==}
+  '@scalar/openapi-parser@0.28.11':
+    resolution: {integrity: sha512-veUkTrLbfT4mqsf3jtnLi8SnsQqXQsBnvyBzZzmu0NohyAIvSjFaYsTeWXx9frFrQSXyZGHIsaFJ9Dtrupf/0Q==}
     engines: {node: '>=22'}
 
-  '@scalar/openapi-types@0.9.3':
-    resolution: {integrity: sha512-34qglt5jSo55iZfH9i7EhjQCdE0Po2xZeh8wytQKolSnXrxsYMSyFDJEBxz1Gaew4on9N3XIWsd0QpwKVA5CSA==}
+  '@scalar/openapi-types@0.9.4':
+    resolution: {integrity: sha512-eUSIjZEBLEF2i2pvcNdzXhzlKx6qt+hZsNklLmCyzPBoXWxHcQaEClgMFavXDRRvJDdi6LkyjqGUqqf0XgRgFg==}
     engines: {node: '>=22'}
 
-  '@scalar/openapi-upgrader@0.2.11':
-    resolution: {integrity: sha512-eYEFBO8mZfgXEO/hv8rdL5OA4oOB8orFT5kXNK4I/x9xca2D7A4BteuFXqRaw9lE1CIjtG+StlAUYVz5omTXew==}
+  '@scalar/openapi-upgrader@0.2.12':
+    resolution: {integrity: sha512-oj8O79xVDCHx759owTknwyBAYynaDQ8NGa5wIHduEUAFCob4YnsMEaFDpsconzogchH/whOGzg63BXHST8XPAw==}
     engines: {node: '>=22'}
 
-  '@scalar/schemas@0.7.4':
-    resolution: {integrity: sha512-Or31zxR+ceGGhkVU5XBO2Zv7oyGDtjsJOjM2Rr0WRZ1/tRsQc2/FsVv+9kPmCA7sqFL8BKWlNfTXcPITI7WRHw==}
+  '@scalar/schemas@0.8.0':
+    resolution: {integrity: sha512-bwu/NCOghZI/cL6Ayti/Oeb5XEMRTncBsyQeHhkFwk4PZsR910me+kZPd5TAp6TqifMfDbAe3xyLSdlzU/KFLA==}
     engines: {node: '>=22'}
 
-  '@scalar/types@0.16.4':
-    resolution: {integrity: sha512-fLf0ANAC3iQq0sIVdmH6aGM+pFSLyD8GfGBxSWcLpI0jE0iFAzX2A3p0qVZm7vqBT4TQnn0fSwg5U+h+FZ52BA==}
+  '@scalar/types@0.17.0':
+    resolution: {integrity: sha512-mj033MX0EFOEwfpO3ch7FGGnMbye1aLlnP6LmTC9Il2AlBCDL41rYPk67jF5ICAMsAES1RQ+8N2bcC0MJnupLQ==}
     engines: {node: '>=22'}
 
   '@scalar/validation@0.6.2':
@@ -2460,33 +2460,33 @@ packages:
   '@ts-morph/common@0.27.0':
     resolution: {integrity: sha512-Wf29UqxWDpc+i61k3oIOzcUfQt79PIT9y/MWfAGlrkjg6lBC1hwDECLXPVJAhWjiGbfBCxZd65F/LIZF3+jeJQ==}
 
-  '@turbo/darwin-64@2.10.7':
-    resolution: {integrity: sha512-/c9cSBRermWDv85oufLhoH6XRLOVbvzJLRd+WLyfJCP+i0HFLQj4PVNDrHcY17/ve5l8X0Oua4bJBqJUgJPnZA==}
+  '@turbo/darwin-64@2.10.8':
+    resolution: {integrity: sha512-po+7rfJfUnFXjWlcoN2RwhErgzCdRtBc1T26vYPcywHlggmCQiQe1uWaE4j+BibI2uY9/2pDoFzMN0rmSaPFOw==}
     cpu: [x64]
     os: [darwin]
 
-  '@turbo/darwin-arm64@2.10.7':
-    resolution: {integrity: sha512-8lpCCGWZBl9PIF8w8f2iEWrLMbHBWIfJeV6l2UEGqysD6HRIM4ySj/8R7HGEzbECJ4r/gnJcHmxEoG8yjFe64A==}
+  '@turbo/darwin-arm64@2.10.8':
+    resolution: {integrity: sha512-+zB2btDJ00lnPRuqOvpVvgl4x34k/djZQGZTTCfjn7JgNCl8QFY5Njo5+dqkY1g/+9gbbsnAvWm9CmJg9ebcXA==}
     cpu: [arm64]
     os: [darwin]
 
-  '@turbo/linux-64@2.10.7':
-    resolution: {integrity: sha512-Midw9Ed00yw9rqkWN82fY3LmLNFQ6yiL1GXB56DJKUEjWaEd27zh7ohCxzzrjfjQVrEeVWd3UPytTAV16XDQlA==}
+  '@turbo/linux-64@2.10.8':
+    resolution: {integrity: sha512-K1dxqiVisyN7cViVsfQLs6xscQbYuI8aO2nbUhFURDACgEDfZRdP/b4CCxeosBJpcMfhYyiibWqJorCnvz9kKg==}
     cpu: [x64]
-    os: [linux]
+    os: [android, linux]
 
-  '@turbo/linux-arm64@2.10.7':
-    resolution: {integrity: sha512-UVEy+MW/xn4BcsiV3v3uv0/oObyaQgVtRT+Jj4WE53rNH05VEYEc1Z13q3zV6276wCZR4Yxc4hiTTcjw7PjSpg==}
+  '@turbo/linux-arm64@2.10.8':
+    resolution: {integrity: sha512-Gi77ibVnrE1fEmvr+/wBD/yvRqhwp/RQuCp2+//lv1U1wNFFyVg0V7Wj8FG9FXPFAw5QHReo8rxc9+wBSDZjzA==}
     cpu: [arm64]
-    os: [linux]
+    os: [android, linux]
 
-  '@turbo/windows-64@2.10.7':
-    resolution: {integrity: sha512-l2nH9KGLV46SWjcXvyc2+xo5gdf5J0NVADknQk9OCJhzJBpiNl/byd26yIfwZBjLupdqT6UOdPhPxcpUPxRykQ==}
+  '@turbo/windows-64@2.10.8':
+    resolution: {integrity: sha512-znnLO1haJPYTHoKMKwlAvlkjRiYbbhBzME6wIGaMd+fwir23U6jVd1ecaTWWi1fbnRVqxMfgDBKseQ/hLKb83g==}
     cpu: [x64]
     os: [win32]
 
-  '@turbo/windows-arm64@2.10.7':
-    resolution: {integrity: sha512-qjE1apG6RThuX49vUJd5ks2dV2ndXC2qktDChQonFMvUzrMrEnZMQzO+IgxBiYq1j+NbXQcRwj84nGnk1TBw1g==}
+  '@turbo/windows-arm64@2.10.8':
+    resolution: {integrity: sha512-VN30vh3b3Czh2WzYHNTfF1FE0YMZ5aHsLO8dBMGHJewA6792wX6iJR8ZxlzFW6WdOu0gEAKIvlYhfyT81Wkm4Q==}
     cpu: [arm64]
     os: [win32]
 
@@ -2516,8 +2516,8 @@ packages:
   '@types/stats.js@0.17.4':
     resolution: {integrity: sha512-jIBvWWShCvlBqBNIZt0KAshWpvSjhkwkEu4ZUcASoAvhmrgAUI2t1dXrjSL4xXVLB4FznPrIsX3nKXFl/Dt4vA==}
 
-  '@types/three@0.185.1':
-    resolution: {integrity: sha512-db1xTb+EgYF2didW+eudSvVPtn75zo+fGsY8ShQrJY/B5ZBmC2Fiaykv3aImHAlCNEGuMPkPGXBJGLwzu5mC7A==}
+  '@types/three@0.185.3':
+    resolution: {integrity: sha512-8TqTn1+fjPWuJ4mR6Igtg56DCf9b5EeAlwhb5xaa6WlBrsg7SvG0NQbyctGRkHCKwg0uftfCspOEsTXelgktMA==}
 
   '@types/validate-npm-package-name@4.0.2':
     resolution: {integrity: sha512-lrpDziQipxCEeK5kWxvljWYhUvOiB2A9izZd9B2AFarYAkqZshb4lPbRs7zKEic6eGtH8V/2qJW+dPp9OtF6bw==}
@@ -3948,8 +3948,8 @@ packages:
     resolution: {integrity: sha512-9qny7Z9DsQU8Ou39ERsPU4OZQlSTP47ShQzuKZ6PRXpYLtIFgl/DEBYEXKlvcEa+9tHVcK8CF81Y2V72qaZhWA==}
     engines: {node: '>=18'}
 
-  nuqs@2.9.3:
-    resolution: {integrity: sha512-Hdb4WfGMGX2dH0GCPFxdSevA2hgTSQs+kv+1G0OPr43/LIm1cyXIZSp0zCd7a/ZZXhbbCBDbyjXKPWHx/aBNWA==}
+  nuqs@2.9.4:
+    resolution: {integrity: sha512-lsz3NyCOKmuNAyW052i9RWqcTntoYb2Qm6FxSWnkTDwOJnGS6fzpXDAp0VcwTevw3xgnWebYpDr9rm6+o4DHbw==}
     peerDependencies:
       '@remix-run/react': '>=2'
       '@tanstack/react-router': ^1
@@ -4201,8 +4201,8 @@ packages:
     peerDependencies:
       react: ^18.0.0 || ^19.0.0
 
-  react-hook-form@7.83.0:
-    resolution: {integrity: sha512-AXt8cMCmx5a7u4uvpb2uRFVrWQhllI4pV+LSykxIac/hjt44TnQkmX9BKuQi2i+LDC62esmiLpilkav+kjVf/A==}
+  react-hook-form@7.84.0:
+    resolution: {integrity: sha512-+hWvQP6GLco56mDwrbU4XnHix8t1z90ltZsDIrREl+jnQFQxYLX8oAzqe/Xn8nHpmoXTY5M6oEXrAhbP1qevNQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -4341,8 +4341,8 @@ packages:
   setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
 
-  shadcn@4.16.0:
-    resolution: {integrity: sha512-kPr4RrQmbbZeAjwBYeBSpFvAHV8rkTlNPUluIxkRriq5TpevfFelVO5xvcF6oguHPVn0R6wPuVer4HudfcLy/A==}
+  shadcn@4.16.1:
+    resolution: {integrity: sha512-XLFzfNNIUPlUlyheFEzj0H4Vnhi9nI0nl3Nfgg8HYXW1FkUVhVT1X+mgmOUW8aWL5SeG0A+yJIV5fm3Hr9MVkQ==}
     engines: {node: '>=20.18.1'}
     hasBin: true
 
@@ -4553,8 +4553,8 @@ packages:
     engines: {node: '>=18.0.0'}
     hasBin: true
 
-  turbo@2.10.7:
-    resolution: {integrity: sha512-GHx6WExIFSKNJ5qMlzDpXBXlu9ApxaMjqxAVrCNcW94xf/+uqgIz41SAuRUMbXva2ExNAaY/h8V0q90SWSzmRw==}
+  turbo@2.10.8:
+    resolution: {integrity: sha512-9+8YX5QOkGXzZxcIykTHgaooRHGMWO+jfdyRK0o+rN0U7hBIig2MrJ8r/aNzIPDPhdA73SGb0O+tIztaModTMg==}
     hasBin: true
 
   tw-animate-css@1.4.0:
@@ -4570,6 +4570,9 @@ packages:
 
   typebox@1.3.8:
     resolution: {integrity: sha512-xYaJgF0KMvBViKWRaKTAtfR6sDt/yH6xAjGAHXYJxKxUF4pVyPXZZhIlwOg6cDIE81N7L0pyIHs136RHBm6rLQ==}
+
+  typebox@1.3.9:
+    resolution: {integrity: sha512-erh7xzupOex0jkMRU72du2Bq7w1aL8625CJuFEiE7dM4YoJqaxKZqwZw00rsrohS78uDICG3h7FhQ9iJQRDRqg==}
 
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
@@ -5361,9 +5364,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@fastify/type-provider-typebox@6.1.0(typebox@1.3.8)':
+  '@fastify/type-provider-typebox@6.1.0(typebox@1.3.9)':
     dependencies:
-      typebox: 1.3.8
+      typebox: 1.3.9
 
   '@floating-ui/core@1.8.0':
     dependencies:
@@ -5406,10 +5409,10 @@ snapshots:
     dependencies:
       hono: 4.12.30
 
-  '@hookform/resolvers@5.5.7(@standard-schema/spec@1.1.0)(ajv-formats@2.1.1(ajv@8.20.0))(ajv@8.20.0)(joi@17.13.4)(react-hook-form@7.83.0(react@19.2.8))(zod@3.25.76)':
+  '@hookform/resolvers@5.5.7(@standard-schema/spec@1.1.0)(ajv-formats@2.1.1(ajv@8.20.0))(ajv@8.20.0)(joi@17.13.4)(react-hook-form@7.84.0(react@19.2.8))(zod@3.25.76)':
     dependencies:
       '@standard-schema/utils': 0.3.0
-      react-hook-form: 7.83.0(react@19.2.8)
+      react-hook-form: 7.84.0(react@19.2.8)
     optionalDependencies:
       '@standard-schema/spec': 1.1.0
       ajv: 8.20.0
@@ -6502,17 +6505,17 @@ snapshots:
 
   '@sapphire/snowflake@3.5.5': {}
 
-  '@scalar/client-side-rendering@0.3.4':
+  '@scalar/client-side-rendering@0.3.5':
     dependencies:
-      '@scalar/schemas': 0.7.4
-      '@scalar/types': 0.16.4
+      '@scalar/schemas': 0.8.0
+      '@scalar/types': 0.17.0
       '@scalar/validation': 0.6.2
 
-  '@scalar/fastify-api-reference@1.63.0':
+  '@scalar/fastify-api-reference@1.64.0':
     dependencies:
-      '@scalar/client-side-rendering': 0.3.4
-      '@scalar/openapi-parser': 0.28.10
-      '@scalar/openapi-types': 0.9.3
+      '@scalar/client-side-rendering': 0.3.5
+      '@scalar/openapi-parser': 0.28.11
+      '@scalar/openapi-types': 0.9.4
       fastify-plugin: 4.5.1
       github-slugger: 2.0.0
 
@@ -6524,12 +6527,12 @@ snapshots:
       pathe: 2.0.3
       yaml: 2.9.0
 
-  '@scalar/openapi-parser@0.28.10':
+  '@scalar/openapi-parser@0.28.11':
     dependencies:
       '@scalar/helpers': 0.9.2
       '@scalar/json-magic': 0.12.19
-      '@scalar/openapi-types': 0.9.3
-      '@scalar/openapi-upgrader': 0.2.11
+      '@scalar/openapi-types': 0.9.4
+      '@scalar/openapi-upgrader': 0.2.12
       ajv: 8.20.0
       ajv-draft-04: 1.0.0(ajv@8.20.0)
       ajv-formats: 3.0.1(ajv@8.20.0)
@@ -6537,18 +6540,18 @@ snapshots:
       leven: 4.1.0
       yaml: 2.9.0
 
-  '@scalar/openapi-types@0.9.3': {}
+  '@scalar/openapi-types@0.9.4': {}
 
-  '@scalar/openapi-upgrader@0.2.11':
+  '@scalar/openapi-upgrader@0.2.12':
     dependencies:
-      '@scalar/openapi-types': 0.9.3
+      '@scalar/openapi-types': 0.9.4
 
-  '@scalar/schemas@0.7.4':
+  '@scalar/schemas@0.8.0':
     dependencies:
       '@scalar/helpers': 0.9.2
       '@scalar/validation': 0.6.2
 
-  '@scalar/types@0.16.4':
+  '@scalar/types@0.17.0':
     dependencies:
       '@scalar/helpers': 0.9.2
       nanoid: 5.1.16
@@ -6676,22 +6679,22 @@ snapshots:
       minimatch: 10.2.5
       path-browserify: 1.0.1
 
-  '@turbo/darwin-64@2.10.7':
+  '@turbo/darwin-64@2.10.8':
     optional: true
 
-  '@turbo/darwin-arm64@2.10.7':
+  '@turbo/darwin-arm64@2.10.8':
     optional: true
 
-  '@turbo/linux-64@2.10.7':
+  '@turbo/linux-64@2.10.8':
     optional: true
 
-  '@turbo/linux-arm64@2.10.7':
+  '@turbo/linux-arm64@2.10.8':
     optional: true
 
-  '@turbo/windows-64@2.10.7':
+  '@turbo/windows-64@2.10.8':
     optional: true
 
-  '@turbo/windows-arm64@2.10.7':
+  '@turbo/windows-arm64@2.10.8':
     optional: true
 
   '@tweenjs/tween.js@23.1.3': {}
@@ -6721,7 +6724,7 @@ snapshots:
 
   '@types/stats.js@0.17.4': {}
 
-  '@types/three@0.185.1':
+  '@types/three@0.185.3':
     dependencies:
       '@dimforge/rapier3d-compat': 0.12.0
       '@tweenjs/tween.js': 23.1.3
@@ -7116,10 +7119,10 @@ snapshots:
       get-tsconfig: 4.14.0
       jiti: 2.7.0
 
-  drizzle-orm@1.0.0-rc.4(postgres@3.4.9)(typebox@1.3.8)(zod@4.4.3):
+  drizzle-orm@1.0.0-rc.4(postgres@3.4.9)(typebox@1.3.9)(zod@4.4.3):
     optionalDependencies:
       postgres: 3.4.9
-      typebox: 1.3.8
+      typebox: 1.3.9
       zod: 4.4.3
 
   dunder-proto@1.0.1:
@@ -7911,7 +7914,7 @@ snapshots:
       path-key: 4.0.0
       unicorn-magic: 0.3.0
 
-  nuqs@2.9.3(next@16.3.0-preview.10(@babel/core@7.29.7)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8):
+  nuqs@2.9.4(next@16.3.0-preview.10(@babel/core@7.29.7)(@types/node@26.1.2)(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react@19.2.8):
     dependencies:
       '@standard-schema/spec': 1.1.0
       react: 19.2.8
@@ -8207,7 +8210,7 @@ snapshots:
     dependencies:
       react: 19.2.8
 
-  react-hook-form@7.83.0(react@19.2.8):
+  react-hook-form@7.84.0(react@19.2.8):
     dependencies:
       react: 19.2.8
 
@@ -8355,7 +8358,7 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  shadcn@4.16.0(typescript@7.0.2):
+  shadcn@4.16.1(typescript@7.0.2):
     dependencies:
       '@babel/core': 7.29.7
       '@babel/parser': 7.29.7
@@ -8630,14 +8633,14 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  turbo@2.10.7:
+  turbo@2.10.8:
     optionalDependencies:
-      '@turbo/darwin-64': 2.10.7
-      '@turbo/darwin-arm64': 2.10.7
-      '@turbo/linux-64': 2.10.7
-      '@turbo/linux-arm64': 2.10.7
-      '@turbo/windows-64': 2.10.7
-      '@turbo/windows-arm64': 2.10.7
+      '@turbo/darwin-64': 2.10.8
+      '@turbo/darwin-arm64': 2.10.8
+      '@turbo/linux-64': 2.10.8
+      '@turbo/linux-arm64': 2.10.8
+      '@turbo/windows-64': 2.10.8
+      '@turbo/windows-arm64': 2.10.8
 
   tw-animate-css@1.4.0: {}
 
@@ -8652,6 +8655,8 @@ snapshots:
       mime-types: 3.0.2
 
   typebox@1.3.8: {}
+
+  typebox@1.3.9: {}
 
   typescript@7.0.2:
     optionalDependencies:
