@@ -383,12 +383,13 @@ export default () => {
                             >
                                 Add Autokicker for Free
                             </ShinyButton>
-                            <Link
+                            {/* TODO: Need to implement this */}
+                            {/* <Link
                                 href="/dashboard"
                                 className="flex items-center justify-center w-full sm:w-auto text-lg gap-2 px-8 py-4 rounded-full text-blue-300 border border-blue-500/20 hover:border-blue-500/40 hover:text-white  bg-blue-950/20 hover:bg-blue-500/5 transition-all duration-200 font-medium"
                             >
                                 Dashboard
-                            </Link>
+                            </Link> */}
                         </div>
 
                         {/* stats */}
