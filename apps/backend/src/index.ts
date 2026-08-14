@@ -28,7 +28,7 @@ export const io = new Server<
 >(fastify.server, { cookie: true, cors: { origin: [config.origin, "https://admin.socket.io"], credentials: true } })
 instrument(io, { auth: { ...config.io, type: "basic" }, mode: "development" })
 
-export async function main() {
+export async function build() {
     fastify.io = io
     await Plugin(fastify)
     Decorate(fastify)
@@ -36,6 +36,11 @@ export async function main() {
     Hooks(fastify)
     Socket(io)
 
+    return fastify
+}
+
+export async function main() {
+    const fastify = await build()
     await fastify.listen({ host: "0.0.0.0", port: config.port })
     console.log(`Server listening at http://localhost:${config.port}`)
 }
