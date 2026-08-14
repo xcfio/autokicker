@@ -11,14 +11,33 @@ allowBuilds:
   sharp: true
 
 minimumReleaseAgeExclude:
-  - '@scalar/client-side-rendering@0.3.6'
-  - '@scalar/fastify-api-reference@1.64.1'
-  - '@scalar/helpers@0.10.0'
-  - '@scalar/json-magic@0.12.20'
-  - '@scalar/openapi-parser@0.28.12'
-  - '@scalar/openapi-upgrader@0.2.13'
-  - '@scalar/schemas@0.8.1'
-  - '@scalar/types@0.17.1'
-  - discord-api-types@0.38.53
-  - lucide-react@1.30.0
-  - tsx@4.23.11
+  - '@scalar/client-side-rendering@0.3.7'
+  - '@scalar/fastify-api-reference@1.65.1'
+  - '@scalar/json-magic@0.13.0'
+  - '@scalar/openapi-parser@0.28.14'
+  - '@scalar/types@0.18.0'
+  - '@commitlint/cli@21.2.2'
+  - '@commitlint/config-conventional@21.2.2'
+  - '@commitlint/format@21.2.2'
+  - '@commitlint/is-ignored@21.2.2'
+  - '@commitlint/lint@21.2.2'
+  - '@commitlint/load@21.2.2'
+  - '@commitlint/parse@21.2.2'
+  - '@commitlint/resolve-extends@21.2.2'
+  - '@commitlint/rules@21.2.2'
+  - '@hookform/resolvers@5.8.0'
+  - '@next/env@16.3.1'
+  - '@next/swc-darwin-arm64@16.3.1'
+  - '@next/swc-darwin-x64@16.3.1'
+  - '@next/swc-linux-arm64-gnu@16.3.1'
+  - '@next/swc-linux-arm64-musl@16.3.1'
+  - '@next/swc-linux-x64-gnu@16.3.1'
+  - '@next/swc-linux-x64-musl@16.3.1'
+  - '@next/swc-win32-arm64-msvc@16.3.1'
+  - '@next/swc-win32-x64-msvc@16.3.1'
+  - commitlint@21.2.2
+  - fastify@5.12.0
+  - next@16.3.1
+  - shadcn@4.18.0
+  - temporal-polyfill@1.0.4
+  - temporal-utils@1.0.2
