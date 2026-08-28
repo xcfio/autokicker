@@ -162,7 +162,7 @@ importers:
     dependencies:
       '@hookform/resolvers':
         specifier: ^5.9.1
-        version: 5.9.1(@standard-schema/spec@1.1.0)(ajv-formats@2.1.1(ajv@8.20.0))(ajv@8.20.0)(joi@17.13.4)(react-hook-form@7.85.0(react@19.2.8))(zod@3.25.76)
+        version: 5.9.1(@standard-schema/spec@1.1.0)(ajv-formats@2.1.1(ajv@8.20.0))(ajv@8.20.0)(joi@17.13.4)(react-hook-form@7.86.0(react@19.2.8))(zod@3.25.76)
       '@tanstack/react-query':
         specifier: ^5.101.4
         version: 5.101.4(react@19.2.8)
@@ -197,8 +197,8 @@ importers:
         specifier: ^6.1.3
         version: 6.1.3(@types/react@19.2.18)(react@19.2.8)
       react-hook-form:
-        specifier: ^7.85.0
-        version: 7.85.0(react@19.2.8)
+        specifier: ^7.86.0
+        version: 7.86.0(react@19.2.8)
       shadcn:
         specifier: ^4.18.0
         version: 4.18.0(typescript@7.0.2)
@@ -4190,8 +4190,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-hook-form@7.85.0:
-    resolution: {integrity: sha512-U2MTriFXnclmV4rOE20p2DcRFv5WEg3FIcBFOKcOLFHDVvGIMPvLTkTWefUsonmlaVy23khVDxDWym6uJVGOzw==}
+  react-hook-form@7.86.0:
+    resolution: {integrity: sha512-4kbWJrh5jPZt1+YqVcXcGKffGcXV/XVbozknLh0Yjh0KhpoAkus21TAQhzRYqNwFkkObmnSvRlZZ3GT+ehoIrA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -5391,10 +5391,10 @@ snapshots:
     dependencies:
       hono: 4.12.30
 
-  '@hookform/resolvers@5.9.1(@standard-schema/spec@1.1.0)(ajv-formats@2.1.1(ajv@8.20.0))(ajv@8.20.0)(joi@17.13.4)(react-hook-form@7.85.0(react@19.2.8))(zod@3.25.76)':
+  '@hookform/resolvers@5.9.1(@standard-schema/spec@1.1.0)(ajv-formats@2.1.1(ajv@8.20.0))(ajv@8.20.0)(joi@17.13.4)(react-hook-form@7.86.0(react@19.2.8))(zod@3.25.76)':
     dependencies:
       '@standard-schema/utils': 0.3.0
-      react-hook-form: 7.85.0(react@19.2.8)
+      react-hook-form: 7.86.0(react@19.2.8)
     optionalDependencies:
       '@standard-schema/spec': 1.1.0
       ajv: 8.20.0
@@ -8177,7 +8177,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.2.18
 
-  react-hook-form@7.85.0(react@19.2.8):
+  react-hook-form@7.86.0(react@19.2.8):
     dependencies:
       react: 19.2.8
 
