@@ -18,7 +18,7 @@
         "nuqs": "^2.10.1",
         "radix-ui": "^1.6.7",
         "react": "19.2.8",
-        "react-dom": "19.2.8",
+        "react-dom": "19.3.0",
         "react-error-boundary": "^6.1.5",
         "react-hook-form": "^7.87.0",
         "shadcn": "^4.21.0",
@@ -35,7 +35,7 @@
         "@repo/schema": "workspace:*",
         "@tailwindcss/postcss": "^4.3.3",
         "@types/react": "^19.2.18",
-        "@types/react-dom": "^19.2.7",
+        "@types/react-dom": "^19.3.0",
         "@types/three": "^0.185.4",
         "tailwindcss": "^4.3.3"
     }
