@@ -33,7 +33,7 @@
         "commitlint": "^21.2.3",
         "lefthook": "^2.1.14",
         "oxlint": "^1.82.0",
-        "oxlint-plugin-eslint": "^1.83.0",
+        "oxlint-plugin-eslint": "^1.85.0",
         "oxlint-tsgolint": "^7.0.2002",
         "prettier": "^3.9.8",
         "turbo": "^2.11.2",
