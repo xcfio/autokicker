@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@commitlint/config-conventional':
-        specifier: ^21.2.2
-        version: 21.2.2
+        specifier: ^21.2.3
+        version: 21.2.3
       '@commitlint/format':
         specifier: ^21.2.2
         version: 21.2.2
@@ -442,10 +442,6 @@ packages:
     resolution: {integrity: sha512-5yOX6IRjcrIReCxpyAd04hgI/yhUMpVBJ/ouwFV0wk9yx5+fYRDWZWJ5h55Tbedgfol+5m2mU5nqzbB8g3v0vQ==}
     engines: {node: '>=22.12.0'}
     hasBin: true
-
-  '@commitlint/config-conventional@21.2.2':
-    resolution: {integrity: sha512-NxA37SZviusFUEYOQZ5hNnZ1h7O/KiemPkxjOlpzKJNnWxThiwc6/SaZhaPa8fyLvfRBAywhQhJJk8XESHWlpQ==}
-    engines: {node: '>=22.12.0'}
 
   '@commitlint/config-conventional@21.2.3':
     resolution: {integrity: sha512-EP2n5DN2GwRWNVrLX0Jx3mpQlW5PfFi9HnD9OJ8hN/H0xFqpCFyHeGDhg+0P8/21iMMcdkcQgbNqmVklebqYsQ==}
@@ -4966,11 +4962,6 @@ snapshots:
       - conventional-commits-filter
       - conventional-commits-parser
       - typescript
-
-  '@commitlint/config-conventional@21.2.2':
-    dependencies:
-      '@commitlint/types': 21.2.0
-      conventional-changelog-conventionalcommits: 10.2.1
 
   '@commitlint/config-conventional@21.2.3':
     dependencies:
