@@ -1,28 +1,30 @@
 import { FastifyRequest, FastifyReply } from "fastify"
-import { CreateError, isFastifyError } from "fastify-utils"
+import { errors, isValidRFC9457Json } from "fastify-utils"
 import { Payload } from "@repo/schema"
-import Value from "typebox/value"
+import { Value } from "typebox/value"
 
 export default function authentication(fastify: Fastify) {
     fastify.decorate("authentication", async function (request: FastifyRequest, reply: FastifyReply) {
+        let payload: unknown
         try {
-            const user = await request.jwtVerify()
-
-            if (!Value.Check(Payload, user)) {
-                reply.clearCookie("auth", { path: "/", signed: true, sameSite: "strict" })
-                throw CreateError(401, "INVALID_TOKEN_PAYLOAD", "Invalid authentication token structure")
-            }
-
-            request.payload = user
+            payload = await request.jwtVerify()
         } catch (error) {
-            if (isFastifyError(error) || Error.isError(error)) {
-                reply.clearCookie("auth", { path: "/", signed: true, sameSite: "strict" })
-                throw CreateError(401, "AUTHENTICATION_FAILED", "Authentication failed")
-            } else {
-                console.trace(error)
-                reply.clearCookie("auth", { path: "/", signed: true, sameSite: "strict" })
-                throw CreateError(500, "INTERNAL_SERVER_ERROR", "Internal Server Error")
+            reply.clearCookie("auth", { path: "/", signed: true, sameSite: "strict" })
+            if (isValidRFC9457Json(error)) {
+                throw error
             }
+            if (Error.isError(error)) {
+                throw errors.client.authentication("Authentication failed")
+            }
+            console.trace(error)
+            throw errors.server.internal("Internal Server Error")
         }
+
+        if (!Value.Check(Payload, payload)) {
+            reply.clearCookie("auth", { path: "/", signed: true, sameSite: "strict" })
+            throw errors.client.authentication("Invalid authentication token structure")
+        }
+
+        request.payload = payload
     })
 }

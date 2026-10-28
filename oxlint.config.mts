@@ -37,6 +37,7 @@ export default defineConfig({
         "eslint/no-useless-concat": "off",
         "typescript/no-namespace": "off",
         "eslint/no-await-in-loop": "off",
+        "eslint/no-redeclare": "off",
         "eslint/no-shadow": "off",
         "eslint/max-depth": "off",
         "eslint/max-lines": "off",

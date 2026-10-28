@@ -1,4 +1,4 @@
-import { CreateError } from "fastify-utils"
+import { errors } from "fastify-utils"
 import RateLimit from "@fastify/rate-limit"
 
 export default async function rl(fastify: Fastify) {
@@ -10,7 +10,7 @@ export default async function rl(fastify: Fastify) {
             const forwarded = req.headers["x-forwarded-for"]
             return typeof forwarded === "string" ? forwarded.split(",")[0].trim() : req.ip
         },
-        errorResponseBuilder: (req, context) =>
-            CreateError(429, "TOO_MANY_REQUESTS", `Rate limit exceeded, retry in ${context.after}`)
+        errorResponseBuilder: (_, context) =>
+            errors.client.rateLimit(`Rate limit exceeded, retry in ${context.after}`, Math.ceil(context.ttl / 1000))
     })
 }

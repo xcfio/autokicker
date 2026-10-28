@@ -1,3 +1,4 @@
+// oxlint-disable typescript/no-unsafe-enum-assignment
 import type { UserConfig } from "@commitlint/types"
 
 const Configuration: UserConfig = {
