@@ -29,6 +29,6 @@
     },
     "devDependencies": {
         "@types/node": "^26.6.6",
-        "rolldown": "^1.2.15"
+        "rolldown": "^1.2.16"
     }
 }
