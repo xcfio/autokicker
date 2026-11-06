@@ -224,8 +224,8 @@ importers:
         specifier: ^11.2.1
         version: 11.2.1
       '@fastify/swagger':
-        specifier: ^9.9.2
-        version: 9.9.2
+        specifier: ^9.9.3
+        version: 9.9.3
       '@fastify/type-provider-typebox':
         specifier: ^6.3.0
         version: 6.3.0(ajv-formats@3.0.1)(typebox@1.4.3)
@@ -421,7 +421,7 @@ importers:
         version: 26.6.5
       drizzle-kit:
         specifier: 1.0.0-rc.5
-        version: 1.0.0-rc.5(drizzle-orm@1.0.0-rc.5-5935859(postgres@3.4.9)(typebox@1.4.3)(zod@4.4.3))
+        version: 1.0.0-rc.5(drizzle-orm@1.0.0-rc.5(postgres@3.4.9)(typebox@1.4.3)(zod@4.4.3))
 
   lib/schema:
     dependencies:
@@ -918,8 +918,8 @@ packages:
   '@fastify/rate-limit@11.2.1':
     resolution: {integrity: sha512-uTQjii3tJUnb6ZyEMcunuvKE3FDKNZEaPpxdyWADDgthHnUV1swdvwuiZfi3DDDgxm1iBrhOkQ/w0yDBQ8qJtA==}
 
-  '@fastify/swagger@9.9.2':
-    resolution: {integrity: sha512-ayxItVgf/1axBvw33lqsA5ns02YMpT1r59G/HCJraRNWWBzvLgN+oiCBPhuzTiN67TvctlCYkG0+40WLKYuusQ==}
+  '@fastify/swagger@9.9.3':
+    resolution: {integrity: sha512-1whjjguZlh4VV6OP2SD7w7ZNXXuLPwLcxbKIu7GckhHGgCyIYwtOyBskc3TLZa7LsaRmZZRiB1nz/JTaCI5grQ==}
 
   '@fastify/type-provider-typebox@6.3.0':
     resolution: {integrity: sha512-zsaoyyAdNvkuf2HOMJvf7vykRTFA/1M9J3HC0vHNtFhxNhwL36iDJl/2Tpl0XzMR0f0aATSeDV20ChH720wXYQ==}
@@ -4414,11 +4414,6 @@ packages:
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
 
-  yaml@2.9.0:
-    resolution: {integrity: sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==}
-    engines: {node: '>= 14.6'}
-    hasBin: true
-
   yaml@2.9.1:
     resolution: {integrity: sha512-3NxN8+78OdzbT7C/WjGsyfPAtJaN3FNDsWxv7Y7mcDsT/oOmgW8BpyQQFFBnvZE3j9Y2Sdz1ULFLezL7Eb2yFw==}
     engines: {node: '>= 14.6'}
@@ -4989,13 +4984,13 @@ snapshots:
       ip-address: 10.5.0
       toad-cache: 3.7.4
 
-  '@fastify/swagger@9.9.2':
+  '@fastify/swagger@9.9.3':
     dependencies:
-      fastify-plugin: 6.0.0
+      fastify-plugin: 6.0.1
       json-schema-resolver: 3.0.0
       openapi-types: 12.1.3
       rfdc: 1.4.1
-      yaml: 2.9.0
+      yaml: 2.9.1
     transitivePeerDependencies:
       - supports-color
 
@@ -6679,9 +6674,9 @@ snapshots:
 
   dotenv@17.4.2: {}
 
-  drizzle-kit@1.0.0-rc.5(drizzle-orm@1.0.0-rc.5-5935859(postgres@3.4.9)(typebox@1.4.3)(zod@4.4.3)):
+  drizzle-kit@1.0.0-rc.5(drizzle-orm@1.0.0-rc.5(postgres@3.4.9)(typebox@1.4.3)(zod@4.4.3)):
     optionalDependencies:
-      drizzle-orm: 1.0.0-rc.5-5935859(postgres@3.4.9)(typebox@1.4.3)(zod@4.4.3)
+      drizzle-orm: 1.0.0-rc.5(postgres@3.4.9)(typebox@1.4.3)(zod@4.4.3)
 
   drizzle-orm@1.0.0-rc.5(postgres@3.4.9)(typebox@1.4.3)(zod@4.4.3):
     optionalDependencies:
@@ -8018,8 +8013,6 @@ snapshots:
   y18n@5.0.8: {}
 
   yallist@3.1.1: {}
-
-  yaml@2.9.0: {}
 
   yaml@2.9.1: {}
 
