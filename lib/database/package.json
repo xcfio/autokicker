@@ -25,7 +25,7 @@
         "typebox": "^1.4.3"
     },
     "devDependencies": {
-        "@types/node": "^26.6.5",
+        "@types/node": "^26.6.6",
         "drizzle-kit": "1.0.0-rc.5"
     }
 }
