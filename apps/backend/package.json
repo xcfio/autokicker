@@ -32,7 +32,7 @@
         "discord-api-types": "^0.38.58",
         "fastify": "^5.12.8",
         "fastify-utils": "^0.0.4",
-        "postgres": "^4.0.0",
+        "postgres": "^4.1.0",
         "snowtransfer": "^0.19.1",
         "socket.io": "^4.8.4",
         "typebox": "^1.4.3"
