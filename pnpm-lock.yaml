@@ -209,8 +209,8 @@ importers:
         specifier: ^11.1.5
         version: 11.1.5
       '@fastify/cors':
-        specifier: ^11.3.1
-        version: 11.3.1
+        specifier: ^11.4.1
+        version: 11.4.1
       '@fastify/error':
         specifier: ^4.2.1
         version: 4.2.1
@@ -891,8 +891,8 @@ packages:
   '@fastify/cookie@11.1.5':
     resolution: {integrity: sha512-hs7e0otf7n/lJMpt63EFdQb5/u8kO6DeexEtLPVTybSdItC6SwJ1O0vtTyWvKNR70LZcHLlsUr/y3jFpqtyWRA==}
 
-  '@fastify/cors@11.3.1':
-    resolution: {integrity: sha512-gZXNzd6FLHzOIfvoK4+Az3Wko2V6Y0MIsLxpyo4AEYl7a9q1JBPwPaxLea4nkr++8FCiJiPpYYo6E02uZW0dqw==}
+  '@fastify/cors@11.4.1':
+    resolution: {integrity: sha512-WuPATGGyc3YzpOfumovBJ4xC2RPBBFyDFElwldFRBCgM2G27xH9DnXTho9+nc2Ho6gLD1hKTetdOntR+G38+7A==}
 
   '@fastify/error@4.2.1':
     resolution: {integrity: sha512-MYBumuIwP+5MIpXSyKm6/o1Eigcoij186lWUssX3LH5U8KWqU0ktZhzC4CErIX9EJeQeRGI+zJZQWakBlFbUcg==}
@@ -4934,9 +4934,9 @@ snapshots:
       cookie: 2.0.1
       fastify-plugin: 6.0.0
 
-  '@fastify/cors@11.3.1':
+  '@fastify/cors@11.4.1':
     dependencies:
-      fastify-plugin: 6.0.0
+      fastify-plugin: 6.0.1
       toad-cache: 3.7.4
 
   '@fastify/error@4.2.1': {}
