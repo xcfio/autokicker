@@ -35,7 +35,7 @@
         "postgres": "^4.0.0",
         "snowtransfer": "^0.19.1",
         "socket.io": "^4.8.4",
-        "typebox": "^1.4.3"
+        "typebox": "^1.4.6"
     },
     "devDependencies": {
         "@types/node": "^26.6.6",

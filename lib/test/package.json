@@ -21,7 +21,7 @@
         "@repo/database": "workspace:*",
         "@repo/schema": "workspace:*",
         "drizzle-orm": "1.0.0-rc.5",
-        "typebox": "^1.4.3"
+        "typebox": "^1.4.6"
     },
     "devDependencies": {
         "@types/node": "^26.6.6",
