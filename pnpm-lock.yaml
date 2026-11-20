@@ -257,8 +257,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0
       snowtransfer:
-        specifier: ^0.19.1
-        version: 0.19.1
+        specifier: ^0.20.0
+        version: 0.20.0
       socket.io:
         specifier: ^4.8.4
         version: 4.8.4
@@ -4138,8 +4138,8 @@ packages:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}
     engines: {node: '>= 6.0.0', npm: '>= 3.0.0'}
 
-  snowtransfer@0.19.1:
-    resolution: {integrity: sha512-cKrsd0V0CuBPUkVX/J0qQAK/DI2sscb0muI/KzbVpz51f1LFOcJFPIiyrgmhxASpzltkoajuFiIzlK+QSsStdQ==}
+  snowtransfer@0.20.0:
+    resolution: {integrity: sha512-HVh1OcQ1D9LDfCqu0oU1LEK4C4mKpbO9sNvC0/8xPyxkuGJju2aKFa4viCmnr5qasu3ovVaHEN8AETS2L1TRsw==}
     engines: {node: '>=22.0.0'}
 
   socket.io-adapter@2.5.8:
@@ -7788,7 +7788,7 @@ snapshots:
 
   smart-buffer@4.2.0: {}
 
-  snowtransfer@0.19.1:
+  snowtransfer@0.20.0:
     dependencies:
       discord-api-types: 0.38.58
 
