@@ -254,8 +254,8 @@ importers:
         specifier: ^0.0.4
         version: 0.0.4
       postgres:
-        specifier: ^4.1.0
-        version: 4.1.0
+        specifier: ^4.1.1
+        version: 4.1.1
       snowtransfer:
         specifier: ^0.20.0
         version: 0.20.0
@@ -295,7 +295,7 @@ importers:
         version: 14.28.1
       drizzle-orm:
         specifier: 1.0.0-rc.5
-        version: 1.0.0-rc.5(postgres@4.1.0)(typebox@1.4.7)(zod@4.4.3)
+        version: 1.0.0-rc.5(postgres@4.1.1)(typebox@1.4.7)(zod@4.4.3)
       fastify:
         specifier: ^5.12.8
         version: 5.12.8
@@ -303,8 +303,8 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0
       postgres:
-        specifier: ^4.1.0
-        version: 4.1.0
+        specifier: ^4.1.1
+        version: 4.1.1
       typebox:
         specifier: ^1.4.7
         version: 1.4.7
@@ -408,10 +408,10 @@ importers:
     dependencies:
       drizzle-orm:
         specifier: 1.0.0-rc.5
-        version: 1.0.0-rc.5(postgres@4.1.0)(typebox@1.4.7)(zod@4.4.3)
+        version: 1.0.0-rc.5(postgres@4.1.1)(typebox@1.4.7)(zod@4.4.3)
       postgres:
-        specifier: ^4.1.0
-        version: 4.1.0
+        specifier: ^4.1.1
+        version: 4.1.1
       typebox:
         specifier: ^1.4.7
         version: 1.4.7
@@ -421,7 +421,7 @@ importers:
         version: 26.6.6
       drizzle-kit:
         specifier: 1.0.0-rc.5
-        version: 1.0.0-rc.5(drizzle-orm@1.0.0-rc.5(postgres@4.1.0)(typebox@1.4.7)(zod@4.4.3))
+        version: 1.0.0-rc.5(drizzle-orm@1.0.0-rc.5(postgres@4.1.1)(typebox@1.4.7)(zod@4.4.3))
 
   lib/schema:
     dependencies:
@@ -443,7 +443,7 @@ importers:
         version: link:../schema
       drizzle-orm:
         specifier: 1.0.0-rc.5
-        version: 1.0.0-rc.5(postgres@4.1.0)(typebox@1.4.7)(zod@4.4.3)
+        version: 1.0.0-rc.5(postgres@4.1.1)(typebox@1.4.7)(zod@4.4.3)
       typebox:
         specifier: ^1.4.7
         version: 1.4.7
@@ -3909,8 +3909,8 @@ packages:
     resolution: {integrity: sha512-u82N74LFzG8ca+dD8puPnplTXoGH4fTPpVGuIbt36G3qvNlkvfD0lEAZSxaly3KX8TS/L1A1gsCEmvKmBcVbkQ==}
     engines: {node: ^10 || ^12 || >=14}
 
-  postgres@4.1.0:
-    resolution: {integrity: sha512-s+0WH67YAyLdBQUb6XczbziBhY+C9uiQsg9S8R5RHdZhk6sdyK6202E+T2tXpiInSEEjDLRSJ3OpYBe3PN6MsQ==}
+  postgres@4.1.1:
+    resolution: {integrity: sha512-1kJDojqNZC+iTHHXh6eif0J98LUtyLAePe/qkW1GK35eh2JixlsAiIKq3FGI+xqI+SUGTNodzf7TScVeIIyUug==}
     engines: {node: '>=18'}
 
   powershell-utils@0.1.0:
@@ -6718,13 +6718,13 @@ snapshots:
 
   dotenv@17.4.2: {}
 
-  drizzle-kit@1.0.0-rc.5(drizzle-orm@1.0.0-rc.5(postgres@4.1.0)(typebox@1.4.7)(zod@4.4.3)):
+  drizzle-kit@1.0.0-rc.5(drizzle-orm@1.0.0-rc.5(postgres@4.1.1)(typebox@1.4.7)(zod@4.4.3)):
     optionalDependencies:
-      drizzle-orm: 1.0.0-rc.5(postgres@4.1.0)(typebox@1.4.7)(zod@4.4.3)
+      drizzle-orm: 1.0.0-rc.5(postgres@4.1.1)(typebox@1.4.7)(zod@4.4.3)
 
-  drizzle-orm@1.0.0-rc.5(postgres@4.1.0)(typebox@1.4.7)(zod@4.4.3):
+  drizzle-orm@1.0.0-rc.5(postgres@4.1.1)(typebox@1.4.7)(zod@4.4.3):
     optionalDependencies:
-      postgres: 4.1.0
+      postgres: 4.1.1
       typebox: 1.4.7
       zod: 4.4.3
 
@@ -7483,7 +7483,7 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  postgres@4.1.0: {}
+  postgres@4.1.1: {}
 
   powershell-utils@0.1.0: {}
 
