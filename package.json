@@ -36,7 +36,7 @@
         "oxlint-plugin-eslint": "^1.93.0",
         "oxlint-tsgolint": "^7.0.2006",
         "prettier": "^3.9.10",
-        "turbo": "^2.11.10",
+        "turbo": "^2.11.11",
         "typescript": "7.0.2"
     },
     "packageManager": "pnpm@12.16.1",
