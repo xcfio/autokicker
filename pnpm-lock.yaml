@@ -212,8 +212,8 @@ importers:
         specifier: ^11.4.1
         version: 11.4.1
       '@fastify/error':
-        specifier: ^4.2.1
-        version: 4.2.1
+        specifier: ^4.3.0
+        version: 4.3.0
       '@fastify/jwt':
         specifier: ^10.2.7
         version: 10.2.7
@@ -903,8 +903,8 @@ packages:
   '@fastify/cors@11.4.1':
     resolution: {integrity: sha512-WuPATGGyc3YzpOfumovBJ4xC2RPBBFyDFElwldFRBCgM2G27xH9DnXTho9+nc2Ho6gLD1hKTetdOntR+G38+7A==}
 
-  '@fastify/error@4.2.1':
-    resolution: {integrity: sha512-MYBumuIwP+5MIpXSyKm6/o1Eigcoij186lWUssX3LH5U8KWqU0ktZhzC4CErIX9EJeQeRGI+zJZQWakBlFbUcg==}
+  '@fastify/error@4.3.0':
+    resolution: {integrity: sha512-mtIdc4R7HnUMOuUDQgnJkEF+Omr2p3JrSSJ44+RME/eAQ5TqdDy5MvXAjze/RyVHhJckuJKkXnMhKfPmFMKqyA==}
 
   '@fastify/fast-json-stringify-compiler@5.1.0':
     resolution: {integrity: sha512-PxcYtKLbQ8Z+yApiqjK8FwxIwvEj38k2OiLc17u8dkJSlmfi2wHHPaSnaoqBPQqtvF8YVsDgDpP2snDCfFrpfw==}
@@ -4969,7 +4969,7 @@ snapshots:
       fastify-plugin: 6.0.1
       toad-cache: 3.7.4
 
-  '@fastify/error@4.2.1': {}
+  '@fastify/error@4.3.0': {}
 
   '@fastify/fast-json-stringify-compiler@5.1.0':
     dependencies:
@@ -4979,7 +4979,7 @@ snapshots:
 
   '@fastify/jwt@10.2.7':
     dependencies:
-      '@fastify/error': 4.2.1
+      '@fastify/error': 4.3.0
       '@lukeed/ms': 2.0.2
       fast-jwt: 6.3.5
       fastify-plugin: 6.0.1
@@ -6518,7 +6518,7 @@ snapshots:
 
   avvio@9.3.0:
     dependencies:
-      '@fastify/error': 4.2.1
+      '@fastify/error': 4.3.0
       fastq: 1.20.1
 
   balanced-match@4.0.4: {}
@@ -6887,7 +6887,7 @@ snapshots:
   fastify@5.12.8:
     dependencies:
       '@fastify/ajv-compiler': 4.0.6
-      '@fastify/error': 4.2.1
+      '@fastify/error': 4.3.0
       '@fastify/fast-json-stringify-compiler': 5.1.0
       '@fastify/proxy-addr': 5.1.0
       abstract-logging: 2.0.1
